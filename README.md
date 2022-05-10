@@ -1,4 +1,9 @@
 # pipelineraw
-Initial RNA-seq pipeline setup
+RNA-seq data for kinship analysis of non-model organisms
 
-First commit test
+Table of Contents 
+
+Raw Data
+
+Visualization and Quality Control (should these be separate?)
+
