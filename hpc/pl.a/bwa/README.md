@@ -1,3 +1,3 @@
 mapping instructions and description
 
-do you need a merge script here too?
+GATK best practice starts with mapping?

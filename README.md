@@ -2,22 +2,19 @@
 
 Shell scripts to accompany the software pipeline(s) using RNA-seq data for kinship analysis of non-model organisms
 
-Pipeline A (possibly only pipeline?)
+Data Pre-processing (probably the same for GATK best practice)
 
-Data Processing
+1) Find most similar genome
+1a) Assembly if none
+2) Quality Control & Alignment
+2a) In-depth QC optional
 
-1) Visualization 
-2) Quality Control 
-3) Assembly (optional?)
-4) Mapping
-
-Biological Analysis
+Biological Analysis: Pipeline a (high depth) and Pipeline b (low depth)
 
 1) Variant Calling & Genotyping (do these need to be split?)
 2) IBD Calculations
 3) Pedigree Reconstruction
 
-Pipeline Evaluation
+Pipeline Evaluation (speed vs accuracy?)
 
 TBD
-
