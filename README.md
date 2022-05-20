@@ -1,9 +1,12 @@
 # pipelineraw
-RNA-seq data for kinship analysis of non-model organisms
 
-Table of Contents 
+Shell scripts to accompany the software pipeline using RNA-seq data for kinship analysis of non-model organisms
 
-Raw Data
+Raw Data Processing
 
-Visualization and Quality Control (should these be separate?)
+1) Visualization 
+2) Quality Control 
+3) Assembly (optional?)
+4) Mapping
+5) 
 
