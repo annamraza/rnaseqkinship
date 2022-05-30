@@ -2,21 +2,27 @@
 
 Shell scripts to accompany the software pipeline(s) using RNA-seq data for kinship analysis of non-model organisms
 
-Data Pre-processing
+i) Data Pre-processing
 
-1) Reference Genome Search
-1a) Assembly if none
-2) Quality Control & Alignment
-2a) In-depth QC optional
+1) Quality Control
+          Optional: trimming
 
-Biological Analysis:
+2) Alignment
+          Optional: assembly if no ref genome
 
-Pipeline a (high depth) vs Pipeline b (low depth)
+
+ii) Biological Analysis:
 
 1) Variant Calling & Genotyping (do these need to be split?)
-2) IBD Calculations
-3) Pedigree Reconstruction (PLINK for both here; this would be an rmd?)
+1a) High depth
+1b) Low depth
 
-Pipeline Evaluation (speed vs accuracy?)
+2) IBD Calculations
+2a) High depth
+2b) Low depth
+
+3) Pedigree Reconstruction
+
+iii) Pipeline Evaluation (speed vs accuracy?)
 
 TBD
