@@ -7,16 +7,12 @@ module load java
 set -e
 
 trim_reads(){
-  inputf=$1
-  inputr=$2
-  outputf=$3
-  outputr=$4
+  input=$1
+  output=$2
 
-  java -jar trimmomatic-0.39.jar PE \
-  $inputf \
-  $inputr \
-  $outputf \
-  $outputr \
+  java -jar trimmomatic-0.39.jar SE \ #add trimmomatic path
+  $input \
+  $output \
   ILLUMINACLIP:#which adaptor sequences to use? \
   LEADING:3 \
   TRAILING:3 \
@@ -29,30 +25,40 @@ trim_reads(){
 
 
 fastq2ubam(){
-  input1=$1
-  input2=$2
-  output=$3
-  sample=$4
-  barcode=$5
-  lane=$6
+  input=$1
+  output=$2
+  sample=$3
+  flowcell=$4
+  lane=$5
 
   java -jar picard.jar FastqToSam \
-  FORWARD=$input1 \
-  REVERSE=$input2 \
-  OUTPUT=$output \
-  SAMPLE_NUMBER=$sample \
-  READ_GROUP=$barcode.$lane.$sample
+  F1=$input1 \
+  O=$output \
+  SM=$sample \
+  RG=$flowcell.$lane.$sample
 }
 
-for f in ; do
+for f in *.fast.gz; do
 
-  if [ ! -f ]; then
-    trim_reads
+  input=$f
 
+  output=${input%R1.fastq.gz}
+
+  splitf=(${f//_/ })
+
+  sample=${splitf[0]}
+  #Is this correct or is the sample name 88_4? ask Ira)
+  #run=$(splitf[1])?
+  flowcell=${splitf[2]}
+  index=${splitf[3]}
+  lane=${splitf[4]}
+
+  if [ ! -f ${output}_trim.fastq.gz ]; then
+    trim_reads $input $output
   fi
 
-  if [ ! -f ]; then
-    fastq2ubam
+  if [ ! -f ${output}.bam ]; then
+    fastq2ubam ${input}_trim $output $sample $flowcell $lane
   fi
 
 done
