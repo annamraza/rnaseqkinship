@@ -15,7 +15,7 @@ align_reads(){
   output=$4
 
   java -jar picard.jar SamtoFastq \
-  I=$input.bam \
+  I=$input \
   FASTQ=/dev/stdout \
   #CLIPPING_ATTRIBUTE=XT
   | \
@@ -47,17 +47,23 @@ mark_dups(){
 bwa index $GENOME
 
 #make dictionary
-java -jar picard.jar CreateSequenceDictionary REFERENCE=$GENOME OUTPUT=${GENOME%.fasta}.dict 
+java -jar picard.jar CreateSequenceDictionary REFERENCE=$GENOME OUTPUT=${GENOME%.fasta}.dict
 
-for f in ; do
+for f in *_qc.bam; do
 
-  if [ ! -f ]; then
-    align_reads
+  input=$f
 
+  output=${input%_qc.bam}
+
+
+  if [ ! -f ${output}_mapped.bam ]; then
+    align_reads $input $GENOME $input ${output}_mapped
   fi
 
-  if [ ! -f ]; then
-    mark_dups
+  #your unmapped bam will have adapters marked. check if merging after trimming retains original reads or not. otherwise, change the names around.
+
+  if [ ! -f ${output}_mapped_marked.bam ]; then
+    mark_dups ${output}_mapped ${output}_mapped_marked
   fi
 
 done

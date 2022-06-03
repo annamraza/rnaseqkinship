@@ -57,8 +57,10 @@ for f in *.fast.gz; do
     trim_reads $input $output
   fi
 
-  if [ ! -f ${output}.bam ]; then
-    fastq2ubam ${input}_trim $output $sample $flowcell $lane
+  if [ ! -f ${output}_qc.bam ]; then
+    fastq2ubam ${input}_trim ${output}_qc $sample $flowcell $lane
   fi
 
 done
+
+#you need to add visualization
