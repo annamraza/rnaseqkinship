@@ -58,7 +58,7 @@ for f in *.fast.gz; do
   fi
 
   if [ ! -f ${output}_qc.bam ]; then
-    fastq2ubam ${input}_trim ${output}_qc $sample $flowcell $lane
+    fastq2ubam ${input}_trim ${output}_trim $sample $flowcell $lane
   fi
 
 done

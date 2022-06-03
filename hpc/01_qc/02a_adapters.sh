@@ -49,8 +49,8 @@ for f in *.fast.gz; do
     fastq2ubam $input $output $sample $flowcell $lane
   fi
 
-  if [ ! -f ${output}_qc.bam ]; then
-    markadapt $output ${output}_qc
+  if [ ! -f ${output}_mark.bam ]; then
+    markadapt $output ${output}_mark
   fi
 
 done

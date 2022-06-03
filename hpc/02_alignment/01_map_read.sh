@@ -8,7 +8,7 @@ GENOME=
 
 set -e
 
-align_reads(){
+align_trim_reads(){
   input=$1
   fasta=$2
   ubam=$3
@@ -28,7 +28,22 @@ align_reads(){
   R=$fasta CREATE_INDEX=true ADD_MATE_CIGAR=true \
   CLIP_ADAPTERS=false CLIP_OVERLAPPING_READS=true
   #more options
+}
 
+align_mark_reads(){
+  input=$1
+  fasta=$2
+  ubam=$3
+  output=$4
+
+  bwa mem -M -t 16 -p $fasta $input \
+  | \
+  java -jar picard.jar MergeBamAlignment \
+  ALIGNED=/dev/stdin \
+  UNMAPPED=$ubam \
+  OUTPUT=$output.bam \
+  R=$fasta CREATE_INDEX=true ADD_MATE_CIGAR=true \
+  CLIP_ADAPTERS=false CLIP_OVERLAPPING_READS=true
 }
 
 mark_dups(){
@@ -48,6 +63,8 @@ bwa index $GENOME
 
 #make dictionary
 java -jar picard.jar CreateSequenceDictionary REFERENCE=$GENOME OUTPUT=${GENOME%.fasta}.dict
+
+#for sample in samples, add names of all the files correctly here
 
 for f in *_qc.bam; do
 
