@@ -1,2 +1,4 @@
-Estimate genotype likelihoods using ANGSD
-Use likelihoods to estimate IBD using NGSrelate
+high depths uses SNPrelate
+low depths uses NGSrelate
+
+Does SNPrelate need to be downloaded or no? It is an R package.

@@ -9,7 +9,7 @@ GENOME=
 
 set -e
 
-align_trim_reads(){
+align_mark_reads(){
   input=$1
   fasta=$2
   ubam=$3
@@ -31,7 +31,7 @@ align_trim_reads(){
   #more options
 }
 
-align_mark_reads(){
+align_trim_reads(){
   input=$1
   fasta=$2
   ubam=$3
@@ -66,7 +66,7 @@ bwa index $GENOME
 #make dictionary
 java -jar picard.jar CreateSequenceDictionary REFERENCE=$GENOME OUTPUT=${GENOME%.fasta}.dict
 
-samples=${ls *.fastq.gz | awk -F '_[1234]' '{print $1}' | sort -u | tr '\n' \ ''}
+samples=$(ls *.fastq.gz | awk -F '_[1234]' '{print $1}' | sort -u | tr '\n' \ '')
 
 for sample in $samples; do
 
@@ -75,6 +75,8 @@ for sample in $samples; do
   ubam=${sample}_*.bam
 
   output=$(${sample}_*.fastq.gz | tr '_R1.fastq.gz' \ '') #try this
+      #or ${ls ${sample}_*.fastq.gz | awk -F '_R' '{print $1}' | tr '\n' \ ''}
+
 
   if [ ! -f ${output}_mapped.bam ]; then
     align_mark_reads $input $GENOME $input ${output}_mapped

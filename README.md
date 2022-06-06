@@ -17,9 +17,13 @@ Data Pre-processing
 
 Biological Analysis:
 
-3) Variant & Genotype Calling (do these need to be split?)
-          a) High depth reads
-          b) Low depth reads
+3) Variant & Genotype
+  i) High depth
+          a) Calling
+          b) Filtering
+  ii) Low depth
+          a) Calling
+          b) Filtering
 
 4) IBD Calculations
           a) High depth
