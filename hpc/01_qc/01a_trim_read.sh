@@ -42,7 +42,7 @@ for f in *.fast.gz; do
 
   input=$f
 
-  output=${input%R1.fastq.gz}
+  output=${input%_R1.fastq.gz}
 
   splitf=(${f//_/ })
 
@@ -54,11 +54,11 @@ for f in *.fast.gz; do
   lane=${splitf[4]}
 
   if [ ! -f ${output}_trim.fastq.gz ]; then
-    trim_reads $input $output
+    trim_reads $input ${output}_trim
   fi
 
-  if [ ! -f ${output}_qc.bam ]; then
-    fastq2ubam ${input}_trim ${output}_trim $sample $flowcell $lane
+  if [ ! -f $output.bam ]; then
+    fastq2ubam $input $output $sample $flowcell $lane
   fi
 
 done

@@ -3,6 +3,7 @@
 module load picard
 module load bwa
 module load java
+module load samtools
 
 GENOME=
 
@@ -58,29 +59,38 @@ mark_dups(){
   #more options
 }
 
+
 #index genome first
 bwa index $GENOME
 
 #make dictionary
 java -jar picard.jar CreateSequenceDictionary REFERENCE=$GENOME OUTPUT=${GENOME%.fasta}.dict
 
-#for sample in samples, add names of all the files correctly here
+samples=${ls *.fastq.gz | awk -F '_[1234]' '{print $1}' | sort -u | tr '\n' \ ''}
 
-for f in *_qc.bam; do
+for sample in $samples; do
 
-  input=$f
+  input=${sample}_*_mark.bam
 
-  output=${input%_qc.bam}
+  ubam=${sample}_*.bam
 
+  output=$(${sample}_*.fastq.gz | tr '_R1.fastq.gz' \ '') #try this
 
   if [ ! -f ${output}_mapped.bam ]; then
-    align_reads $input $GENOME $input ${output}_mapped
+    align_mark_reads $input $GENOME $input ${output}_mapped
   fi
 
   #your unmapped bam will have adapters marked. check if merging after trimming retains original reads or not. otherwise, change the names around.
 
   if [ ! -f ${output}_mapped_marked.bam ]; then
     mark_dups ${output}_mapped ${output}_mapped_marked
+  fi
+
+  if [ -! -f ${sample}_merged_marked.bam ]; then
+    echo "Merging $sample"
+    samtools merge ${sample}_merged.bam ${sample}_*mapped_marked.bam
+    echo "Marking duplicates for $sample"
+    mark_dups ${sample}_merged ${sample}_merged_marked
   fi
 
 done

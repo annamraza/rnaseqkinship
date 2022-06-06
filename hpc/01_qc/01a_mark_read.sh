@@ -34,7 +34,7 @@ for f in *.fast.gz; do
 
   input=$f
 
-  output=${input%R1.fastq.gz}
+  output=${input%_R1.fastq.gz}
 
   splitf=(${f//_/ })
 

@@ -4,5 +4,5 @@ module load samtools
 module load parallel
 
 summarize_mapping(){
-  
+
 }
