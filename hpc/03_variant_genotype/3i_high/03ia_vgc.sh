@@ -9,7 +9,7 @@ GENOME =
 #index genome
 
 #split genome into 100kb files
-split -C 100K --numeric-suffixes $GENOME alaevi_
+#split -C 100K --numeric-suffixes $GENOME alaevi_
 #don't think this will work its not a text file
 
 names=($(awk '{print $1}' $fai )) #array of names from indexed genome
@@ -20,14 +20,14 @@ lengths=($(awk {'print $2'} $fai)) #array of lentghs from indexed genome
 
 awk '$1 !~ /^>/' $fasta >v.txt
 
-readarray -t sequences <v.txt #array of sequences to be split why dont these match the index?
+readarray -t sequences <v.txt #second file matched index- clean and redo these all
 
 for i in ${!sequences[@]};
 do
   sequence=${variables[$i]}
   name=${names[$i]}
   length=${lengths[$i]}
-  start=$(seq 0 100 "length") #this must be numerals also multiple outputs here
+  start=$(seq 0 100 "length") #this must be numerals also multiple outputs here another array
   size=$(${sequence:start:100} | awk '{print length}') #substring needs fine-tuning and syntax
   end=$(start + size) #for each one
 
