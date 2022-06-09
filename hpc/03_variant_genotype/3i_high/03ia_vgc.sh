@@ -61,6 +61,17 @@ do
 
 )
 
+or
+
+starts=$(seq 0 $size $length) #does this need to start at one?
+start_string=($starts)
+starts3=${start_string[@]::${#start_string[@]}-1}
+start_fin=${start_string[-1]}
+
+ends=starts3+size
+end=start_fin+length
+#something like that
+
 #list of alignments
 ls folder/*_merged_marked.bam > input_bam.txt
 #or .filelist
