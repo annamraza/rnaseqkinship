@@ -34,6 +34,32 @@ do
 printf or echo "name:start-end" #figure this out once everything else works
   done
 
+genome_split{}(
+fasta=$1
+size=$2
+
+awk '$1 !~ /^>/' $fasta > sqs.txt
+readarray -t sqs <sqs.txt
+
+fai= samtools faidx $fasta
+
+names=($(awk '{print $1}' $fai ))
+lengths=($(awk {'print $2'} $fai))
+
+for i in ${!sqs[@]}
+do
+  for i in ${!names[@]}
+  do
+    for i in ${!lengths[@]}
+    do
+      name=${names[$i]}
+      length=${lengths[$i]}
+      sqs=${sqs[$i]}
+
+      starts=$($(seq 0 $size $length))
+      regions=$("${seq:$start:$size}") #gives results but command not found? works upto this point
+
+)
 
 #list of alignments
 ls folder/*_merged_marked.bam > input_bam.txt
