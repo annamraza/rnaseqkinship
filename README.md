@@ -7,29 +7,32 @@ Shell scripts to accompany the software pipeline(s) using RNA-seq data for kinsh
 Data Pre-processing
 
 1) Quality Control
-          a) Marking adapters
-          b) Optional: trimming
+          a) Using FASTqc
 
-2) Alignment
+2) Trimming
+          a) Using Trimmomatic #maybe cutadapt later?
+
+3) Alignment
           a) Aligning and merging reads
           b) Generating mapping summary statistics
           c) Optional: assembly if no ref genome
 
 Biological Analysis:
 
-3) Variant & Genotype
-  i) High depth
-          a) Calling
-          b) Filtering
-  ii) Low depth
-          a) Calling
-          b) Filtering
+4) Variant & Genotype
+    a) ANGSD
+          i) Calling
+    b) Samtools
+          i) Calling
+          ii) Filtering
 
 4) IBD Calculations
-          a) High depth
-          b) Low depth
+          a) NGSrelate
+          b) SNPrelate/PLINK
 
-5) Pedigree Reconstruction using PRIMUS
+
+5) Pedigree Reconstruction
+          a) PRIMUS
 
 Pipeline Evaluation (speed vs accuracy?)
 
