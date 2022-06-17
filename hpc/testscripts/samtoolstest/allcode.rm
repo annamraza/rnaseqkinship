@@ -31,3 +31,17 @@ singularity run /sw/containers/trimmomatic-0.39.sif TrimmomaticSE....etc
 worked but could not find TruSeq3-SE? changed to add .fa at end. It ran!!!
 
 ran fastqc on trimmed files for comparison
+
+cd haliotis_genome
+cp GCF_*.fna haliotis_genome.fa
+cp haliotis_genome.fa /home/jc475572/testscripts/samtoolstest
+
+#moved genome copy
+
+module load bowtie2
+bowtie2
+
+#worked fine, I don't think it needs singularity
+
+dos2unix 03_bowtie2.sh
+#2284468 job code
