@@ -47,3 +47,6 @@ dos2unix 03_bowtie2.sh
 #2284468 job code
 I think it worked, but changed index output file name and reran just in case
 #2284475 job code
+Same output, maybe fine tune parameters next time.
+
+samtools test: job code #2284476
