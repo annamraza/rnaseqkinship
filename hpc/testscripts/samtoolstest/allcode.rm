@@ -50,3 +50,9 @@ I think it worked, but changed index output file name and reran just in case
 Same output, maybe fine tune parameters next time.
 
 samtools test: job code #2284476
+bcftools wasnt found. delete all files and restart?
+
+bcftools needed to be loaded separately. wrote a new script with only bcftools commands so that files didn't need deletion
+tested both sorted and unsorted
+changed code according to manual
+bcftoolstest: #2284551
