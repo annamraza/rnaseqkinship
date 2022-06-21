@@ -7,3 +7,9 @@ dos2unix 02_trimall.sh
 
 qsub 02_trimall.sh
 job #2284849 @ 12:43 DXB/18:43 TSV
+As of 16:34 DXB/22:34 TSV was still queued
+
+wrote script for trimming with 16 threads/cores in 02_trimthread.sh
+dos2unix 02_trimthread.sh
+qsub 02_trimthread.sh
+job #2284892 @ 16:36 DXB/18:36 TSV
