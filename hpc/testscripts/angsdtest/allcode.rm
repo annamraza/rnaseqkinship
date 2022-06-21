@@ -1,0 +1,9 @@
+wrote script for trimming reads with only adapter removal (no specifics) in 02_trimall.sh
+moving copy of all reads to angsdtest:
+
+cp *.fastq.gz /home/jc475572/testscripts/angsdtest
+
+dos2unix 02_trimall.sh
+
+qsub 02_trimall.sh
+job #2284849 @ 12:43 DXB/18:43 TSV
