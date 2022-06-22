@@ -13,3 +13,10 @@ wrote script for trimming with 16 threads/cores in 02_trimthread.sh
 dos2unix 02_trimthread.sh
 qsub 02_trimthread.sh
 job #2284892 @ 16:36 DXB/18:36 TSV
+
+Both scripts ran into the same issue; downloaded both trimtestangsds into this folder
+
+added :2:30:10 to ILLUMINACLIP and retried 02_trimall.sh @ 3:33 TSV/21:33 DXB
+
+Script worked but output files saved w/o file type. adjusted 02_trimall.sh to rerun as #2285073
+archived 02_trimthread.sh
