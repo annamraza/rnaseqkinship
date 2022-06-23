@@ -20,3 +20,10 @@ added :2:30:10 to ILLUMINACLIP and retried 02_trimall.sh @ 3:33 TSV/21:33 DXB
 
 Script worked but output files saved w/o file type. adjusted 02_trimall.sh to rerun as #2285073
 archived 02_trimthread.sh
+
+02_trimall.sh successful!
+
+cp haliotis_genome.fa /home/jc475572/testscripts/angsdtest
+
+wrote 03_mapall.sh for mapping all reads and submitted @ 21:32 TSV/15:32 DXB
+job #2287472
