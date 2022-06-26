@@ -27,3 +27,15 @@ cp haliotis_genome.fa /home/jc475572/testscripts/angsdtest
 
 wrote 03_mapall.sh for mapping all reads and submitted @ 21:32 TSV/15:32 DXB
 job #2287472
+
+job timed out.
+change script: comma separated list of all files plus file to write alignments to
+
+7.28
+
+ls *_trim.fastq.gz >trim_samples.csv (still separated by newlines)
+cat trim_samples.csv | tr "\n" "," >mapinput.txt
+
+changed 03_mapall.sh and reran
+
+job #2287663 @ 07.54 TSV/01:54 DXB

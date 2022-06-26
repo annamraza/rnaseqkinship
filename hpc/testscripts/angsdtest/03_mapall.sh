@@ -14,25 +14,6 @@ echo "Working directory is $PBS_O_WORKDIR"
 
 module load bowtie2
 
-GENOME=haliotis_genome.fa
+bowtie2-build haliotis_genome.fa haliotis_gen
 
-align_reads(){
-  fasta=$1
-  index=$2
-  input=$3
-  output=$4
-
-  bowtie2-build $fasta $index
-  bowtie2 -x $index -U $input -S $output
-}
-
-for f in *_trim.fastq.gz; do
-  fasta=$GENOME
-  index=${fasta%ome.fa}
-  input=$f
-  output=${output%_C*.fastq.gz}
-
-  if [ ! -f ${output}.sam  ]; then
-    align_reads $fasta $index $input ${output}.sam
-  fi
-done
+bowtie2 -x hailotis_gen -U mapinput.txt -S mapped
