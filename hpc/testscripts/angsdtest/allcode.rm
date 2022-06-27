@@ -39,3 +39,17 @@ cat trim_samples.csv | tr "\n" "," >mapinput.txt
 changed 03_mapall.sh and reran
 
 job #2287663 @ 07.54 TSV/01:54 DXB
+
+indexing worked, but this error occured:
+
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+    LANGUAGE = (unset),
+    LC_ALL = (unset),
+    LANG = "en_US.UTF-8"
+are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+
+separated indexing and mapping into different scripts but email Ira for future rewrites?
+
+qsub 17:30 TSV/11:30 DXB job #2287694
