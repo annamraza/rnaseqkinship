@@ -53,3 +53,13 @@ perl: warning: Falling back to the standard locale ("C").
 separated indexing and mapping into different scripts but email Ira for future rewrites?
 
 qsub 17:30 TSV/11:30 DXB job #2287694
+
+tried running through singularity (just mapping) in 03_mapsing.sh
+
+job #2287699 @20:23 TSV/14:34 DXB
+
+incorrect code
+
+job#2287700 @20.37 TSV/14:37 DXB
+
+same issue as before, wait for Ira to respond?
