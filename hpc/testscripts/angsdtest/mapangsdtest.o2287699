@@ -1,0 +1,3 @@
+Job identifier is 2287699.jobmgr1
+Working directory is /home/jc475572/testscripts/angsdtest
+/var/spool/pbs/mom_priv/jobs/2287699.jobmgr1.SC: line 17: bowtie2: command not found

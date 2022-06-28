@@ -63,3 +63,15 @@ incorrect code
 job#2287700 @20.37 TSV/14:37 DXB
 
 same issue as before, wait for Ira to respond?
+
+emailed Ira, but re-wrote for loop in 03_maploop.sh
+job #2287753 @ 22:04 TSV/16:04 DXB
+
+failed- line 35 too many arguments (two if functions)
+
+separated index and align functions and increased time in 03_maploop.sh
+
+job #2287754 @ 22:09 TSV/16:09 DXB
+killed it because output was wrong, adjusted script again
+
+job #2287755 @ 22.16 TSV/ 16:16 DXB

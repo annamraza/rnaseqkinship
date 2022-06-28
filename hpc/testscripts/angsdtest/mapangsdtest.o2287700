@@ -1,0 +1,11 @@
+Job identifier is 2287700.jobmgr1
+Working directory is /home/jc475572/testscripts/angsdtest
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+(ERR): "hailotis_gen" does not exist or is not a Bowtie 2 index
+Exiting now ...
