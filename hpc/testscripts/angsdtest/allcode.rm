@@ -31,8 +31,6 @@ job #2287472
 job timed out.
 change script: comma separated list of all files plus file to write alignments to
 
-7.28
-
 ls *_trim.fastq.gz >trim_samples.csv (still separated by newlines)
 cat trim_samples.csv | tr "\n" "," >mapinput.txt
 
@@ -75,3 +73,19 @@ job #2287754 @ 22:09 TSV/16:09 DXB
 killed it because output was wrong, adjusted script again
 
 job #2287755 @ 22.16 TSV/ 16:16 DXB
+
+wrote script for bam conversion and sorting (samtools worked fine for two files)
+should finish with a bam.filelist
+
+successfully tested basename as follows:
+
+cd testdata
+for f in *.fastq.gz; do
+name= $(basename $f .fastq.gz)
+echo ${name}
+done
+
+module load angsd
+angsd
+
+was also successful; using GATK method for now, 6 threads
