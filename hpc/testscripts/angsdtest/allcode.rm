@@ -89,3 +89,12 @@ module load angsd
 angsd
 
 was also successful; using GATK method for now, 6 threads
+
+6.25:
+moved all fastq.gz files into a new folder named fastq
+moved all _trim files into a new folder named fastq/trimmed
+
+mkdir archive
+mv all unsuccessful scripts and tests to here
+
+submitted job#2294949 @ 18:39 TSV/ 12:30 DXB
