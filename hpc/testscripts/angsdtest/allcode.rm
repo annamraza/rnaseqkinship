@@ -98,3 +98,8 @@ mkdir archive
 mv all unsuccessful scripts and tests to here
 
 submitted job#2294949 @ 18:39 TSV/ 12:30 DXB
+
+submitted job#2296171 @ 05:32 TSV/ 23:32 DXB
+failed because no file or directory as ./angsd
+
+submitted job#2296295 @ 20:57 TSV/14:57 DXB

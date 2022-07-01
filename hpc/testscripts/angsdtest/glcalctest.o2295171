@@ -1,0 +1,17 @@
+Job identifier is 2295171.jobmgr1
+Working directory is /home/jc475572/testscripts/angsdtest
+
+angsd v0.935 software is available in an apptainer.
+To view the list of aliases (shorthand) available, use the command:
+	module show angsd/0.935
+If the command(s) you require are not available as an alias, you
+can request one or more be added.
+
+The apptainer you could be using is:
+	/sw/containers/angsd-0.935.sif
+
+If you want/need higher level control, see relevant man pages:
+	man singularity-run
+	man singularity-exec
+
+/var/spool/pbs/mom_priv/jobs/2295171.jobmgr1.SC: line 17: ./angsd: No such file or directory
