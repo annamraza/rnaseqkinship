@@ -17,5 +17,5 @@ module load bcftools
 bcftools mpileup -Ou -f haliotis_genome.fa 77_sorted.bam | bcftools call -mv -Ob -o 77_raw_sorted.bcf
 bcftools mpileup -Ou -f haliotis_genome.fa 88_sorted.bam | bcftools call -mv -Ob -o 88_raw_sorted.bcf
 
-bcftools mpileup -Ou -f haliotis_genome.fa 77_1_maptest.bam | bcftools call -mv -Ob -o 77_raw.bcf
-bcftools mpileup -Ou -f haliotis_genome.fa 88_1_maptest.bam | bcftools call -mv -Ob -o 88_raw.bcf
+#bcftools mpileup -Ou -f haliotis_genome.fa 77_1_maptest.bam | bcftools call -mv -Ob -o 77_raw.bcf
+#bcftools mpileup -Ou -f haliotis_genome.fa 88_1_maptest.bam | bcftools call -mv -Ob -o 88_raw.bcf
