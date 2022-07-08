@@ -187,5 +187,71 @@ moved all old scripts and outputs to these files (but not any output files)
 
 mv -v ~/testscripts/angsdtest/archive/* ~/testscripts/archive/angsd/
 
-combined allcode.rm to one under testscripts on atom 
+combined allcode.rm to one under testscripts on atom
 moved allcode for each into relevant archive on atom
+
+switched back to samtools
+made bam.filelist with two files
+wrote 04_bcftools.sh to get one input file for PLINK
+
+job 2298754 (immediate fail- couldn't recognise file)
+
+changed -b to --bam-filelist and resubmitted:
+job #2298755 @ 20:47 TSV/ 14:47 DXB
+
+failed because all bam files are in different folder
+copied to test folder to resumbit as job #2298756 @ 20:49 TSV/ 14:49 DXB
+
+tried Ira's code for @RG tag:
+samtools view -H 77_sorted.bam | grep '^@RG'
+
+nothing happened?
+downloaded 88_sorted.bam to manually check- too big
+downloaded only the header as a .txt file in atom for 77_sorted.bam
+no RG, only SQ and LN
+downloaded only the header of 77_1_maptest.bam
+same output
+downloaded only the header of 77_1_maptest.sam
+
+merged files as follows:
+samtools merge -o alignments.bam -b bam.filelist (worked)
+
+also trying
+samtools merge -o alignments2.bam *.bam (also worked)
+
+wrote 04_bcf2.sh with alignments.bam as input
+submitted job #2298757 @ 21:22 TSV/15:22 TSV
+
+started 05_plink.sh
+loaded through singularity; input is bcf file
+job#2298758 @ 21:46 TSV/15:46 DXB
+failed due to invalid chromosome code- used suggested fix: --allow-extra-chr
+
+job#298759 @ 21:50 TSV/15:50 DXB
+ran VERY fast, output already available- thinks theyre identical twins
+
+gonna retry with siblings and cousins- 042, 104, 240, 257, 269 copied into samtoolstest
+don't need fastq.gz files as angsd has bam files for these samples
+manually copied 42_*.bam and 104_*.bam but attempted for loop for rest:
+
+for f in 240 257 269;do
+cp ${f}_*.bam /home/jc475572/testscripts/samtoolstest
+done
+
+made a bam2.filelist
+accidentally included alignments
+overwrote with correct code
+
+reran 05_plink.sh with snpcalls2 to see if other method worked : job#298760 @ 22:27 TSV/ 16:27 DXB
+snpcalls2 did not work- less reliable? don't use merge with filelist
+
+reran 04_bcf2.sh with alignments2 as snptest4 job#2298761 @ 22:32 TSV/16:32 DXB
+did not work- views all samples as ONE (what merge does)
+
+reran 04_bcftools.sh as snptestfam for second PLINK test run job#298762 @ 22:39 TSV/ 16:39 DXB
+
+modified 05_plink.sh for new snps from more samples; named ibdtestfam
+wrote 05_plinkii.sh for snptest4; named ibdtest4
+transferred both to samtoolstest and converted (dos2unix)
+
+cleaned up samtoolstest folder on hpc and desktop

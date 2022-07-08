@@ -1,0 +1,19 @@
+Job identifier is 2298761.jobmgr1
+Working directory is /home/jc475572/testscripts/samtoolstest
+
+bcftools v1.13 software is available in an apptainer.
+To view the list of aliases (shorthand) available, use the command:
+	module show bcftools/1.13
+If the command(s) you require are not available as an alias, you
+can request one or more be added.
+
+The apptainer you could be using is:
+	/sw/containers/bcftools-1.13.sif
+
+If you want/need higher level control, see relevant man pages:
+	man singularity-run
+	man singularity-exec
+
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+[mpileup] 1 samples in 1 input files
+[mpileup] maximum number of reads per input file set to -d 250

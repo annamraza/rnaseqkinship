@@ -1,0 +1,20 @@
+Job identifier is 2284467.jobmgr1
+Working directory is /home/jc475572/testscripts/samtoolstest
+TrimmomaticSE: Started with arguments:
+ 77_1_C5H1BACXX_GATCAG_L001_R1.fastq.gz 77_1_C5H1BACXX_GATCAG_L001_R1_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9465302 Surviving: 9463932 (99.99%) Dropped: 1370 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 88_1_C5H1BACXX_AGTCAA_L001_R1.fastq.gz 88_1_C5H1BACXX_AGTCAA_L001_R1_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9602703 Surviving: 9602229 (100.00%) Dropped: 474 (0.00%)
+TrimmomaticSE: Completed successfully
