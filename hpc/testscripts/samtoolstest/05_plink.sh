@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N ibdtestfam
+#PBS -N ibdtestmerged
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
 #PBS -l select=1:ncpus=1:mem=100gb
@@ -14,4 +14,4 @@ echo "Working directory is $PBS_O_WORKDIR"
 
 module load singularity
 
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf snpcallsfam.bcf --genome --allow-extra-chr
+singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf snpcallsmerged.bcf --genome --allow-extra-chr

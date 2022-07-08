@@ -155,7 +155,6 @@ angsd
 
 was also successful; using GATK method for now, 6 threads
 
-6.25:
 moved all fastq.gz files into a new folder named fastq
 moved all _trim files into a new folder named fastq/trimmed
 
@@ -255,3 +254,18 @@ wrote 05_plinkii.sh for snptest4; named ibdtest4
 transferred both to samtoolstest and converted (dos2unix)
 
 cleaned up samtoolstest folder on hpc and desktop
+
+submitted 05_plink: job#2298763 @ 4:32 TSV/ 22:32 DXB
+(didn't merge files or include other timepoints for 77 or 88 by accident)
+failed due to sample IDs
+
+transferred all samples and timepoints; merged using 04_sammerge.sh
+job#2298764 @ 04:46 TSV/ 22:46 DXB
+failed cuz you had .fastq.gz instead of .bam
+job#2298765 @ 04:48 TSV/ 22:48 DXB
+
+mad a mergedbam.filelist< ls *_merged.bam
+
+edited 04_bcftools.sh (4:58 TSV/ 22:58 DXB) and submitted: job#2298766 @ 05:11 TSV/23:11 DXB
+
+edited 05_plink.sh (4:58 TSV/ 22:58 DXB) and submitted:
