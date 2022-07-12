@@ -1,0 +1,26 @@
+PLINK v1.90b6.22 64-bit (3 Nov 2020)
+Options in effect:
+  --allow-extra-chr
+  --bcf snpcallsmerged.bcf
+  --genome
+
+Hostname: cn09
+Working directory: /home/jc475572/testscripts/samtoolstest
+Start time: Wed Jul 13 00:19:33 2022
+
+Random number seed: 1657635573
+385315 MB RAM detected; reserving 192657 MB for main workspace.
+--bcf: plink-temporary.bed + plink-temporary.bim + plink-temporary.fam written.
+2132032 variants loaded from .bim file.
+7 people (0 males, 0 females, 7 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to plink.nosex .
+Using up to 79 threads (change this with --threads).
+Before main variant filters, 7 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.901699.
+2132032 variants and 7 people pass filters and QC.
+Note: No phenotypes present.
+IBD calculations complete.
+Finished writing plink.genome .
+
+End time: Wed Jul 13 00:19:36 2022
