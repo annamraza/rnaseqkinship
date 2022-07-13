@@ -285,4 +285,51 @@ edited 04_sammerge.sh to create filelist for all bam files
 edited 04_bcftools.sh to match 04_sammerge.sh output
 
 submitted 04_sammerge.sh for all files:
-job#2302035 @ 18:53 TSV/ 12:53 DXB 
+job#2302035 @ 18:53 TSV/ 12:53 DXB
+
+testing date function:
+add dt=$(date) to files
+add echo $dt before and after any loops etc you run for time frames
+
+submitted 04_bcftools.sh for all files:
+job#2302043 @ 23:46 TSV/ 17:47 DXB
+
+testing mapping statistics on one bam file:
+samtools view -f4 104_merged.bam $1 (a mistake)
+samtools view -f4 104_merged.bam $1 | wc -l (slow)
+a=$(samtools flagstat 104_merged.bam $1) (slow)
+echo $a>104_map.txt
+samtools flagstat 104_merged.bam > 104_1.txt
+samtools flagstat 104_merged.bam $1 > 104_a.txt (no difference, $1 is the input dumbo)
+a=$(samtools flagstat 104_merged.bam)
+echo 104_merged.bam $a >summary.log
+cat summary.log | awk 'OFS="\t"{print $1,$28}' | sed 's/(//' | sed 's/%//' > maprate.tsv
+28 is wrong, its 37. checked in console:
+cat summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//'
+
+checking with second file:
+samtools flagstat 77_merged.bam | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//'
+did not work
+b=$(samtools flagstat 77_merged.bam)
+echo 77_merged $b>sum2.log
+cat summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//'
+
+writing 03_mapsummary.sh
+job#2302044 @ 00:36 TSV/ 18:36 DXB
+
+summarise_mapping not found?
+retrying without export:
+job#2302045 @ 00:38 TSV/ 18:38 DXB
+failed again for same reason
+
+added set -e
+moved export function to different spot
+
+job#2302046 @ 00:45 TSV/ 18:45 DXB
+failed again for same reason
+
+adjusted formatting of function and retried:
+job#2302047 @ 00:56 TSV/ 18:56 DXB
+failed again for same reason
+
+removing parallel and running as a for loop with no threads and more walltime:
