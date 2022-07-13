@@ -270,4 +270,10 @@ edited 04_bcftools.sh (4:58 TSV/ 22:58 DXB) and submitted: job#2298766 @ 05:11 T
 
 edited 05_plink.sh (4:58 TSV/ 22:58 DXB) and submitted:
 job#2299680 @ 00:19 TSV/ 18:20 DXB
-successful - very quick 
+successful - very quick
+
+wrote 06_primus.sh as sif container was loaded on
+job#2302034 @ 18:10 TSV/12:10 DXB
+failed: run_PRIMUS.pl not found
+
+contact IT about it, unsure what the issue is??
