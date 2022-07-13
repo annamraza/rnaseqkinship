@@ -277,3 +277,12 @@ job#2302034 @ 18:10 TSV/12:10 DXB
 failed: run_PRIMUS.pl not found
 
 contact IT about it, unsure what the issue is??
+
+filed away all outputs and bam files in samtoolstest
+copied all bam files from angsdtest outputs to samtoolstest
+
+edited 04_sammerge.sh to create filelist for all bam files
+edited 04_bcftools.sh to match 04_sammerge.sh output
+
+submitted 04_sammerge.sh for all files:
+job#2302035 @ 18:53 TSV/ 12:53 DXB 
