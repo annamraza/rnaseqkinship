@@ -27,9 +27,8 @@ echo $dt
 
 for f in *_merged.bam;do
   input=$f
-
-
-parallel -j 20 summarise_mapping ::: *_merged.bam > 03_summary.log
+  summarise_mapping $input
+done > 03_summary.log
 
 cat 03_summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates.tsv
 
