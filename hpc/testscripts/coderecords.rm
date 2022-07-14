@@ -333,3 +333,16 @@ job#2302047 @ 00:56 TSV/ 18:56 DXB
 failed again for same reason
 
 removing parallel and running as a for loop with no threads and more walltime:
+job#2302060 @ 04:15 TSV / 22:15 DXB
+
+switched 06_primus.sh from singularity to primus
+test run_PRIMUS.pl in console - command found
+submitted 06_primus.sh: job#2302117 @ 17:54 TSV/ 11:54 DXB
+failed because I moved plink files into folder
+
+retried as job#2302118 @ 17:56 TSV/11:56 DXB
+failed because i forgot to add -p
+
+no ibd in output?
+moved all plink.* files to main folder and retried
+job#2302120 @ 22:28 TSV/14:28 DXB

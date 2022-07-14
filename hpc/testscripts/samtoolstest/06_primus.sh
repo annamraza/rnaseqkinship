@@ -12,6 +12,6 @@ source /etc/profile.d/modules.sh
 echo "Job identifier is $PBS_JOBID"
 echo "Working directory is $PBS_O_WORKDIR"
 
-module load singularity
+module load primus/1.9.0
 
-singularity run /sw/containers/primus-1.9.0.sif run_PRIMUS.pl plink.genome
+run_PRIMUS.pl -p plink.genome
