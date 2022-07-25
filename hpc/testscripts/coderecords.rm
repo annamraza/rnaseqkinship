@@ -346,3 +346,36 @@ failed because i forgot to add -p
 no ibd in output?
 moved all plink.* files to main folder and retried
 job#2302120 @ 22:28 TSV/14:28 DXB
+
+tested ngsrelate- path issues, reported to open request
+attempting to filter snps in console:
+
+bcftools view -i '%QUAL>=20' snpcallsfin.bcf > calls.bcf
+
+but calls.bcf is somehow bigger? that doesn't make sense. trying:
+
+bcftools filter -i '%QUAL>20' snpcallsfin.bcf -Ob -o calls2.bcf
+
+forgot the =, removed calls2.bcf and reran
+
+bcftools filter -i '%QUAL>=20' snpcallsfin.bcf -Ob -o calls2.bcf
+
+filter results much smaller, unsure of difference but using calls2.bcf for LD pruning.
+figuring out how to use samtools directly for this, meanwhile use calls2.bcf for plink
+
+modified 05_plink.sh and submitted @ 22.03 TSV/ 16.03 DXB @ job#2303304
+
+issues with id names, modified plink code and trying again:
+job#2303305 @ 22:12 TSV/16:12 DXB
+
+incorrect flag, fixed to try again:
+job#2303306 @ 22:15 TSV/16:15 DXB
+
+bam.filelist is incorrect:
+added list to 04_bcftools.sh as well as filtration
+modified 05_plink.sh to reflect modifications
+
+submitted bcftools again:
+job#2303307 @ 22:22 TSV/ 16:22 DXB
+
+moved outputs and files around as organisation 

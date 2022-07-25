@@ -20,4 +20,4 @@ for sample in $samples; do
   samtools merge -o ${sample}_merged.bam ${sample}_*.bam
 done
 
-ls *.bam > bam.filelist
+#ls *.bam > bam.filelist
