@@ -378,4 +378,7 @@ modified 05_plink.sh to reflect modifications
 submitted bcftools again:
 job#2303307 @ 22:22 TSV/ 16:22 DXB
 
-moved outputs and files around as organisation 
+moved outputs and files around as organisation
+added snp filters to 05_glcalc.sh
+added a copy of 05_glcalc.sh to samtoolstest to rerun with merged bam files:
+job#2303308 @ 23:00 TSV/17:00 DXB
