@@ -380,5 +380,14 @@ job#2303307 @ 22:22 TSV/ 16:22 DXB
 
 moved outputs and files around as organisation
 added snp filters to 05_glcalc.sh
+
 added a copy of 05_glcalc.sh to samtoolstest to rerun with merged bam files:
 job#2303308 @ 23:00 TSV/17:00 DXB
+
+submitted 05_plink.sh @ 19:22 TSV/13:22 DXB as job#2303649
+
+tested ngsrelate and copied 06_ibdcalc.sh into samtoolstest 
+submitted as job#2303650 @ 19:27 TSV/13:27 DXB
+
+created 05_plinkld.sh to prune snps and then run IBD
+submitted as job#2303651 @ 19:43 TSV/ 13:43 DXB
