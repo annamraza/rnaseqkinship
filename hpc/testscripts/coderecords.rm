@@ -386,8 +386,26 @@ job#2303308 @ 23:00 TSV/17:00 DXB
 
 submitted 05_plink.sh @ 19:22 TSV/13:22 DXB as job#2303649
 
-tested ngsrelate and copied 06_ibdcalc.sh into samtoolstest 
+tested ngsrelate and copied 06_ibdcalc.sh into samtoolstest
 submitted as job#2303650 @ 19:27 TSV/13:27 DXB
 
 created 05_plinkld.sh to prune snps and then run IBD
 submitted as job#2303651 @ 19:43 TSV/ 13:43 DXB
+
+although plink results don't look correct, retrying primus script;
+submitted as job#2303849 @ 16:50 TSV/10:50 DXB
+
+retry ngsrelate as -n had incorrect number of samples; edited 06_ibdcalc.sh
+submitted as job#2303850 @ 16:53 TSV/ 10:53 DXB
+
+also failed. added a gl output file to 05_glcalc.sh to resubmit:
+job#2304666 @ 22:30 TSV/ 16:30 DXB
+
+altered 06_ibdcalc.sh to use correct output file and resubmitted:
+job# @
+
+rerunning 05_glcalc.sh with diff binary output file:
+job# @
+
+altered 06_ibdcalc.sh to use new output file name:
+job# @

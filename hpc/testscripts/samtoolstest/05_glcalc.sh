@@ -14,4 +14,4 @@ echo "Working directory is $PBS_O_WORKDIR"
 
 module load angsd
 
-angsd -bam bam.filelist -GL 2 -out gl_gatk -doMaf 2 -doMajorMinor 1 -P 6 -minMapQ 20
+angsd -bam bam.filelist -GL 2 -out gl_gatk3 -doMaf 2 -doMajorMinor 1 -P 6 -minMapQ 20 -doGlf 1

@@ -16,6 +16,6 @@ module load ngsrelate/2.0
 
 #needs to be installed
 
-zcat gl_gatk.mafs.gz | cut -f5 |sed 1d >freq
+zcat gl_gatk2.mafs.gz | cut -f5 |sed 1d >freq3
 
-ngsrelate -g gl_gatk.mafs.gz -n 100 -f freq -O newres
+ngsrelate -g gl_gatk3.glf.gz -n 37 -f freq -O newres3
