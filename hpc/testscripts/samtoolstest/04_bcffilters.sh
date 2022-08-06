@@ -1,10 +1,10 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N snptestall
+#PBS -N snpfilters2
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=72:00:00
-#PBS -l select=1:ncpus=1:mem=200gb
+#PBS -l select=1:ncpus=1:mem=100gb
 
 cd $PBS_O_WORKDIR
 shopt -s expand_aliases
@@ -14,8 +14,6 @@ echo "Working directory is $PBS_O_WORKDIR"
 
 module load bcftools
 
-#ls *_merged.bam > bam.filelist
+bcftools filter -i '%QUAL>=20 &' snpcallsfin.bcf -Ob -o callsfilt2.bcf
 
-bcftools mpileup -Ou -f haliotis_genome.fa --bam-list bam.filelist | bcftools call -mv -Oz -o snpcallsfin.vcf
-
-#bcftools filter -i '%QUAL>=20' snpcallsfin.bcf -Ob -o calls.bcf
+#%QUAL>=20 & MIN(FMT/GQ)>=30 & MIN(FMT/DP)>=10 & MIN(FMT/MQ)>30

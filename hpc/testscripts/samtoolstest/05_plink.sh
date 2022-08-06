@@ -14,4 +14,4 @@ echo "Working directory is $PBS_O_WORKDIR"
 
 module load singularity
 
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf calls.bcf --genome --allow-extra-chr --double-id
+singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfilt.bcf --genome --allow-extra-chr --double-id

@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N glcalctest
+#PBS -N ibdcalctest
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
 #PBS -l select=1:ncpus=1:mem=200gb
@@ -16,6 +16,6 @@ module load ngsrelate/2.0
 
 #needs to be installed
 
-zcat gl_gatk2.mafs.gz | cut -f5 |sed 1d >freq3
+zcat gl_gatk_filt.mafs.gz | cut -f5 |sed 1d >freqfilt
 
-ngsrelate -g gl_gatk3.glf.gz -n 37 -f freq -O newres3
+ngsrelate -g gl_gatk_filt.glf.gz -n 37 -f freq -O newresfilt

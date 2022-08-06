@@ -403,9 +403,42 @@ job#2304666 @ 22:30 TSV/ 16:30 DXB
 
 altered 06_ibdcalc.sh to use correct output file and resubmitted:
 job#2304714 @ 20:13 TSV/ 14:13 DXB
+worked!!
+
+to troubleshoot ngsrelate (although job is running):
+wc -l freq was 46131772
+gunzip -c gl_gatk2.glf.gz|wc -c is 40965013536
 
 rerunning 05_glcalc.sh with diff binary output file:
 job#2304715 @ 22:15 TSV/ 14:15 DXB
 
 altered 06_ibdcalc.sh to use new output file name:
-job# @
+job#2304773 @ 19:48 TSV/ 13:48 DXB
+failed due to filenames not matching, corrected and resubmitted:
+job#2304775 @ 21:29 TSV/ 15:29 DXB
+
+checked range of values in newres file; tried:
+sort -nk 4 newres|head -n 1 (didn't work)
+cat newres|cut -f4| sort -u (worked; repeated for columns 5 and 6): issues with k1 but others are ok in terms of range
+
+figuring out how to filter only uniquely mapped reads- already did with MAPQ; increasing MAPQ filter to study results:
+mods to variant calling filtration:
+ANGSD (05_glcalc.sh): min mapq of 30, min base qual to 20, min depth to 10, samtools method of calc
+BCFtools (04_bcffilters.sh): min base qual remains 20, min depth to 10, mapq of 30, gq of 30
+
+altered 05_plink.sh for new calls; altered 06_ibdcalc.sh for new angsd stuff
+
+submitted 04_bcffilters.sh: job#2304776 @ 21:33 TSV/ 15:33 DXB
+issue with GQ; removed it to retry:
+job#2304777 @ 21:37 TSV/ 15:37 DXB
+issue with GL. trying in console:
+
+bcftools query -i 'QUAL>20' -f'%QUAL %DP\n' snpcallsfin.bcf|head -2
+bcftools query -i 'QUAL>20' -f'%QUAL %FORMAT\n' snpcallsfin.bcf|head -1 (printed all the format columns)
+
+all format columns are GT:PL ./.:0,0,0	./.:0,0,0	1/1:4,3,0 etc
+so only genotype and phred-scaled genotype likelihoods available. should be able to use INFO DP for filtration.
+rerunning 04_bcftools.sh to produce .vcf file to test in console later:
+job#2304778 @ 22:33 TSV/ 16:33 DXB
+
+submitted 05_glcalc.sh as job#2304779 @ 22:35 TSV/16:35 DXB
