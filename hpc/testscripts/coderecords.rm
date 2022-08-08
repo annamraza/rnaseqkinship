@@ -442,3 +442,20 @@ rerunning 04_bcftools.sh to produce .vcf file to test in console later:
 job#2304778 @ 22:33 TSV/ 16:33 DXB
 
 submitted 05_glcalc.sh as job#2304779 @ 22:35 TSV/16:35 DXB
+
+wrote 03b_bowtie_utr.sh and ran in testscripts/angsdtest/fastq
+job#2304780 @ 23:01 TSV / 17:01 DXB
+failed because forgot to add genome files and error in samtools view function
+resubmitted as job#2304886 @ 19:40 TSV / 13:40 DXB
+spotted another error in samtools function; qdel 2304886 to end job
+created viewtest folder in angsdtest and transferred files to test view function w/ different output format
+transferred fastq.gz files and .sam files for sample 88
+submitted as job#2304934 @ 20:30 TSV/ 14:30 DXB
+
+
+copied 02_trimall.sh to abalone_rnaseq folder and added date function; renamed 02_trimtime.sh
+submitted as job#2304887 @ 19:46 TSV/ 13:46 DXB
+
+copied genome to angsdtest/fastq/trimmed
+created 03_maptime.sh; copied 03_maploop.sh and added date function to angsdtest/fastq/trimmed
+submitted as job#2304933 @ 20:00 TSV/ 14:00 DXB
