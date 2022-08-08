@@ -440,6 +440,12 @@ all format columns are GT:PL ./.:0,0,0	./.:0,0,0	1/1:4,3,0 etc
 so only genotype and phred-scaled genotype likelihoods available. should be able to use INFO DP for filtration.
 rerunning 04_bcftools.sh to produce .vcf file to test in console later:
 job#2304778 @ 22:33 TSV/ 16:33 DXB
+testing .vcf in console - no difference in format. BCF filtration limited to genotype present and overall DP;
+job#2304979 @ 21:05 TSV/ 15:05 DXB
+-i and -e cannot be combined; modifying 04_bcffilters.sh to reflect this:
+job#2304980 @ 21:08 TSV/ 15:08 DXB
+error: %DP not defined; removed % symbol to resubmit:
+job#2304981 @ 21:11 TSV/ 15:11 DXB
 
 submitted 05_glcalc.sh as job#2304779 @ 22:35 TSV/16:35 DXB
 
@@ -451,7 +457,23 @@ spotted another error in samtools function; qdel 2304886 to end job
 created viewtest folder in angsdtest and transferred files to test view function w/ different output format
 transferred fastq.gz files and .sam files for sample 88
 submitted as job#2304934 @ 20:30 TSV/ 14:30 DXB
+failed due to incorrect basename;
+resubmitted as job#2304975 @ 20:34 TSV/ 14:34 DXB
+failed because file extensions not specified in view;
+resubmitted as job#2304976 @ 20:36 TSV/ 14:36 DXB
+works, created temp files.
 
+tested for loop to change output names:
+for f in {1..5};do
+input=$f
+output=${input}_test
+echo $output
+done
+
+modified 03b_bowtie_utr.sh and resubmitted:
+job#2304977 @ 20:47 TSV / 14:47 DXB
+
+deleted viewtest and all files
 
 copied 02_trimall.sh to abalone_rnaseq folder and added date function; renamed 02_trimtime.sh
 submitted as job#2304887 @ 19:46 TSV/ 13:46 DXB
@@ -459,3 +481,11 @@ submitted as job#2304887 @ 19:46 TSV/ 13:46 DXB
 copied genome to angsdtest/fastq/trimmed
 created 03_maptime.sh; copied 03_maploop.sh and added date function to angsdtest/fastq/trimmed
 submitted as job#2304933 @ 20:00 TSV/ 14:00 DXB
+wrote 03_maptime2.sh to time conversion from sam to bam, merging and summary
+submitted as job#
+
+angsd filtration worked; submitted 06_ibdcalc.sh:
+job#2304978 @ 20:58 TSV/ 14:58 DXB
+
+bcf filtration worked; submitted 05_plink.sh again:
+job#2304982 @ 21:13 TSV/15:13 DXB
