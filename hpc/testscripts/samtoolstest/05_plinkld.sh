@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N ldpruneibdtest
+#PBS -N plinkldtest
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
 #PBS -l select=1:ncpus=1:mem=100gb
@@ -14,10 +14,10 @@ echo "Working directory is $PBS_O_WORKDIR"
 
 module load singularity
 
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf calls.bcf --indep 50 5 2
+singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfiltfin.bcf --indep 50 5 2 --allow-extra-chr
 
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf calls.bcf --extract plink.prune.in --make-bed --out pruneddata
+singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfiltfin.bcf --extract plink.prune.in --make-bed --out pruneddata --allow-extra-chr
 
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --file pruneddata.bed --genome --allow-extra-chr --double-id
+#singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --file pruneddata.bed --genome --allow-extra-chr --double-id --out ldfilt
 
 singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bfile pruneddata --genome --allow-extra-chr --double-id

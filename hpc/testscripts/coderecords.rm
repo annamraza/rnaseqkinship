@@ -482,10 +482,56 @@ copied genome to angsdtest/fastq/trimmed
 created 03_maptime.sh; copied 03_maploop.sh and added date function to angsdtest/fastq/trimmed
 submitted as job#2304933 @ 20:00 TSV/ 14:00 DXB
 wrote 03_maptime2.sh to time conversion from sam to bam, merging and summary
-submitted as job#
+deleted job and deleted 03_maptime2
 
 angsd filtration worked; submitted 06_ibdcalc.sh:
 job#2304978 @ 20:58 TSV/ 14:58 DXB
+failed due to error in filename, edited and resubmitted:
+job#2304987 @ 23:04 TSV/ 17:04 DXB
+failed due to unmatched files? recheck old outputs. renamed freqfilt to freqfilt2 and reran:
+job#2304992 @ 23:24 TSV/17:24 DXB
+failed; check in console:
+wc -l freqfilt                        34038506
+wc -l freqfilt2                       34038506
+gunzip -c gl_gatk_filt.glf.gz|wc -c   100753977760 (wow thats a difference wtf)
+troubleshoot options:
+
+1) 06_ibdcalc.sh without -n 37
+job#2304993 @ 23:47 TSV/ 17:47 DXB
+did not work (unsurprising)
+
+2) 05a_glibd.sh as GATK with binary beagle output
+job#2304994 @ 23:49 TSV/ 17:49 DXB
+
+3) 05b_glibd.sh as SAM with binary beagle output
+job#2304995 @ 23:50 TSV/ 17:50 DXB
 
 bcf filtration worked; submitted 05_plink.sh again:
 job#2304982 @ 21:13 TSV/15:13 DXB
+renamed output files w/
+
+for f in plink.*;do
+mv -- "$f" "filt.$f"
+done
+
+made maptest directory; ran:
+03_index_sh as job#2304984 @ 22:22 TSV/ 16:22 DXB
+
+edited 05_plinkld.sh; submitted as job#2304985 @  22:49 TSV/ 16:50 DXB
+error in filename, edited and resubmitted as job#2304986 @ 23:01 TSV / 17:02 DXB
+issues with bed file, testing only that line of code:
+job#2304989 @ 23:15 TSV/ 17:15 DXB
+chromosome issues, rerunning:
+job#2304990 @ 23:18 TSV/ 17:18 DXB
+worked, running only ibd calc:
+job#2304991 @ 23:20 TSV/17:20 DXB
+
+03_mapesd as job#2304988 @ 23:07 TSV/17:07 DXB
+
+3)
+4)
+5)
+6)
+7)
+8)
+9)
