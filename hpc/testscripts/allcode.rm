@@ -1,0 +1,44 @@
+CODE USED OUTSIDE OF PIPELINES
+
+mkdir testscripts   #to make a directory
+mkdir samtoolstest
+mkdir angsdtest
+
+mv 77_1_*.fastq.gz samtoolstest #to move files; from abalone_rnaseq
+mv 88_1_*.fastq.gz samtoolstest
+
+cp haliotis_genome.fa /home/jc475572/testscripts/samtoolstest #to copy genome for testing
+
+dos2unix for all transferred files
+qsub to submit jobs
+qstat to check status
+qdel [job#] to kill job
+
+
+successfully tested basename as follows:
+
+cd testdata
+for f in *.fastq.gz; do
+name= $(basename $f .fastq.gz)
+echo ${name}
+done
+
+mv -v ~/testscripts/angsdtest/archive/* ~/testscripts/archive/angsd/ #moves all files from a directory
+
+testing date function:
+add dt=$(date) to files
+add echo $dt before and after any loops etc you run for time frames
+
+testing for loop to change output names:
+for f in {1..5};do
+input=$f
+output=${input}_test
+echo $output
+done
+
+copied 02_trimall.sh to abalone_rnaseq folder and added date function; renamed 02_trimtime.sh
+submitted as job#2304887 @ 19:46 TSV/ 13:46 DXB
+
+copied genome to angsdtest/fastq/trimmed
+created 03_maptime.sh; copied 03_maploop.sh and added date function to angsdtest/fastq/trimmed
+submitted as job#2304933 @ 20:00 TSV/ 14:00 DXB

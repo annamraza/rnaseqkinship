@@ -1,16 +1,14 @@
-# pipelineraw
-
-Shell scripts to accompany the software pipeline(s) using RNA-seq data for kinship analysis of non-model organisms
+Shell scripts used in the final iteration of the pipeline using RNA-seq data for kinship analysis of greenlip abalone (Haliotis laevigata)
 
 #add pipeline image here?
 
 Data Pre-processing
 
 1) Quality Control
-          a) Using FASTqc
+          a) Using FASTqc (01_fastqc.sh)
 
 2) Trimming
-          a) Using Trimmomatic #maybe cutadapt later?
+          a) Using Trimmomatic (02_trimmmatic.sh)
 
 3) Alignment
           a) Aligning and merging reads

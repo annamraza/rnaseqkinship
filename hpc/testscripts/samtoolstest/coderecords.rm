@@ -1,0 +1,234 @@
+SAMTOOLS/PLINK PIPELINE TESTING
+
+fastqc 77_*.fastq.gz 88_*.fastq.gz
+    -worked fine
+
+02_trimmomatic.sh:
+qsub 02_trimmomatic.sh
+    -says no such file or directory-why?
+dos2unix 02_trimmomatic.sh
+    -needed to convert from windows to unix format- do before every submission
+    -next job submission couldn't find jarfile.
+    -Edited 02_trimmomatic to exclude java and call trimmomatic directly: trimmomatic command not found
+
+new 02_trim_sing.sh file:
+    -uses singularity instructions on website ie. module load singularity
+    -worked but could not find TruSeq3-SE?
+    -changed to add .fa at end. It ran!!!
+
+(note: add job numbers to track submissions)
+
+in console:
+module load bowtie2
+bowtie2
+    -worked fine, I don't think it needs singularity
+
+03_bowtie2.sh:
+  job #2284468
+    -worked, but retested with new index output file name:
+  job #2284475
+    -same output, unnecessary
+
+  samtools test (script name?):
+    job #2284476
+      -bcftools wasnt found. delete all files and restart?
+      -bcftools needed to be loaded separately
+
+04_bcftools.sh:
+  job #2284551
+    -wrote a new script with only bcftools commands so that files didn't need deletion
+    -tested both sorted and unsorted- sorted is necessary
+    -changed code according to manual
+  job #2298754
+    -made bam.filelist with 2 files
+    -immediate fail, couldn't recognise input
+    -changed -b to --bam-filelist and resubmitted:
+  job #2298755 @ 20:47 TSV/ 14:47 DXB
+    -failed because all bam files are in different folder
+    -copied to test folder to resumbit:
+  job #2298756 @ 20:49 TSV/ 14:49 DXB
+  job#298762 @ 22:39 TSV/ 16:39 DXB
+      -reran as snptestfam for second PLINK test run
+  job#2298766 @ 05:11 TSV/23:11 DXB
+      -edited at 4:58 TSV/ 22:58 DXB
+  job#2302043 @ 23:46 TSV/ 17:47 DXB
+      -sumbitted for all files
+      -bam.filelist was incorrect
+      -added filters after testing
+      -attempting to filter snps in console
+bcftools view -i '%QUAL>=20' snpcallsfin.bcf > calls.bcf
+              -but calls.bcf is somehow bigger? that doesn't make sense. trying:
+bcftools filter -i '%QUAL>20' snpcallsfin.bcf -Ob -o calls2.bcf
+              -forgot the =, removed calls2.bcf and reran
+bcftools filter -i '%QUAL>=20' snpcallsfin.bcf -Ob -o calls2.bcf
+              -filter results much smaller, unsure of difference but using calls2.bcf for LD pruning.
+              -figuring out how to use samtools directly for this, meanwhile use calls2.bcf for plink
+  job#2303307 @ 22:22 TSV/ 16:22 DXB
+  job#2304778 @ 22:33 TSV/ 16:33 DXB
+              -modified to produce .vcf file to test for filters
+
+
+
+    -tried Ira's code for @RG tag: (for mapping summary)
+samtools view -H 77_sorted.bam | grep '^@RG'
+    -nothing happened?
+    -downloaded 88_sorted.bam to manually check- too big
+    -downloaded only the header as a .txt file in atom for 77_sorted.bam: no RG, only SQ and LN
+    -downloaded only the header of 77_1_maptest.bam: same output
+
+
+    -merged files as follows:
+samtools merge -o alignments.bam -b bam.filelist (worked)
+
+    -also trying
+samtools merge -o alignments2.bam *.bam (also worked)
+
+04_bcf2.sh:
+    -alignments.bam as input
+  job #2298757 @ 21:22 TSV/15:22 TSV
+    -reran with alignments2 as snptest4
+  job #2298761 @ 22:32 TSV/16:32 DXB
+   -did not work- views all samples as ONE (what merge does)
+
+05_plink.sh:
+    -loaded through singularity; input is bcf file
+  job #2298758 @ 21:46 TSV/15:46 DXB
+    -failed due to invalid chromosome code
+    -used suggested fix: --allow-extra-chr
+  job #298759 @ 21:50 TSV/15:50 DXB
+    -ran VERY fast, output already available- thinks theyre identical twins
+    -retrying with siblings and cousins- 042, 104, 240, 257, 269; copied with for loop:
+      for f in 42 104 240 257 269;do
+      cp ${f}_*.bam /home/jc475572/testscripts/samtoolstest
+      done
+    -bam2.filelist accidentally included alignments; overwrote with correct code
+  job #298760 @ 22:27 TSV/ 16:27 DXB
+    -reran with snpcalls2 to see if other method worked
+    -snpcalls2 did not work- less reliable? don't use merge with filelist
+    -modified for new snps from more samples; named ibdtestfam
+  job #2298763 @ 4:32 TSV/ 22:32 DXB
+    -(didn't merge files or include other timepoints for 77 or 88 by accident)
+    -failed due to sample IDs
+  job #2299680 @ 00:19 TSV/ 18:20 DXB
+    -edited at 4:58 TSV/ 22:58 DXB
+    -successful - very quick
+  job #2303304 @ 22.03 TSV/ 16.03 DXB
+    -modified and submitted
+    -issues with id names, modified plink code and trying again:
+  job#2303305 @ 22:12 TSV/16:12 DXB
+    -incorrect flag, fixed to try again:
+  job#2303306 @ 22:15 TSV/16:15 DXB
+  job #2303649 @ 19:22 TSV/13:22 DXB
+    -submitted with corrected filelist
+  job#2304982 @ 21:13 TSV/15:13 DXB
+    -submitted with filtered bcf
+    -renamed output files w/
+for f in plink.*;do
+mv -- "$f" "filt.$f"
+done
+  job#2304985 @  22:49 TSV/ 16:50 DXB
+    -error in filename, edited and resubmitted as job#2304986 @ 23:01 TSV / 17:02 DXB
+    -issues with bed file, testing only that line of code:
+job#2304989 @ 23:15 TSV/ 17:15 DXB
+    -chromosome issues, rerunning:
+job#2304990 @ 23:18 TSV/ 17:18 DXB
+    -worked, running again with only ibd calc
+job#2304991 @ 23:20 TSV/17:20 DXB
+
+
+05_plinkii.sh:
+      -wrote for snptest4; named ibdtest4
+
+04_sammerge.sh:
+      -wrote to merge all files
+  job#2298764 @ 04:46 TSV/ 22:46 DXB
+      -failed cuz you had .fastq.gz instead of .bam
+  job#2298765 @ 04:48 TSV/ 22:48 DXB
+      -made a mergedbam.filelist< ls *_merged.bam separately
+      -edited script to automatically create filelist for all bam files
+      -edited 04_bcftools.sh to match
+  job#2302035 @ 18:53 TSV/ 12:53 DXB
+
+06_primus.sh:
+      -wrote as sif container was loaded on
+  job#2302034 @ 18:10 TSV/12:10 DXB
+      -failed: run_PRIMUS.pl not found
+      -contacted IT about it, unsure what the issue is??
+      -switched from singularity to primus
+    test run_PRIMUS.pl in console - command found
+  job#2302117 @ 17:54 TSV/ 11:54 DXB
+      -failed because I moved plink files into folder
+  job#2302118 @ 17:56 TSV/11:56 DXB
+      -failed because i forgot to add -p
+      -no ibd in output?
+      -moved all plink.* files to main folder and retried
+  job#2302120 @ 22:28 TSV/14:28 DXB
+  job#2303849 @ 16:50 TSV/10:50 DXB
+      -plink LD pruning output
+      -doesn't seem to look correct?
+
+in console:
+      -testing mapping statistics on one bam file:
+samtools view -f4 104_merged.bam $1
+      -a mistake
+samtools view -f4 104_merged.bam $1 | wc -l
+      -slow
+a=$(samtools flagstat 104_merged.bam $1)
+      -slow
+echo $a>104_map.txt
+samtools flagstat 104_merged.bam > 104_1.txt
+samtools flagstat 104_merged.bam $1 > 104_a.txt
+      -no difference, $1 is the input dumbo
+a=$(samtools flagstat 104_merged.bam)
+echo 104_merged.bam $a >summary.log
+cat summary.log | awk 'OFS="\t"{print $1,$28}' | sed 's/(//' | sed 's/%//' > maprate.tsv
+      -28 is wrong, its 37. checked in console:
+cat summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//'
+
+      -checking with second file:
+samtools flagstat 77_merged.bam | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//'
+      -did not work
+b=$(samtools flagstat 77_merged.bam)
+echo 77_merged $b>sum2.log
+cat summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//'
+
+03_mapsummary.sh:
+      -should map all files
+  job#2302044 @ 00:36 TSV/ 18:36 DXB
+      -summarise_mapping not found?
+      -retrying without export:
+  job#2302045 @ 00:38 TSV/ 18:38 DXB
+      -failed again for same reason
+      -added set -e
+      -moved export function to different spot
+  job#2302046 @ 00:45 TSV/ 18:45 DXB
+      -failed again for same reason
+      -adjusted formatting of function and retried:
+  job#2302047 @ 00:56 TSV/ 18:56 DXB
+      -failed again for same reason
+      -removing parallel and running as a for loop with no threads and more walltime:
+  job#2302060 @ 04:15 TSV / 22:15 DXB
+
+05_plinkld.sh:
+      -created to prune snps and then run IBD
+  job#2303651 @ 19:43 TSV/ 13:43 DXB
+
+04_bcffilters.sh:
+      -figuring out how to filter only uniquely mapped reads- already did with MAPQ; increasing MAPQ filter to study results
+      -aiming for min base qual remains 20, min depth to 10, mapq of 30, gq of 30
+  job#2304776 @ 21:33 TSV/ 15:33 DXB
+      -issue with GQ; removed it to retry:
+  job#2304777 @ 21:37 TSV/ 15:37 DXB
+      -issue with GL. trying in console:
+
+bcftools query -i 'QUAL>20' -f'%QUAL %DP\n' snpcallsfin.bcf|head -2
+bcftools query -i 'QUAL>20' -f'%QUAL %FORMAT\n' snpcallsfin.bcf|head -1 (printed all the format columns)
+
+      -all format columns are GT:PL ./.:0,0,0	./.:0,0,0	1/1:4,3,0 etc
+      -so only genotype and phred-scaled genotype likelihoods available. should be able to use INFO DP for filtration.
+      -testing .vcf in console - no difference in format. BCF filtration limited to genotype present and overall DP;
+  job#2304979 @ 21:05 TSV/ 15:05 DXB
+      -i and -e cannot be combined; modifying 04_bcffilters.sh to reflect this:
+  job#2304980 @ 21:08 TSV/ 15:08 DXB
+      -error: %DP not defined; removed % symbol to resubmit:
+  job#2304981 @ 21:11 TSV/ 15:11 DXB
