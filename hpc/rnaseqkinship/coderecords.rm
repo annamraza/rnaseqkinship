@@ -2,3 +2,11 @@ RNASEQ KINSHIP PIPELINE TESTING
 
 02_trimmomatic.sh:
 job #2305086 @ 20:09 TSV/ 14:09 DXB
+
+01_fastqc.sh:
+job #2305163 @ 20:36 TSV/ 14:36 DXB
+  -immediately failed; directory didn't exist
+job #2305164 @ 20:37 TSV/ 14:37 DXB
+
+03_bowtie2.sh:
+job #2305165 @ 20:42 TSV/ 14:42 DXB

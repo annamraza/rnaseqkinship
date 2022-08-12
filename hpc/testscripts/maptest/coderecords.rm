@@ -39,7 +39,28 @@ deleted job and deleted 03_maptime2
     done
     -worked; running with all files that start with 7
   job #23050807 @ 20:44 TSV/ 14:44 DXB
+    -didn't work cuz naming is weird; just separate the file conversion step
 
 04_samtoolsfilter.sh
   job# 2305104 @ 21:48/15:48
     -wrote to test bam filtration
+    -separated file conversion
+    -success!
+
+05_plink.sh:
+    -to check filtered but not pruned results
+  job #2305167 @ 21:12 TSV/ 15:12 DXB
+    -successful
+    -renamed output files w/:
+for f in plink.*;do
+mv -- "$f" "raw_$f"
+done
+
+  05_plinkld.sh
+      -for LD pruned SNPS
+    job #2305168 @ 21:17 TSV/ 15:17 TSV
+      -successful
+      -renamed w/ same loop:
+for f in plink.*;do
+mv -- "$f" "filt_$f"
+done

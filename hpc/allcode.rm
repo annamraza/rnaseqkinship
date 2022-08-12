@@ -42,3 +42,8 @@ submitted as job#2304887 @ 19:46 TSV/ 13:46 DXB
 copied genome to angsdtest/fastq/trimmed
 created 03_maptime.sh; copied 03_maploop.sh and added date function to angsdtest/fastq/trimmed
 submitted as job#2304933 @ 20:00 TSV/ 14:00 DXB
+
+03_bowtie2_utr:
+  -added to abalone_rnaseq
+  -copied in haliotis_genome
+job #2305166 @ 21:00 TSV/ 15:00 DXB

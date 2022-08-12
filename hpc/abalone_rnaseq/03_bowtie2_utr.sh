@@ -33,7 +33,7 @@ echo $dt
 
 bowtie2-build -f $GENOME haliotis_gen
 
-for f in *_trim.fastq.gz; do
+for f in *.fastq.gz; do
   fasta=$GENOME
   index=${fasta%ome.fa}
   input=$f
