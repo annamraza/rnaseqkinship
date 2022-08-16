@@ -1,28 +1,30 @@
 MAPPING PARAMETERS TESTING
 
 (rough)
-
-wrote 03b_bowtie_utr.sh and ran in testscripts/angsdtest/fastq
-job#2304780 @ 23:01 TSV / 17:01 DXB
-failed because forgot to add genome files and error in samtools view function
-resubmitted as job#2304886 @ 19:40 TSV / 13:40 DXB
-spotted another error in samtools function; qdel 2304886 to end job
-created viewtest folder in angsdtest and transferred files to test view function w/ different output format
-transferred fastq.gz files and .sam files for sample 88
-submitted as job#2304934 @ 20:30 TSV/ 14:30 DXB
-failed due to incorrect basename;
-resubmitted as job#2304975 @ 20:34 TSV/ 14:34 DXB
-failed because file extensions not specified in view;
-resubmitted as job#2304976 @ 20:36 TSV/ 14:36 DXB
-works, created temp files.
-modified 03b_bowtie_utr.sh and resubmitted:
+03b_bowtie_utr.sh:
+    -ran in testscripts/angsdtest/fastq
+  job #2304780 @ 23:01 TSV / 17:01 DXB
+    -failed because forgot to add genome files and error in samtools view function
+    -resubmitted as
+  job #2304886 @ 19:40 TSV / 13:40 DXB
+    -spotted another error in samtools function; qdel 2304886 to end job
+    -created viewtest folder in angsdtest and transferred files to test view function w/ different output format
+    -transferred fastq.gz files and .sam files for sample 88
+    -submitted as job#2304934 @ 20:30 TSV/ 14:30 DXB
+    -failed due to incorrect basename;
+    -resubmitted as job#2304975 @ 20:34 TSV/ 14:34 DXB
+    -failed because file extensions not specified in view;
+    -resubmitted as job#2304976 @ 20:36 TSV/ 14:36 DXB
+    -works, created temp files.
 job#2304977 @ 20:47 TSV / 14:47 DXB
-made maptest directory; ran:
-03_index_sh as job#2304984 @ 22:22 TSV/ 16:22 DXB
-wrote 03_maptime2.sh to time conversion from sam to bam, merging and summary
-deleted job and deleted 03_maptime2
 
+03_index_sh:
+    -created maptest directory for mapping tests and separated indexing for time
+  job#2304984 @ 22:22 TSV/ 16:22 DXB
 
+03_maptime2.sh:
+    -time conversion from sam to bam, merging and summary
+    -deleted job and deleted 03_maptime2
 
 03_mapesd:
   job#2304988 @ 23:07 TSV/17:07 DXB

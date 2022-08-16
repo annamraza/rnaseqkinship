@@ -68,72 +68,70 @@ job #2287755 @ 22.16 TSV/ 16:16 DXB
     -failed because no file or directory as ./angsd
     -fixed script
   job #2296295 @ 20:57 TSV/14:57 DXB
+    -added snp filters
+    -reran with merged bam files
+  job #2303308 @ 23:00 TSV/17:00 DXB
+    -added a gl output file
+  job #2304666 @ 22:30 TSV/ 16:30 DXB
+  job #2304715 @ 22:15 TSV/ 14:15 DXB
+    -re-running with different binary output file type (doesn't work for ngsrelate)
+
+    -figuring out how to filter only uniquely mapped reads- already did with MAPQ; increasing MAPQ filter to study results:
+    mods to variant calling filtration:
+    -min mapq of 30, min base qual to 20, min depth to 10, samtools method of calc
+
+  job#2304779 @ 22:35 TSV/16:35 DXB
+    -angsd filtration worked
 
 
-  ROUGH NOTES
-
-  added snp filters to 05_glcalc.sh
-
-  added a copy of 05_glcalc.sh to samtoolstest to rerun with merged bam files:
-  job#2303308 @ 23:00 TSV/17:00 DXB
-
-  tested ngsrelate and copied 06_ibdcalc.sh into samtoolstest
-  submitted as job#2303650 @ 19:27 TSV/13:27 DXB
-
-
-  retry ngsrelate as -n had incorrect number of samples; edited 06_ibdcalc.sh
-  submitted as job#2303850 @ 16:53 TSV/ 10:53 DXB
-
-  also failed. added a gl output file to 05_glcalc.sh to resubmit:
-  job#2304666 @ 22:30 TSV/ 16:30 DXB
-
-  altered 06_ibdcalc.sh to use correct output file and resubmitted:
+06_ibdcalc.sh:
+    -testing ngsrelate
+  job #2303650 @ 19:27 TSV/13:27 DXB
+    -incorrect number of samples in -n
+  job #2303850 @ 16:53 TSV/ 10:53 DXB
+    -failed because no gl output file in 05_glcalc.sh
+    -altered 05_glcalc.sh and edited to correct output
   job#2304714 @ 20:13 TSV/ 14:13 DXB
-  worked!!
+    -running!
+    -to troubleshoot ngsrelate (although job is running):
+wc -l freq was 46131772
+gunzip -c gl_gatk2.glf.gz|wc -c is 40965013536
+  job #2304773 @ 19:48 TSV/ 13:48 DXB
+    -failed due to filenames not matching, corrected and resubmitted:
+  job #2304775 @ 21:29 TSV/ 15:29 DXB
+    -doesn't work
+  job #2304978 @ 20:58 TSV/ 14:58 DXB
+    -failed due to error in filename, edited and resubmitted:
+  job #2304987 @ 23:04 TSV/ 17:04 DXB
+    -failed due to unmatched files? recheck old outputs. renamed freqfilt to freqfilt2 and reran:
+  job #2304992 @ 23:24 TSV/17:24 DXB
+    -failed; check in console:
+wc -l freqfilt                        34038506
+wc -l freqfilt2                       34038506
+gunzip -c gl_gatk_filt.glf.gz|wc -c   100753977760 (wow thats a difference wtf)
+  job #2304993 @ 23:47 TSV/ 17:47 DXB
+    -ran without -n 37
+    -did not work (unsurprising)
+    -wrote two new scripts
 
-  to troubleshoot ngsrelate (although job is running):
-  wc -l freq was 46131772
-  gunzip -c gl_gatk2.glf.gz|wc -c is 40965013536
+05a_glibd.sh:
+    -GATK GL method with binary beagle output
+  job #2304994 @ 23:49 TSV/ 17:49 DXB
+    -success!
 
-  rerunning 05_glcalc.sh with diff binary output file:
-  job#2304715 @ 22:15 TSV/ 14:15 DXB
+05b_glibd.sh:
+    -SAM GL method with binary beagle output
+  job #2304995 @ 23:50 TSV/ 17:50 DXB
+    -success!!
 
-  altered 06_ibdcalc.sh to use new output file name:
-  job#2304773 @ 19:48 TSV/ 13:48 DXB
-  failed due to filenames not matching, corrected and resubmitted:
-  job#2304775 @ 21:29 TSV/ 15:29 DXB
+In console:
 
-  checked range of values in newres file; tried:
-  sort -nk 4 newres|head -n 1 (didn't work)
-  cat newres|cut -f4| sort -u (worked; repeated for columns 5 and 6): issues with k1 but others are ok in terms of range
+  -test to see if k0/k1/k2 values within expected range
+  -checked range of values in newres file; tried:
+sort -nk 4 newres|head -n 1 (didn't work)
+cat newres|cut -f4| sort -u (worked; repeated for columns 5 and 6): issues with k1 but others are ok in terms of range
 
-  figuring out how to filter only uniquely mapped reads- already did with MAPQ; increasing MAPQ filter to study results:
-  mods to variant calling filtration:
-  ANGSD (05_glcalc.sh): min mapq of 30, min base qual to 20, min depth to 10, samtools method of calc
-
-
-  altered 05_plink.sh for new calls; altered 06_ibdcalc.sh for new angsd stuff
-
-
-  submitted 05_glcalc.sh as job#2304779 @ 22:35 TSV/16:35 DXB
-  angsd filtration worked; submitted 06_ibdcalc.sh:
-  job#2304978 @ 20:58 TSV/ 14:58 DXB
-  failed due to error in filename, edited and resubmitted:
-  job#2304987 @ 23:04 TSV/ 17:04 DXB
-  failed due to unmatched files? recheck old outputs. renamed freqfilt to freqfilt2 and reran:
-  job#2304992 @ 23:24 TSV/17:24 DXB
-  failed; check in console:
-  wc -l freqfilt                        34038506
-  wc -l freqfilt2                       34038506
-  gunzip -c gl_gatk_filt.glf.gz|wc -c   100753977760 (wow thats a difference wtf)
-  troubleshoot options:
-
-  1) 06_ibdcalc.sh without -n 37
-  job#2304993 @ 23:47 TSV/ 17:47 DXB
-  did not work (unsurprising)
-
-  2) 05a_glibd.sh as GATK with binary beagle output
-  job#2304994 @ 23:49 TSV/ 17:49 DXB
-
-  3) 05b_glibd.sh as SAM with binary beagle output
-  job#2304995 @ 23:50 TSV/ 17:50 DXB
+03_maptime.sh:
+    -copied 03_maploop.sh and added date function to angsdtest/fastq/trimmed
+    -copied genome to angsdtest/fastq/trimmed
+  job #2304933 @ 20:00 TSV/ 14:00 DXB

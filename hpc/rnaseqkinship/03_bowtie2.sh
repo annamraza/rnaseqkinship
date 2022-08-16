@@ -3,7 +3,7 @@
 #PBS -m ae
 #PBS -N mappingtimed
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
-#PBS -l walltime=36:00:00
+#PBS -l walltime=72:00:00
 #PBS -l select=1:ncpus=1:mem=200gb
 
 cd $PBS_O_WORKDIR

@@ -1,0 +1,24 @@
+UNTRIMMED READS PIPELINE
+
+02_trimtime.sh:
+    -copied 02_trimall.sh to abalone_rnaseq folder and added date function
+  job #2304887 @ 19:46 TSV/ 13:46 DXB
+    -success, so started timed trimming in final pipeline folder
+
+03_bowtie2_utr:
+    -added to abalone_rnaseq
+    -copied in haliotis_genome
+    -after running tests in testscripts/maptest
+  job #2305166 @ 21:00 TSV/ 15:00 DXB
+    -timed out! ugh
+  job #2305290 @ 21:49 TSV/ 15:49 DXB (14/08)
+    -accidentally deleted files
+    -killed job
+  job #2305291 @ 21:51 TSV/ 15:51 DXB (14/08)
+    -success!
+
+03_samtools_utr:
+  job #2305614 @ 17:48 TSV/ 11:48 DXB (16/08)
+    -failed due to error in script (had to change .sam to .bam in if statement)
+  job #2305616 @ 17:55 TSV/ 11:55 DXB (16/08)
+    -success!

@@ -1,12 +1,21 @@
 RNASEQ KINSHIP PIPELINE TESTING
 
 02_trimmomatic.sh:
-job #2305086 @ 20:09 TSV/ 14:09 DXB
+  job #2305086 @ 20:09 TSV/ 14:09 DXB
 
 01_fastqc.sh:
-job #2305163 @ 20:36 TSV/ 14:36 DXB
-  -immediately failed; directory didn't exist
-job #2305164 @ 20:37 TSV/ 14:37 DXB
+  job #2305163 @ 20:36 TSV/ 14:36 DXB
+    -immediately failed; directory didn't exist
+  job #2305164 @ 20:37 TSV/ 14:37 DXB
 
 03_bowtie2.sh:
-job #2305165 @ 20:42 TSV/ 14:42 DXB
+  job #2305165 @ 20:42 TSV/ 14:42 DXB
+    -timed out
+  job #2305292 @ 21:52 TSV/ 15:52 DXB (14/08)
+    -success
+
+03_samtools.sh:
+  job #2305613 @ 17:47 TSV/ 11:47 DXB (16/08)
+    -failed due to error in script (had to change .sam to .bam in if statement)
+  job #2305615 @ 17:54 TSV/ 11:54 DXB (16/08)
+    -success (so far)

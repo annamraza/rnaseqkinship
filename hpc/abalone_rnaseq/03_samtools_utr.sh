@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N mapmergeandsummarytimed
+#PBS -N mapmergeandsummaryutr
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=36:00:00
 #PBS -l select=1:ncpus=1:mem=200gb
@@ -37,7 +37,7 @@ fi
 
 done
 
-samples=$(ls *.fastq.gz | awk -F '_[1234]' '{print $1}' | sort -u | tr '\n' \ '')
+samples=$(ls *.sam | awk -F '_[1234]' '{print $1}' | sort -u | tr '\n' \ '')
 
 for sample in $samples; do
 
@@ -60,8 +60,6 @@ cat 03_summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > 
 ls *_merged.bam > bam.filelist
 
 echo $dt
-
-#unfiltered reads
 
 for f in *.sam; do
 
@@ -96,3 +94,4 @@ cat 03_summary_unfilt.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/
 ls *_merged_unfilt.bam > bam_unfilt.filelist
 
 echo $dt
+#unfiltered reads
