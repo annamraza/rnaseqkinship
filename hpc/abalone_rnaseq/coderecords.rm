@@ -22,6 +22,10 @@ UNTRIMMED READS PIPELINE
     -failed due to error in script (had to change .sam to .bam in if statement)
   job #2305616 @ 17:55 TSV/ 11:55 DXB (16/08)
     -success!
+    -but unfiltered conversion, merge failed
+    -resubmitted only that bit of the script
+  job #2305645 @ 22:11 TSV/ 16:11 DXB (16/08)
+    -working so far
 
 04_bcftools_utr.sh:
 
