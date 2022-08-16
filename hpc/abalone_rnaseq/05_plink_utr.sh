@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N plink
+#PBS -N plinkutr
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
 #PBS -l select=1:ncpus=1:mem=100gb

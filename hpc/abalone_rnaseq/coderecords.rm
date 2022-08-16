@@ -22,3 +22,11 @@ UNTRIMMED READS PIPELINE
     -failed due to error in script (had to change .sam to .bam in if statement)
   job #2305616 @ 17:55 TSV/ 11:55 DXB (16/08)
     -success!
+
+04_bcftools_utr.sh:
+
+05_plink_utr.sh:
+
+05_plinkld_utr.sh:
+
+05_ngsrelate_utr.sh:

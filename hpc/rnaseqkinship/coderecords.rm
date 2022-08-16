@@ -19,3 +19,11 @@ RNASEQ KINSHIP PIPELINE TESTING
     -failed due to error in script (had to change .sam to .bam in if statement)
   job #2305615 @ 17:54 TSV/ 11:54 DXB (16/08)
     -success (so far)
+
+04_bcftools.sh:
+
+05_plink.sh:
+
+05_plinkld.sh:
+
+05_ngsrelate_utr.sh:
