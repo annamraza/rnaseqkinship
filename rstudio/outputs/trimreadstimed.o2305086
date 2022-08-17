@@ -1,0 +1,1309 @@
+Job identifier is 2305086.jobmgr1
+Working directory is /home/jc475572/rnaseqkinship
+Wed Aug 10 20:08:46 AEST 2022
+TrimmomaticSE: Started with arguments:
+ 104_1_C5H1BACXX_GTCCGC_L001_R1.fastq.gz 104_1_C5H1BACXX_GTCCGC_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9384305 Surviving: 9383833 (99.99%) Dropped: 472 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 104_2_C5H1BACXX_GTGAAA_L001_R1.fastq.gz 104_2_C5H1BACXX_GTGAAA_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9654476 Surviving: 9653850 (99.99%) Dropped: 626 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 104_3_C5H1BACXX_GTGGCC_L001_R1.fastq.gz 104_3_C5H1BACXX_GTGGCC_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9882560 Surviving: 9882002 (99.99%) Dropped: 558 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 104_4_C5H1BACXX_GTTTCG_L001_R1.fastq.gz 104_4_C5H1BACXX_GTTTCG_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9744400 Surviving: 9743692 (99.99%) Dropped: 708 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 114_1_C5H1BACXX_AGTCAA_L004_R1.fastq.gz 114_1_C5H1BACXX_AGTCAA_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8815705 Surviving: 8815341 (100.00%) Dropped: 364 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 114_2_C5H1BACXX_AGTTCC_L004_R1.fastq.gz 114_2_C5H1BACXX_AGTTCC_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8881769 Surviving: 8881483 (100.00%) Dropped: 286 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 114_3_C5H1BACXX_ATGTCA_L004_R1.fastq.gz 114_3_C5H1BACXX_ATGTCA_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9246215 Surviving: 9245648 (99.99%) Dropped: 567 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 114_4_C5H1BACXX_CCGTCC_L004_R1.fastq.gz 114_4_C5H1BACXX_CCGTCC_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8707451 Surviving: 8706747 (99.99%) Dropped: 704 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 131_1_C5H1BACXX_CGTACG_L002_R1.fastq.gz 131_1_C5H1BACXX_CGTACG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9579954 Surviving: 9578867 (99.99%) Dropped: 1087 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 131_2_C5H1BACXX_GAGTGG_L002_R1.fastq.gz 131_2_C5H1BACXX_GAGTGG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9341295 Surviving: 9339766 (99.98%) Dropped: 1529 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 131_3_C5H1BACXX_ACTGAT_L002_R1.fastq.gz 131_3_C5H1BACXX_ACTGAT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9472065 Surviving: 9470237 (99.98%) Dropped: 1828 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 131_4_C5H1BACXX_ATTCCT_L002_R1.fastq.gz 131_4_C5H1BACXX_ATTCCT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9372400 Surviving: 9371650 (99.99%) Dropped: 750 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 135_1_C5H1BACXX_ATCACG_L002_R1.fastq.gz 135_1_C5H1BACXX_ATCACG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9663780 Surviving: 9663168 (99.99%) Dropped: 612 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 135_2_C5H1BACXX_CGATGT_L002_R1.fastq.gz 135_2_C5H1BACXX_CGATGT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 10320287 Surviving: 10319812 (100.00%) Dropped: 475 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 135_3_C5H1BACXX_TTAGGC_L002_R1.fastq.gz 135_3_C5H1BACXX_TTAGGC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8950507 Surviving: 8949667 (99.99%) Dropped: 840 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 135_4_C5H1BACXX_TGACCA_L002_R1.fastq.gz 135_4_C5H1BACXX_TGACCA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8864337 Surviving: 8863945 (100.00%) Dropped: 392 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 158_1_C5H1BACXX_ACAGTG_L002_R1.fastq.gz 158_1_C5H1BACXX_ACAGTG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 13835834 Surviving: 13835052 (99.99%) Dropped: 782 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 158_2_C5H1BACXX_GCCAAT_L002_R1.fastq.gz 158_2_C5H1BACXX_GCCAAT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9365640 Surviving: 9365104 (99.99%) Dropped: 536 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 158_3_C5H1BACXX_CAGATC_L002_R1.fastq.gz 158_3_C5H1BACXX_CAGATC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9236375 Surviving: 9235632 (99.99%) Dropped: 743 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 158_4_C5H1BACXX_ACTTGA_L002_R1.fastq.gz 158_4_C5H1BACXX_ACTTGA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8312035 Surviving: 8156624 (98.13%) Dropped: 155411 (1.87%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 17_1_C5H1BACXX_ATCACG_L001_R1.fastq.gz 17_1_C5H1BACXX_ATCACG_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9671969 Surviving: 9671383 (99.99%) Dropped: 586 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 17_2_C5H1BACXX_CGATGT_L001_R1.fastq.gz 17_2_C5H1BACXX_CGATGT_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9238822 Surviving: 9238265 (99.99%) Dropped: 557 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 17_3_C5H1BACXX_TTAGGC_L001_R1.fastq.gz 17_3_C5H1BACXX_TTAGGC_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9584917 Surviving: 9582956 (99.98%) Dropped: 1961 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 17_4_C5H1BACXX_TGACCA_L001_R1.fastq.gz 17_4_C5H1BACXX_TGACCA_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9226207 Surviving: 9225130 (99.99%) Dropped: 1077 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 182_1_C5H1BACXX_GATCAG_L002_R1.fastq.gz 182_1_C5H1BACXX_GATCAG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9395532 Surviving: 9391388 (99.96%) Dropped: 4144 (0.04%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 182_2_C5H1BACXX_TAGCTT_L002_R1.fastq.gz 182_2_C5H1BACXX_TAGCTT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9396561 Surviving: 9395603 (99.99%) Dropped: 958 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 182_3_C5H1BACXX_GGCTAC_L002_R1.fastq.gz 182_3_C5H1BACXX_GGCTAC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9323935 Surviving: 9323131 (99.99%) Dropped: 804 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 182_4_C5H1BACXX_CTTGTA_L002_R1.fastq.gz 182_4_C5H1BACXX_CTTGTA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9572941 Surviving: 9571362 (99.98%) Dropped: 1579 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 187_1_C5H1BACXX_AGTCAA_L002_R1.fastq.gz 187_1_C5H1BACXX_AGTCAA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9118412 Surviving: 9117907 (99.99%) Dropped: 505 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 187_2_C5H1BACXX_AGTTCC_L002_R1.fastq.gz 187_2_C5H1BACXX_AGTTCC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8973624 Surviving: 8973286 (100.00%) Dropped: 338 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 187_3_C5H1BACXX_ATGTCA_L002_R1.fastq.gz 187_3_C5H1BACXX_ATGTCA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9070054 Surviving: 9069478 (99.99%) Dropped: 576 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 187_4_C5H1BACXX_CCGTCC_L002_R1.fastq.gz 187_4_C5H1BACXX_CCGTCC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8523403 Surviving: 8522998 (100.00%) Dropped: 405 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 203_1_C5H1BACXX_GTCCGC_L003_R1.fastq.gz 203_1_C5H1BACXX_GTCCGC_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9951493 Surviving: 9950816 (99.99%) Dropped: 677 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 203_2_C5H1BACXX_GTGAAA_L003_R1.fastq.gz 203_2_C5H1BACXX_GTGAAA_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9199378 Surviving: 9198728 (99.99%) Dropped: 650 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 203_3_C5H1BACXX_GTGGCC_L003_R1.fastq.gz 203_3_C5H1BACXX_GTGGCC_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9544860 Surviving: 9544127 (99.99%) Dropped: 733 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 203_4_C5H1BACXX_GTTTCG_L003_R1.fastq.gz 203_4_C5H1BACXX_GTTTCG_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9030067 Surviving: 9028268 (99.98%) Dropped: 1799 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 240_1_C5H1BACXX_CGTACG_L003_R1.fastq.gz 240_1_C5H1BACXX_CGTACG_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9328673 Surviving: 9324768 (99.96%) Dropped: 3905 (0.04%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 240_2_C5H1BACXX_GAGTGG_L003_R1.fastq.gz 240_2_C5H1BACXX_GAGTGG_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8983490 Surviving: 8980704 (99.97%) Dropped: 2786 (0.03%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 240_3_C5H1BACXX_ACTGAT_L003_R1.fastq.gz 240_3_C5H1BACXX_ACTGAT_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9028218 Surviving: 9022524 (99.94%) Dropped: 5694 (0.06%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 240_4_C5H1BACXX_ATTCCT_L003_R1.fastq.gz 240_4_C5H1BACXX_ATTCCT_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9277266 Surviving: 9275278 (99.98%) Dropped: 1988 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 257_1_C5H1BACXX_ATCACG_L003_R1.fastq.gz 257_1_C5H1BACXX_ATCACG_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9762795 Surviving: 9762207 (99.99%) Dropped: 588 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 257_2_C5H1BACXX_CGATGT_L003_R1.fastq.gz 257_2_C5H1BACXX_CGATGT_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9364113 Surviving: 9363793 (100.00%) Dropped: 320 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 257_3_C5H1BACXX_TTAGGC_L003_R1.fastq.gz 257_3_C5H1BACXX_TTAGGC_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9806834 Surviving: 9806088 (99.99%) Dropped: 746 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 257_4_C5H1BACXX_TGACCA_L003_R1.fastq.gz 257_4_C5H1BACXX_TGACCA_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9878371 Surviving: 9877612 (99.99%) Dropped: 759 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 269_1_C5H1BACXX_AGTCAA_L005_R1.fastq.gz 269_1_C5H1BACXX_AGTCAA_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8868549 Surviving: 8868025 (99.99%) Dropped: 524 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 269_2_C5H1BACXX_AGTTCC_L005_R1.fastq.gz 269_2_C5H1BACXX_AGTTCC_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8471573 Surviving: 8471271 (100.00%) Dropped: 302 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 269_3_C5H1BACXX_ATGTCA_L005_R1.fastq.gz 269_3_C5H1BACXX_ATGTCA_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8894472 Surviving: 8893590 (99.99%) Dropped: 882 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 269_4_C5H1BACXX_CCGTCC_L005_R1.fastq.gz 269_4_C5H1BACXX_CCGTCC_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8582447 Surviving: 8581958 (99.99%) Dropped: 489 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 274_2_C5H1BACXX_GTTTCG_L006_R1.fastq.gz 274_2_C5H1BACXX_GTTTCG_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9048056 Surviving: 9047288 (99.99%) Dropped: 768 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 274_3_C5H1BACXX_CGTACG_L006_R1.fastq.gz 274_3_C5H1BACXX_CGTACG_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8576768 Surviving: 8575590 (99.99%) Dropped: 1178 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 274_4_C5H1BACXX_GAGTGG_L006_R1.fastq.gz 274_4_C5H1BACXX_GAGTGG_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8766883 Surviving: 8765727 (99.99%) Dropped: 1156 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 279_1_C5H1BACXX_ACAGTG_L004_R1.fastq.gz 279_1_C5H1BACXX_ACAGTG_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9575225 Surviving: 9574625 (99.99%) Dropped: 600 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 279_2_C5H1BACXX_GCCAAT_L004_R1.fastq.gz 279_2_C5H1BACXX_GCCAAT_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9329758 Surviving: 9328722 (99.99%) Dropped: 1036 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 279_3_C5H1BACXX_CAGATC_L004_R1.fastq.gz 279_3_C5H1BACXX_CAGATC_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8742291 Surviving: 8741680 (99.99%) Dropped: 611 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 279_4_C5H1BACXX_ACTTGA_L004_R1.fastq.gz 279_4_C5H1BACXX_ACTTGA_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9368208 Surviving: 9367344 (99.99%) Dropped: 864 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 316_1_C5H1BACXX_GTCCGC_L006_R1.fastq.gz 316_1_C5H1BACXX_GTCCGC_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8593692 Surviving: 8593005 (99.99%) Dropped: 687 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 316_2_C5H1BACXX_GTGAAA_L006_R1.fastq.gz 316_2_C5H1BACXX_GTGAAA_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9193904 Surviving: 9193268 (99.99%) Dropped: 636 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 316_4_C5H1BACXX_GTGGCC_L006_R1.fastq.gz 316_4_C5H1BACXX_GTGGCC_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8812040 Surviving: 8811284 (99.99%) Dropped: 756 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 345_1_1_C1802ACXX_ACAGTG_L002_R1.fastq.gz 345_1_1_C1802ACXX_ACAGTG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8324269 Surviving: 8323685 (99.99%) Dropped: 584 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 345_2_1_C1802ACXX_GCCAAT_L002_R1.fastq.gz 345_2_1_C1802ACXX_GCCAAT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8316666 Surviving: 8315650 (99.99%) Dropped: 1016 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 345_3_1_C1802ACXX_CAGATC_L002_R1.fastq.gz 345_3_1_C1802ACXX_CAGATC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7733170 Surviving: 7731636 (99.98%) Dropped: 1534 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 345_4_1_C1802ACXX_ACTTGA_L002_R1.fastq.gz 345_4_1_C1802ACXX_ACTTGA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7835592 Surviving: 7834465 (99.99%) Dropped: 1127 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 349_1_1_C1802ACXX_GATCAG_L002_R1.fastq.gz 349_1_1_C1802ACXX_GATCAG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7821608 Surviving: 7820507 (99.99%) Dropped: 1101 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 349_2_1_C1802ACXX_TAGCTT_L002_R1.fastq.gz 349_2_1_C1802ACXX_TAGCTT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7890668 Surviving: 7889933 (99.99%) Dropped: 735 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 349_3_1_C1802ACXX_GGCTAC_L002_R1.fastq.gz 349_3_1_C1802ACXX_GGCTAC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 6716150 Surviving: 6715700 (99.99%) Dropped: 450 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 349_4_1_C1802ACXX_CTTGTA_L002_R1.fastq.gz 349_4_1_C1802ACXX_CTTGTA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7266295 Surviving: 7265098 (99.98%) Dropped: 1197 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 356_1_1_C1802ACXX_CGTACG_L002_R1.fastq.gz 356_1_1_C1802ACXX_CGTACG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7278566 Surviving: 7276997 (99.98%) Dropped: 1569 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 356_2_1_C1802ACXX_GAGTGG_L002_R1.fastq.gz 356_2_1_C1802ACXX_GAGTGG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 6550803 Surviving: 6549660 (99.98%) Dropped: 1143 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 356_3_1_C1802ACXX_ACTGAT_L002_R1.fastq.gz 356_3_1_C1802ACXX_ACTGAT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7096262 Surviving: 7095578 (99.99%) Dropped: 684 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 356_4_1_C1802ACXX_ATTCCT_L002_R1.fastq.gz 356_4_1_C1802ACXX_ATTCCT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 6934399 Surviving: 6933578 (99.99%) Dropped: 821 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 373_1_1_C1802ACXX_ATCACG_L002_R1.fastq.gz 373_1_1_C1802ACXX_ATCACG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7229994 Surviving: 7228687 (99.98%) Dropped: 1307 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 373_2_1_C1802ACXX_CGATGT_L002_R1.fastq.gz 373_2_1_C1802ACXX_CGATGT_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7716565 Surviving: 7716250 (100.00%) Dropped: 315 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 373_3_1_C1802ACXX_TTAGGC_L002_R1.fastq.gz 373_3_1_C1802ACXX_TTAGGC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8032336 Surviving: 8032017 (100.00%) Dropped: 319 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 373_4_1_C1802ACXX_TGACCA_L002_R1.fastq.gz 373_4_1_C1802ACXX_TGACCA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7432092 Surviving: 7431657 (99.99%) Dropped: 435 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 412_1_C5H1BACXX_ACAGTG_L006_R1.fastq.gz 412_1_C5H1BACXX_ACAGTG_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8961693 Surviving: 8959244 (99.97%) Dropped: 2449 (0.03%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 412_2_C5H1BACXX_GCCAAT_L006_R1.fastq.gz 412_2_C5H1BACXX_GCCAAT_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9501044 Surviving: 9500100 (99.99%) Dropped: 944 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 412_3_C5H1BACXX_CAGATC_L006_R1.fastq.gz 412_3_C5H1BACXX_CAGATC_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8991248 Surviving: 8989763 (99.98%) Dropped: 1485 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 412_4_C5H1BACXX_ACTTGA_L006_R1.fastq.gz 412_4_C5H1BACXX_ACTTGA_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8262744 Surviving: 8259156 (99.96%) Dropped: 3588 (0.04%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 42_1_C5H1BACXX_ACAGTG_L001_R1.fastq.gz 42_1_C5H1BACXX_ACAGTG_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9011153 Surviving: 9010324 (99.99%) Dropped: 829 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 42_2_C5H1BACXX_GCCAAT_L001_R1.fastq.gz 42_2_C5H1BACXX_GCCAAT_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9076639 Surviving: 9075464 (99.99%) Dropped: 1175 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 42_3_C5H1BACXX_CAGATC_L001_R1.fastq.gz 42_3_C5H1BACXX_CAGATC_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8920631 Surviving: 8919498 (99.99%) Dropped: 1133 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 42_4_C5H1BACXX_ACTTGA_L001_R1.fastq.gz 42_4_C5H1BACXX_ACTTGA_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9182302 Surviving: 9180833 (99.98%) Dropped: 1469 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 468_1_C5H1BACXX_GTCCGC_L005_R1.fastq.gz 468_1_C5H1BACXX_GTCCGC_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8730783 Surviving: 8730158 (99.99%) Dropped: 625 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 468_2_C5H1BACXX_GTGAAA_L005_R1.fastq.gz 468_2_C5H1BACXX_GTGAAA_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8955226 Surviving: 8954663 (99.99%) Dropped: 563 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 468_3_C5H1BACXX_GTGGCC_L005_R1.fastq.gz 468_3_C5H1BACXX_GTGGCC_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8899157 Surviving: 8898450 (99.99%) Dropped: 707 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 468_4_C5H1BACXX_GTTTCG_L005_R1.fastq.gz 468_4_C5H1BACXX_GTTTCG_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9172788 Surviving: 9171948 (99.99%) Dropped: 840 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 487_1_C5H1BACXX_GATCAG_L006_R1.fastq.gz 487_1_C5H1BACXX_GATCAG_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8523947 Surviving: 8522818 (99.99%) Dropped: 1129 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 487_2_C5H1BACXX_TAGCTT_L006_R1.fastq.gz 487_2_C5H1BACXX_TAGCTT_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9057683 Surviving: 9057111 (99.99%) Dropped: 572 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 487_3_C5H1BACXX_GGCTAC_L006_R1.fastq.gz 487_3_C5H1BACXX_GGCTAC_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8940838 Surviving: 8940018 (99.99%) Dropped: 820 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 487_4_C5H1BACXX_CTTGTA_L006_R1.fastq.gz 487_4_C5H1BACXX_CTTGTA_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9188841 Surviving: 9186355 (99.97%) Dropped: 2486 (0.03%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 520_1_C5H1BACXX_AGTCAA_L006_R1.fastq.gz 520_1_C5H1BACXX_AGTCAA_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9768445 Surviving: 9767636 (99.99%) Dropped: 809 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 520_2_C5H1BACXX_AGTTCC_L006_R1.fastq.gz 520_2_C5H1BACXX_AGTTCC_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9642623 Surviving: 9642305 (100.00%) Dropped: 318 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 520_3_C5H1BACXX_ATGTCA_L006_R1.fastq.gz 520_3_C5H1BACXX_ATGTCA_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9404492 Surviving: 9403662 (99.99%) Dropped: 830 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 520_4_C5H1BACXX_CCGTCC_L006_R1.fastq.gz 520_4_C5H1BACXX_CCGTCC_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8253773 Surviving: 8253095 (99.99%) Dropped: 678 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 588_1_C5H1BACXX_ATCACG_L005_R1.fastq.gz 588_1_C5H1BACXX_ATCACG_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 10044942 Surviving: 10044093 (99.99%) Dropped: 849 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 588_2_C5H1BACXX_CGATGT_L005_R1.fastq.gz 588_2_C5H1BACXX_CGATGT_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 10024669 Surviving: 10024255 (100.00%) Dropped: 414 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 588_3_C5H1BACXX_TTAGGC_L005_R1.fastq.gz 588_3_C5H1BACXX_TTAGGC_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9528421 Surviving: 9527683 (99.99%) Dropped: 738 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 588_4_C5H1BACXX_TGACCA_L005_R1.fastq.gz 588_4_C5H1BACXX_TGACCA_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 10177179 Surviving: 10174487 (99.97%) Dropped: 2692 (0.03%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 717_1_C5H1BACXX_CGTACG_L004_R1.fastq.gz 717_1_C5H1BACXX_CGTACG_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9335512 Surviving: 9334691 (99.99%) Dropped: 821 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 717_2_C5H1BACXX_GAGTGG_L004_R1.fastq.gz 717_2_C5H1BACXX_GAGTGG_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8950277 Surviving: 8949609 (99.99%) Dropped: 668 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 717_3_C5H1BACXX_ACTGAT_L004_R1.fastq.gz 717_3_C5H1BACXX_ACTGAT_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8795798 Surviving: 8795044 (99.99%) Dropped: 754 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 717_4_C5H1BACXX_ATTCCT_L004_R1.fastq.gz 717_4_C5H1BACXX_ATTCCT_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9016656 Surviving: 9015851 (99.99%) Dropped: 805 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 721_1_C5H1BACXX_GATCAG_L005_R1.fastq.gz 721_1_C5H1BACXX_GATCAG_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9514496 Surviving: 9513342 (99.99%) Dropped: 1154 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 721_2_C5H1BACXX_TAGCTT_L005_R1.fastq.gz 721_2_C5H1BACXX_TAGCTT_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9377309 Surviving: 9376497 (99.99%) Dropped: 812 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 721_3_C5H1BACXX_GGCTAC_L005_R1.fastq.gz 721_3_C5H1BACXX_GGCTAC_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9205580 Surviving: 9204759 (99.99%) Dropped: 821 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 721_4_C5H1BACXX_CTTGTA_L005_R1.fastq.gz 721_4_C5H1BACXX_CTTGTA_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9597704 Surviving: 9596491 (99.99%) Dropped: 1213 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 731_1_C5H1BACXX_CGTACG_L005_R1.fastq.gz 731_1_C5H1BACXX_CGTACG_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8664172 Surviving: 8663543 (99.99%) Dropped: 629 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 731_2_C5H1BACXX_GAGTGG_L005_R1.fastq.gz 731_2_C5H1BACXX_GAGTGG_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8842846 Surviving: 8842299 (99.99%) Dropped: 547 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 731_3_C5H1BACXX_ACTGAT_L005_R1.fastq.gz 731_3_C5H1BACXX_ACTGAT_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8969662 Surviving: 8969078 (99.99%) Dropped: 584 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 731_4_C5H1BACXX_ATTCCT_L005_R1.fastq.gz 731_4_C5H1BACXX_ATTCCT_L005_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8548839 Surviving: 8548234 (99.99%) Dropped: 605 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 749_1_1_C1802ACXX_AGTCAA_L002_R1.fastq.gz 749_1_1_C1802ACXX_AGTCAA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 6206346 Surviving: 6206058 (100.00%) Dropped: 288 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 749_2_1_C1802ACXX_AGTTCC_L002_R1.fastq.gz 749_2_1_C1802ACXX_AGTTCC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 6544654 Surviving: 6543870 (99.99%) Dropped: 784 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 749_3_1_C1802ACXX_ATGTCA_L002_R1.fastq.gz 749_3_1_C1802ACXX_ATGTCA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 6734011 Surviving: 6732993 (99.98%) Dropped: 1018 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 749_4_1_C1802ACXX_CCGTCC_L002_R1.fastq.gz 749_4_1_C1802ACXX_CCGTCC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 6264434 Surviving: 6264084 (99.99%) Dropped: 350 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 759_1_C5H1BACXX_ATCACG_L004_R1.fastq.gz 759_1_C5H1BACXX_ATCACG_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 10046861 Surviving: 10046175 (99.99%) Dropped: 686 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 759_2_C5H1BACXX_CGATGT_L004_R1.fastq.gz 759_2_C5H1BACXX_CGATGT_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 10053901 Surviving: 10053331 (99.99%) Dropped: 570 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 759_3_C5H1BACXX_TTAGGC_L004_R1.fastq.gz 759_3_C5H1BACXX_TTAGGC_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9684730 Surviving: 9683699 (99.99%) Dropped: 1031 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 759_4_C5H1BACXX_TGACCA_L004_R1.fastq.gz 759_4_C5H1BACXX_TGACCA_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9529681 Surviving: 9529004 (99.99%) Dropped: 677 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 77_1_C5H1BACXX_GATCAG_L001_R1.fastq.gz 77_1_C5H1BACXX_GATCAG_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9465302 Surviving: 9463932 (99.99%) Dropped: 1370 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 77_2_C5H1BACXX_TAGCTT_L001_R1.fastq.gz 77_2_C5H1BACXX_TAGCTT_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9596334 Surviving: 9595195 (99.99%) Dropped: 1139 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 77_3_C5H1BACXX_GGCTAC_L001_R1.fastq.gz 77_3_C5H1BACXX_GGCTAC_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9078897 Surviving: 9077913 (99.99%) Dropped: 984 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 77_4_C5H1BACXX_CTTGTA_L001_R1.fastq.gz 77_4_C5H1BACXX_CTTGTA_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9641033 Surviving: 9638875 (99.98%) Dropped: 2158 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 832_2_C5H1BACXX_ACTGAT_L006_R1.fastq.gz 832_2_C5H1BACXX_ACTGAT_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9112381 Surviving: 9111666 (99.99%) Dropped: 715 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 832_3_C5H1BACXX_ATTCCT_L006_R1.fastq.gz 832_3_C5H1BACXX_ATTCCT_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8056301 Surviving: 8055444 (99.99%) Dropped: 857 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 832_4_C5H1BACXX_ATCACG_L006_R1.fastq.gz 832_4_C5H1BACXX_ATCACG_L006_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9074361 Surviving: 9073548 (99.99%) Dropped: 813 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 849_1_C5H1BACXX_ACAGTG_L003_R1.fastq.gz 849_1_C5H1BACXX_ACAGTG_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9225193 Surviving: 9224422 (99.99%) Dropped: 771 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 849_2_C5H1BACXX_GCCAAT_L003_R1.fastq.gz 849_2_C5H1BACXX_GCCAAT_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9040581 Surviving: 9039932 (99.99%) Dropped: 649 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 849_3_C5H1BACXX_CAGATC_L003_R1.fastq.gz 849_3_C5H1BACXX_CAGATC_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8894537 Surviving: 8893753 (99.99%) Dropped: 784 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 849_4_C5H1BACXX_ACTTGA_L003_R1.fastq.gz 849_4_C5H1BACXX_ACTTGA_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8999497 Surviving: 8998627 (99.99%) Dropped: 870 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 859_1_1_C1802ACXX_GTCCGC_L002_R1.fastq.gz 859_1_1_C1802ACXX_GTCCGC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7247455 Surviving: 7245745 (99.98%) Dropped: 1710 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 859_2_1_C1802ACXX_GTGAAA_L002_R1.fastq.gz 859_2_1_C1802ACXX_GTGAAA_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7019285 Surviving: 7018709 (99.99%) Dropped: 576 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 859_3_1_C1802ACXX_GTGGCC_L002_R1.fastq.gz 859_3_1_C1802ACXX_GTGGCC_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7911178 Surviving: 7907470 (99.95%) Dropped: 3708 (0.05%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 859_4_1_C1802ACXX_GTTTCG_L002_R1.fastq.gz 859_4_1_C1802ACXX_GTTTCG_L002_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 7488431 Surviving: 7487569 (99.99%) Dropped: 862 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 877_1_C5H1BACXX_GATCAG_L003_R1.fastq.gz 877_1_C5H1BACXX_GATCAG_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9217370 Surviving: 9216472 (99.99%) Dropped: 898 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 877_2_C5H1BACXX_TAGCTT_L003_R1.fastq.gz 877_2_C5H1BACXX_TAGCTT_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9629146 Surviving: 9628458 (99.99%) Dropped: 688 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 877_3_C5H1BACXX_GGCTAC_L003_R1.fastq.gz 877_3_C5H1BACXX_GGCTAC_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9341201 Surviving: 9340571 (99.99%) Dropped: 630 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 877_4_C5H1BACXX_CTTGTA_L003_R1.fastq.gz 877_4_C5H1BACXX_CTTGTA_L003_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9530344 Surviving: 9528428 (99.98%) Dropped: 1916 (0.02%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 879_1_C5H1BACXX_GTCCGC_L004_R1.fastq.gz 879_1_C5H1BACXX_GTCCGC_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9409632 Surviving: 9409064 (99.99%) Dropped: 568 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 879_2_C5H1BACXX_GTGAAA_L004_R1.fastq.gz 879_2_C5H1BACXX_GTGAAA_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9331224 Surviving: 9330668 (99.99%) Dropped: 556 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 879_3_C5H1BACXX_GTGGCC_L004_R1.fastq.gz 879_3_C5H1BACXX_GTGGCC_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9267106 Surviving: 9266474 (99.99%) Dropped: 632 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 879_4_C5H1BACXX_GTTTCG_L004_R1.fastq.gz 879_4_C5H1BACXX_GTTTCG_L004_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8890755 Surviving: 8890058 (99.99%) Dropped: 697 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 88_1_C5H1BACXX_AGTCAA_L001_R1.fastq.gz 88_1_C5H1BACXX_AGTCAA_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9602703 Surviving: 9602229 (100.00%) Dropped: 474 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 88_2_C5H1BACXX_AGTTCC_L001_R1.fastq.gz 88_2_C5H1BACXX_AGTTCC_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9524021 Surviving: 9523729 (100.00%) Dropped: 292 (0.00%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 88_3_C5H1BACXX_ATGTCA_L001_R1.fastq.gz 88_3_C5H1BACXX_ATGTCA_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 9193062 Surviving: 9191811 (99.99%) Dropped: 1251 (0.01%)
+TrimmomaticSE: Completed successfully
+TrimmomaticSE: Started with arguments:
+ 88_4_C5H1BACXX_CCGTCC_L001_R1.fastq.gz 88_4_C5H1BACXX_CCGTCC_L001_trim.fastq.gz ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
+Automatically using 1 threads
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+ILLUMINACLIP: Using 0 prefix pairs, 2 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Reads: 8875633 Surviving: 8875282 (100.00%) Dropped: 351 (0.00%)
+TrimmomaticSE: Completed successfully
+Wed Aug 10 20:08:46 AEST 2022
