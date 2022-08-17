@@ -28,6 +28,10 @@ UNTRIMMED READS PIPELINE
     -working so far
 
 04_bcftools_utr.sh:
+  job #2305865 @ 16:56 TSV/ 10:56 DXB (17/08)
+
+04_angsd_utr.sh:
+  job #2305866 @ 16:57 TSV/10:57 DXB (17/08)
 
 05_plink_utr.sh:
 

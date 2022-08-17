@@ -23,11 +23,23 @@ RNASEQ KINSHIP PIPELINE TESTING
     -resubmitted only that bit of the script
   job #2305644 @ 22:10 TSV/ 16:10 DXB (16/08)
     -working so far
-    
+
 04_bcftools.sh:
+  job #2305867 @ 16:56 TSV/ 10:56 DXB (17/08)
+
+04_angsd.sh:
+  job #2305868 @ 16:58 TSV/ 10:58 DXB (17/08)
 
 05_plink.sh:
 
 05_plinkld.sh:
 
 05_ngsrelate_utr.sh:
+
+01_fastqcstats.sh:
+    -for loop to extract info from fastq files
+    -transferred to rstudio folder on desktop 
+  job #2305872 @ 19:39 TSV/ 13:39 DXB (17/08)
+    -raw fastqc files
+  job #2305873 @ 19:40 TSV/ 13:40 DXB (17/08)
+    -trimmed fastqc files
