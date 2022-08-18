@@ -29,17 +29,28 @@ RNASEQ KINSHIP PIPELINE TESTING
 
 04_angsd.sh:
   job #2305868 @ 16:58 TSV/ 10:58 DXB (17/08)
+    -taking very long to finish
 
 05_plink.sh:
+  job #2306303 @ 16:52 TSV/ 10:52 DXB (18/08)
 
 05_plinkld.sh:
+  job #2306304 @ 16:52 TSV/ 10:52 DXB (18/08)
 
-05_ngsrelate_utr.sh:
+05_ngsrelate.sh:
 
 01_fastqcstats.sh:
     -for loop to extract info from fastq files
-    -transferred to rstudio folder on desktop 
+    -transferred to rstudio folder on desktop
   job #2305872 @ 19:39 TSV/ 13:39 DXB (17/08)
     -raw fastqc files
   job #2305873 @ 19:40 TSV/ 13:40 DXB (17/08)
     -trimmed fastqc files
+
+04_angsd_quick.sh:
+    -created to run default angsd script
+    -removed mapq filter
+    -added snp filter for samtools comparison
+    -increased # of threads for speed (from 6 to 15)
+  job #2306615 @ 21:37 TSV/ 15:36 DXB (18/08)
+    -queued after submission

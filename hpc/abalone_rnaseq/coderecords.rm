@@ -34,7 +34,9 @@ UNTRIMMED READS PIPELINE
   job #2305866 @ 16:57 TSV/10:57 DXB (17/08)
 
 05_plink_utr.sh:
+  job #2306305 @ 16:58 TSV/ 10:58 DXB (18/08)
 
 05_plinkld_utr.sh:
+  job #2306306 @ 16:58 TSV/ 10:58 DXB (18/08)
 
 05_ngsrelate_utr.sh:
