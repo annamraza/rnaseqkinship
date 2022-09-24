@@ -22,7 +22,7 @@ echo $dt
 
 zcat gl_sam.mafs.gz | cut -f5 |sed 1d >freqsam
 
-ngsrelate -g gl_sam.glf.gz -n 37 -f freqsam -O newressam -p 6
+ngsrelate -g gl_sam.glf.gz -n 37 -f freqsam -O newressam -p 6 -z bam.filelist
 
 echo $dt
 
