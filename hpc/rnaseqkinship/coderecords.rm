@@ -54,3 +54,10 @@ RNASEQ KINSHIP PIPELINE TESTING
     -increased # of threads for speed (from 6 to 15)
   job #2306615 @ 21:37 TSV/ 15:36 DXB (18/08)
     -queued after submission
+    -found in a different folder
+  job #2315685
+    -deleted
+
+  05_ngsrelate_q.sh:
+    -renamed
+  job #2315686 @ 15:09 DXB
