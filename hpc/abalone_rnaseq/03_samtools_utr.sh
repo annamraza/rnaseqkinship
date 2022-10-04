@@ -27,23 +27,23 @@ summarise_mapping(){
 
 echo $dt
 
-#for f in *.sam; do
+for f in *.sam; do
 
-#  name=$(basename $f .sam)
+  name=$(basename $f .sam)
 
-#if [ ! -f ${name}.bam ]; then
-#  samtools view -bS -q 30 ${name}.sam | samtools sort -o ${name}.bam
-#fi
+if [ ! -f ${name}.bam ]; then
+  samtools view -bS -q 30 ${name}.sam | samtools sort -o ${name}.bam
+fi
 
-#done
+done
 
-#samples=$(ls *.sam | awk -F '_[1234]' '{print $1}' | sort -u | tr '\n' \ '')
+samples=$(ls *.sam | awk -F '_[1234]' '{print $1}' | sort -u | tr '\n' \ '')
 
-#for sample in $samples; do
+for sample in $samples; do
 
-#  samtools merge -o ${sample}_merged.bam ${sample}_*.bam
+  samtools merge -o ${sample}_merged.bam ${sample}_*.bam
 
-#done
+done
 
 #echo $dt
 
@@ -57,41 +57,40 @@ echo $dt
 
 #cat 03_summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates.tsv
 
-#ls *_merged.bam > bam.filelist
+ls *_merged.bam > bam.filelist
 
 #echo $dt
 
-for f in *.sam; do
+#for f in *.sam; do
 
-  name=$(basename $f .sam)
+#  name=$(basename $f .sam)
 
-if [ ! -f ${name}_unfilt.bam ]; then
-  samtools view -bS ${name}.sam | samtools sort -o ${name}_unfilt.bam
-fi
+#if [ ! -f ${name}_unfilt.bam ]; then
+#  samtools view -bS ${name}.sam | samtools sort -o ${name}_unfilt.bam
+#fi
 
-done
+#done
 
-samples=$(ls *.fastq.gz | awk -F '_[1234]' '{print $1}' | sort -u | tr '\n' \ '')
+#samples=$(ls *.fastq.gz | awk -F '_[1234]' '{print $1}' | sort -u | tr '\n' \ '')
 
-for sample in $samples; do
+#for sample in $samples; do
 
-  samtools merge -o ${sample}_merged_unfilt.bam ${sample}_*_unfilt.bam
+#  samtools merge -o ${sample}_merged_unfilt.bam ${sample}_*_unfilt.bam
 
-done
+#done
 
-echo $dt
+#echo $dt
 
-for f in *_merged_unfilt.bam;do
+#for f in *_merged_unfilt.bam;do
 
-  input=$f
+#  input=$f
 
-  summarise_mapping $input
+#  summarise_mapping $input
 
-done>03_summary_unfilt.log
+#done>03_summary_unfilt.log
 
-cat 03_summary_unfilt.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates_unfilt.tsv
+#cat 03_summary_unfilt.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates_unfilt.tsv
 
-ls *_merged_unfilt.bam > bam_unfilt.filelist
+#ls *_merged_unfilt.bam > bam_unfilt.filelist
 
-echo $dt
-#unfiltered reads
+#echo $dt

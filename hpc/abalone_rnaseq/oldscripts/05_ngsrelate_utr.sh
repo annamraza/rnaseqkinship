@@ -20,14 +20,14 @@ dt=$(date)
 
 echo $dt
 
-zcat gl_sam_utr.mafs.gz | cut -f5 |sed 1d >freqsamutr
+zcat gl_sam_fin.mafs.gz | cut -f5 |sed 1d >freqfin
 
-ngsrelate -g gl_sam_utr.glf.gz -n 37 -f freqsamutr -O newressamutr -p 6 -z bam.filelist
+ngsrelate -g gl_sam_fin.glf.gz -n 37 -f freqfin -O newresfin -p 6
 
 echo $dt
 
-#zcat gl_sam_uf.mafs.gz | cut -f5 |sed 1d >frequf
+zcat gl_sam_uf.mafs.gz | cut -f5 |sed 1d >frequf
 
-#ngsrelate -g gl_sam_uf.glf.gz -n 37 -f frequf -O newresuf -p 6
+ngsrelate -g gl_sam_uf.glf.gz -n 37 -f frequf -O newresuf -p 6
 
-#echo $dt
+echo $dt
