@@ -51,7 +51,7 @@ for f in *_merged_unfilt.bam;do
 
 done>03_summary_unfilt.log
 
-cat 03_summary_unfilt.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates_unfilt.tsv
+cat 03_summary_unfilt.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates_ef_unfilt.tsv
 
 #ls *_merged_unfilt.bam > bam_unfilt.filelist
 
@@ -83,6 +83,6 @@ for f in *_merged.bam;do
 
 done>03_summary.log
 
-cat 03_summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates.tsv
+cat 03_summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates_ef.tsv
 
 ls *_merged.bam > bam_ef.filelist
