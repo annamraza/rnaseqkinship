@@ -37,7 +37,7 @@ for f in *_trim.fastq.gz; do
   output=${input%_C*.fastq.gz}
 
 if [ ! -f ${output}_lf.sam ]; then
-  align_reads_ef $index $input ${output}_lf.sam
+  align_reads_lf $index $input ${output}_lf.sam
 fi
 
 done

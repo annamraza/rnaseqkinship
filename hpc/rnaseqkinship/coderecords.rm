@@ -38,6 +38,7 @@ RNASEQ KINSHIP PIPELINE TESTING
   job #2306304 @ 16:52 TSV/ 10:52 DXB (18/08)
 
 05_ngsrelate.sh:
+  ???
 
 01_fastqcstats.sh:
     -for loop to extract info from fastq files
@@ -56,8 +57,12 @@ RNASEQ KINSHIP PIPELINE TESTING
     -queued after submission
     -found in a different folder
   job #2315685
-    -deleted
+    -deleted (used previous)
 
-  05_ngsrelate_q.sh:
-    -renamed
+05_ngsrelate_q.sh:
+    -renamed 05_ngsrelate.sh
   job #2315686 @ 15:09 DXB
+
+03_bowtie2_ef.sh:
+    -first script to see whether map tests work and if sam files are moved
+  job #2316758

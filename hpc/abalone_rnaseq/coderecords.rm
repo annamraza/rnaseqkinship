@@ -44,8 +44,8 @@ UNTRIMMED READS PIPELINE
   job #2306306 @ 16:58 TSV/ 10:58 DXB (18/08)
 
 05_ngsrelate_utr.sh:
-  job #
+  job # ???
     modified due to incorrect filenames; ignoring unfiltered output for now
-  job #
-
+  job #2316571 @ 23:51 DXB (03/10)
+    submitted before angsd finished
   job #2316752 @ 14:39 DXB (04/10)
