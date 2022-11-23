@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N plink
+#PBS -N plink1
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
 #PBS -l select=1:ncpus=1:mem=100gb
@@ -16,26 +16,26 @@ set -e
 
 module load singularity
 
-dt=$(date)
+#dt=$(date)
 
-echo $dt
+#echo $dt
 
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfilt.bcf --genome --allow-extra-chr --double-id
+singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfilt1.bcf --genome --allow-extra-chr --double-id
 
-echo $dt
+#echo $dt
 
-for f in plink.*;do
-mv -- "$f" "filt_$f"
-done
+#for f in plink.*;do
+#mv -- "$f" "filt_$f"
+#done
 
-echo $dt
+#echo $dt
 
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsunfilt.bcf --genome --allow-extra-chr --double-id
+#singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsunfilt.bcf --genome --allow-extra-chr --double-id
 
-echo $dt
+#echo $dt
 
-for f in plink.*;do
-mv -- "$f" "unfilt_$f"
-done
+#for f in plink.*;do
+#mv -- "$f" "unfilt_$f"
+#done
 
-echo $dt
+#echo $dt

@@ -1,10 +1,10 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N ngsrelateutr
+#PBS -N ngsrelateutrraw
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
-#PBS -l walltime=48:00:00
-#PBS -l select=1:ncpus=6:mem=200gb
+#PBS -l walltime=72:00:00
+#PBS -l select=1:ncpus=10:mem=200gb
 
 cd $PBS_O_WORKDIR
 shopt -s expand_aliases
@@ -16,18 +16,10 @@ set -e
 
 module load ngsrelate/2.0
 
-dt=$(date)
+#zcat gl_sam_utr.mafs.gz | cut -f5 |sed 1d >freqsamutr
 
-echo $dt
+#ngsrelate -g gl_sam_utr.glf.gz -n 37 -f freqsamutr -O newressamutr -p 6 -z bam.filelist
 
-zcat gl_sam_utr.mafs.gz | cut -f5 |sed 1d >freqsamutr
+zcat gl_sam_utr_raw.mafs.gz | cut -f5 |sed 1d >frequfraw
 
-ngsrelate -g gl_sam_utr.glf.gz -n 37 -f freqsamutr -O newressamutr -p 6 -z bam.filelist
-
-echo $dt
-
-#zcat gl_sam_uf.mafs.gz | cut -f5 |sed 1d >frequf
-
-#ngsrelate -g gl_sam_uf.glf.gz -n 37 -f frequf -O newresuf -p 6
-
-#echo $dt
+ngsrelate -g gl_sam_uf_raw.glf.gz -n 37 -f frequfraw -O newresufraw -p 10 -z bam_unfilt.filelist

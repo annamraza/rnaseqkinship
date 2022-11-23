@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N ngsrelatefin
+#PBS -N ngsrelate1
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
 #PBS -l select=1:ncpus=6:mem=200gb
@@ -20,9 +20,9 @@ dt=$(date)
 
 echo $dt
 
-zcat gl_sam.mafs.gz | cut -f5 |sed 1d >freqsam
+zcat gl_sam1.mafs.gz | cut -f5 |sed 1d >freqsam1
 
-ngsrelate -g gl_sam.glf.gz -n 37 -f freqsam -O newressam -p 6 -z bam.filelist
+ngsrelate -g gl_sam1.glf.gz -n 31 -f freqsam1 -O newressam1 -p 6 -z bam1.filelist
 
 echo $dt
 

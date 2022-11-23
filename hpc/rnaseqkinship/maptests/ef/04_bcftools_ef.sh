@@ -4,7 +4,7 @@
 #PBS -N bcftoolsef
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=36:00:00
-#PBS -l select=1:ncpus=1:mem=200gb
+#PBS -l select=1:ncpus=1:mem=384gb
 
 cd $PBS_O_WORKDIR
 shopt -s expand_aliases

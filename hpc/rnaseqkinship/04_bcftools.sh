@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N bcftoolstimed
+#PBS -N bcftools1
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=36:00:00
 #PBS -l select=1:ncpus=1:mem=200gb
@@ -16,19 +16,19 @@ set -e
 
 module load bcftools
 
-dt=$(date)
+#dt=$(date)
 
-echo $dt
+#echo $dt
 
-bcftools mpileup -Ou -f haliotis_genome.fa --bam-list bam.filelist | bcftools call -mv -Ob -o snpcallsfilt.bcf
+bcftools mpileup -Ou -f haliotis_genome.fa --bam-list bam1.filelist | bcftools call -mv -Ob -o snpcallsfilt1.bcf
 
-echo $dt
+#echo $dt
 
-bcftools filter -e 'GT="." & QUAL<20 & DP<10' snpcallsfilt.bcf -Ob -o callsfilt.bcf
+bcftools filter -e 'GT="." & QUAL<20 & DP<10' snpcallsfilt1.bcf -Ob -o callsfilt1.bcf
 
-echo $dt
+#echo $dt
 
 #no filters snp calling
-bcftools mpileup -Ou -f haliotis_genome.fa --bam-list bam_unfilt.filelist | bcftools call -mv -Ob -o callsunfilt.bcf
+#bcftools mpileup -Ou -f haliotis_genome.fa --bam-list bam_unfilt.filelist | bcftools call -mv -Ob -o callsunfilt.bcf
 
-echo $dt
+#echo $dt
