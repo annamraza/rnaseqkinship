@@ -1,10 +1,10 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N ngsrelate_bcf
+#PBS -N plinkpca
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
-#PBS -l select=1:ncpus=15:mem=200gb
+#PBS -l select=1:ncpus=1:mem=100gb
 
 cd $PBS_O_WORKDIR
 shopt -s expand_aliases
@@ -14,6 +14,12 @@ echo "Working directory is $PBS_O_WORKDIR"
 
 set -e
 
-module load ngsrelate/2.0
+module load singularity
 
-ngsrelate  -h calls20.vcf -O vcf.res -n 37 -p 15 -z bam_20.filelist
+echo time
+
+singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfilt.bcf --allow-extra-chr --double-id --pca
+
+echo time
+
+echo walltime

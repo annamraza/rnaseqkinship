@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N angsd1
+#PBS -N angsd_beagle
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
 #PBS -l select=1:ncpus=15:mem=200gb
@@ -16,4 +16,10 @@ set -e
 
 module load angsd
 
-angsd -bam bam1.filelist -GL 1 -out gl_sam1 -doMaf 2 -doMajorMinor 1 -P 15 -minQ 20 -doCounts 1 -setMinDepth 10 -doGlf 3 -SNP_pval 1e-6
+#for ngsrelate
+
+#angsd -bam bam.filelist -GL 1 -out gl_sam -doMaf 2 -doMajorMinor 1 -P 15 -minQ 20 -doCounts 1 -setMinDepth 10 -doGlf 3 -SNP_pval 1e-6
+
+#for PCAngsd
+
+angsd -bam bam.filelist -GL 1 -out gl_sam_beag -doMaf 2 -doMajorMinor 1 -P 15 -minQ 20 -doCounts 1 -setMinDepth 10 -doGlf 2 -SNP_pval 1e-6
