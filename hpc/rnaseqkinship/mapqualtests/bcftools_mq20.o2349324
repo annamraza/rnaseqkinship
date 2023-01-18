@@ -1,0 +1,11 @@
+Job identifier is 2349324.jobmgr1
+Working directory is /home/jc475572/rnaseqkinship/mapqualtests
+
+bcftools v1.13 software is available in a singularity container.
+To use bcftools v1.13, prepend the relevant, traditional command
+used for application execution with:
+	singularity run $SING/bcftools-1.13.sif
+
+[E::fai_build3_core] Failed to open the file haliotis_genome.fa
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+Failed to read from standard input: unknown file type

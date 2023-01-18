@@ -4,7 +4,7 @@
 #PBS -N ngsrelateld
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
-#PBS -l select=1:ncpus=6:mem=200gb
+#PBS -l select=1:ncpus=1:mem=200gb
 
 cd $PBS_O_WORKDIR
 shopt -s expand_aliases
@@ -16,6 +16,8 @@ set -e
 
 module load ngsrelate/2.0
 
-zcat gl_sam_ld.mafs.gz | cut -f5 |sed 1d >freqsamld
+#zcat gl_sam_ld.mafs.gz | cut -f5 |sed 1d >freqsamld
 
-ngsrelate -g gl_sam_ld.glf.gz -n 37 -f freqsamld -O newressamld -p 6 -z bam_ld.filelist
+#ngsrelate -g gl_sam_ld.glf.gz -n 37 -f freqsamld -O newressamld -p 6 -z bam_ld.filelist
+
+ngsrelate  -h callsfilt_ld.vcf -O vcf_ld.res -n 37 -z bam_ld.filelist

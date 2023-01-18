@@ -53,8 +53,6 @@ done>03_summary_unfilt.log
 
 cat 03_summary_unfilt.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates_ef_unfilt.tsv
 
-#ls *_merged_unfilt.bam > bam_unfilt.filelist
-
 #create filtered bam files for snp calling
 
 for f in *_ef.sam; do

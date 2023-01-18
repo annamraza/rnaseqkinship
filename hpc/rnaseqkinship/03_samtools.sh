@@ -52,3 +52,12 @@ done>03_summary.log
 cat 03_summary.log | awk 'OFS="\t"{print $1,$37}' | sed 's/(//' | sed 's/%//' > mapping_rates.tsv
 
 ls *_merged.bam > bam.filelist
+
+for f in *_merged.bam; do
+  file=$f
+  read=$(samtools view -c $file)
+  prim=$(samtools view -c -F 260 $file)
+
+  echo "$file $read total mapped reads $prim primary mapped reads"
+
+done>mq30_reads.txt

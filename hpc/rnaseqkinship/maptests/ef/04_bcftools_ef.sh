@@ -18,4 +18,8 @@ module load bcftools
 
 bcftools mpileup -Ou -f haliotis_genome.fa --bam-list bam_ef.filelist | bcftools call -mv -Ob -o snpcallsfilt_ef.bcf
 
-bcftools filter -e 'GT="." & QUAL<20 & DP<10' snpcallsfilt_ef.bcf -Ob -o callsfilt_ef.bcf
+bcftools filter -e 'QUAL<20 & DP<10' snpcallsfilt_ef.bcf -Oz -o callsfilt_ef.vcf
+
+#for snps
+
+bcftools query -f '%CHROM %POS\n' callsfilt_ef.vcf >bcf_ef.txt

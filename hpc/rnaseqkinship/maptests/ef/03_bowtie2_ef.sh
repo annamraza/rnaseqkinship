@@ -42,4 +42,4 @@ fi
 
 done
 
-mv *_ef.sam ~/rnaseqkinship/maptests/ef
+#mv *_ef.sam ~/rnaseqkinship/maptests/ef

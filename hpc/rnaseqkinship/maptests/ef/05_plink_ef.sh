@@ -16,18 +16,8 @@ set -e
 
 module load singularity
 
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfilt_ef.bcf --genome --allow-extra-chr --double-id
+singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --vcf callsfilt_ef.vcf --genome --allow-extra-chr --double-id
 
 for f in plink.*;do
-mv -- "$f" "filt_$f"
-done
-
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfilt_ef.bcf --indep 50 5 2 --allow-extra-chr
-
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfilt_ef.bcf --extract plink.prune.in --make-bed --out pruneddataef --allow-extra-chr
-
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bfile pruneddataef --genome --allow-extra-chr --double-id
-
-for f in plink.*;do
-mv -- "$f" "ldfilt_$f"
+mv -- "$f" "ef_$f"
 done

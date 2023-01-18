@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N mappingtimed
+#PBS -N mapping
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=72:00:00
 #PBS -l select=1:ncpus=1:mem=200gb
@@ -16,8 +16,6 @@ set -e
 
 module load bowtie2
 
-dt=$(date)
-
 GENOME=haliotis_genome.fa
 
 align_reads(){
@@ -28,8 +26,6 @@ align_reads(){
     bowtie2 -x $index -U $input -S $output
 }
 
-
-echo $dt
 
 bowtie2-build -f $GENOME haliotis_gen
 
@@ -44,5 +40,3 @@ if [ ! -f ${output}.sam ]; then
 fi
 
 done
-
-echo $dt

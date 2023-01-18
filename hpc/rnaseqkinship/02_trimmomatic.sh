@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N trimreadstimed
+#PBS -N trimreads
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=24:00:00
 #PBS -l select=1:ncpus=1:mem=200gb
@@ -14,8 +14,6 @@ echo "Working directory is $PBS_O_WORKDIR"
 
 module load trimmomatic
 
-dt=$(date)
-
 set -e
 
 trim_reads(){
@@ -24,8 +22,6 @@ trim_reads(){
 
 TrimmomaticSE $input $output ILLUMINACLIP:TruSeq3-SE.fa:2:30:10
 }
-
-echo $dt
 
 for f in *.fastq.gz; do
 
@@ -38,5 +34,3 @@ for f in *.fastq.gz; do
   fi
 
 done
-
-echo $dt

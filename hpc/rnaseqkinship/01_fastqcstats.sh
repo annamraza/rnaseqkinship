@@ -16,14 +16,10 @@ dt=$(date)
 
 set -e
 
-echo $dt
-
 for f in *.zip; do
   input=$f
   name=${input%_C*_fastqc.zip}
   nums=$(unzip -c $f *data.txt|awk 'NR==9||NR==11 {print$3}'|tr '\n' \ '')
 
   echo $name $nums
-done>fastqfilestrimmed.tsv
-
-echo $dt
+done>fastqfiles.tsv

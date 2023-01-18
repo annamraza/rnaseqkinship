@@ -4,7 +4,7 @@
 #PBS -N angsdlf
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=150:00:00
-#PBS -l select=1:ncpus=40:mem=384gb
+#PBS -l select=1:ncpus=8:mem=350gb
 
 cd $PBS_O_WORKDIR
 shopt -s expand_aliases
@@ -16,4 +16,8 @@ set -e
 
 module load angsd
 
-angsd -bam bam_lf.filelist -GL 1 -out gl_sam_lf -doMaf 2 -doMajorMinor 1 -P 40 -minQ 20 -doCounts 1 -setMinDepth 10 -doGlf 3 -SNP_pval 1e-6
+angsd -bam bam_lf.filelist -GL 1 -out gl_sam_lf -doMaf 2 -doMajorMinor 1 -P 8 -minQ 20 -doCounts 1 -setMinDepth 10 -doGlf 3 -SNP_pval 1e-6
+
+#for snps
+
+zcat gl_sam_lf.mafs.gz | cut -f 1,2 | sed 1d >angsd_lf.txt
