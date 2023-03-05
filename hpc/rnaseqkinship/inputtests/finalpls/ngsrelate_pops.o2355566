@@ -1,0 +1,71 @@
+Job identifier is 2355566.jobmgr1
+Working directory is /home/jc475572/rnaseqkinship/inputtests/pops
+
+ngsrelate v2.0 software is available in a singularity container.
+To use ngsrelate v2.0, prepend the relevant, traditional command
+used for application execution with:
+	singularity run $SING/ngsrelate-2.0.sif
+
+	-> Number of file names read:9
+	-> Seed is: 910597009
+	-> Frequency file: 'freqp1' contain 286330 number of sites
+	-> nind:9 overall_number_of_sites:286330
+	-> Done reading data from file: 0.35 0.00
+	-> Starting analysis now
+	-> length of joblist:36
+	[ALL done] cpu-time used =  21.68 sec (filereading took: 0.35 sec)
+	[ALL done] walltime used =  4.00 sec (filereading took: 0.00 sec)
+	-> Number of file names read:9
+	-> Seed is: 776402032
+	-> Will use TAG: 'PL' from the VCF file
+	-> Will use TAG: 'AFngsrelate' in the VCF file as allele frequency if present. Otherwise allele frequencies are estimated from the data
+	-> readbcfvcf seek:(null) nind:9
+	-> [file='snpcallsfilt_p1.vcf'][chr='(null)'] Read 787351 records 753989 of which were SNPs. Number of sites used for downstream analysis (MAF >= 0.050000):332268
+	-> nind:9 overall_number_of_sites:332268
+	-> Done reading data from file: 3.11 3.00
+	-> Starting analysis now
+	-> length of joblist:36
+	[ALL done] cpu-time used =  24.76 sec (filereading took: 3.11 sec)
+	[ALL done] walltime used =  9.00 sec (filereading took: 3.00 sec)
+	-> Number of file names read:15
+	-> Seed is: 2019779829
+	-> Frequency file: 'freqp2' contain 327198 number of sites
+	-> nind:15 overall_number_of_sites:327198
+	-> Done reading data from file: 0.62 0.00
+	-> Starting analysis now
+	-> length of joblist:105
+	[ALL done] cpu-time used =  52.18 sec (filereading took: 0.62 sec)
+	[ALL done] walltime used =  10.00 sec (filereading took: 0.00 sec)
+	-> Number of file names read:15
+	-> Seed is: 828948185
+	-> Will use TAG: 'PL' from the VCF file
+	-> Will use TAG: 'AFngsrelate' in the VCF file as allele frequency if present. Otherwise allele frequencies are estimated from the data
+	-> readbcfvcf seek:(null) nind:15
+	-> [file='snpcallsfilt_p2.vcf'][chr='(null)'] Read 855176 records 816810 of which were SNPs. Number of sites used for downstream analysis (MAF >= 0.050000):320945
+	-> nind:15 overall_number_of_sites:320945
+	-> Done reading data from file: 4.46 4.00
+	-> Starting analysis now
+	-> length of joblist:105
+	[ALL done] cpu-time used =  52.24 sec (filereading took: 4.46 sec)
+	[ALL done] walltime used =  17.00 sec (filereading took: 4.00 sec)
+	-> Number of file names read:13
+	-> Seed is: 1021860167
+	-> Frequency file: 'freqp3' contain 287256 number of sites
+	-> nind:13 overall_number_of_sites:287256
+	-> Done reading data from file: 0.49 1.00
+	-> Starting analysis now
+	-> length of joblist:78
+	[ALL done] cpu-time used =  35.30 sec (filereading took: 0.49 sec)
+	[ALL done] walltime used =  8.00 sec (filereading took: 1.00 sec)
+	-> Number of file names read:13
+	-> Seed is: 744264345
+	-> Will use TAG: 'PL' from the VCF file
+	-> Will use TAG: 'AFngsrelate' in the VCF file as allele frequency if present. Otherwise allele frequencies are estimated from the data
+	-> readbcfvcf seek:(null) nind:13
+	-> [file='snpcallsfilt_p3.vcf'][chr='(null)'] Read 796988 records 762113 of which were SNPs. Number of sites used for downstream analysis (MAF >= 0.050000):298977
+	-> nind:13 overall_number_of_sites:298977
+	-> Done reading data from file: 3.83 4.00
+	-> Starting analysis now
+	-> length of joblist:78
+	[ALL done] cpu-time used =  37.97 sec (filereading took: 3.83 sec)
+	[ALL done] walltime used =  13.00 sec (filereading took: 4.00 sec)
