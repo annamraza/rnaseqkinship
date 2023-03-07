@@ -1,6 +1,5 @@
 Shell scripts used in the final iteration of the pipeline using RNA-seq data for kinship analysis of greenlip abalone (Haliotis laevigata)
 
-#add pipeline image here?
 
 Data Pre-Processing
 
@@ -45,17 +44,13 @@ Tried to keep filters constant although genotype being called is unique to bcfto
           Ran for both unfiltered and filtered bam files
           ii) Filtering
           Filters include genotype called, min depth of 10, SNP Q of 20
-          Only run with filtered bam files, to include mapq of 30 to match angsd outputs 
+          Only run with filtered bam files, to include mapq of 30 to match angsd outputs
 
 4) IBD Calculations
           a) NGSrelate
           b) PLINK
             i) Raw Data
             ii) LD Pruned
-
-
-#5) Pedigree Reconstruction
-          a) PRIMUS
 
 #Pipeline Evaluation (speed vs accuracy?)
 
