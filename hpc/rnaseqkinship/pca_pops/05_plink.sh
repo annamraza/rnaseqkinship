@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -N plink
+#PBS -N plink_pca
 #PBS -M FIRSTNAME.LASTNAME@jcu.edu.au
 #PBS -l walltime=48:00:00
 #PBS -l select=1:ncpus=1:mem=100gb
@@ -15,19 +15,5 @@ echo "Working directory is $PBS_O_WORKDIR"
 set -e
 
 module load singularity
-
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bcf callsfilt.bcf --genome --allow-extra-chr --double-id
-
-for f in plink.*;do
-mv -- "$f" "bcf_$f"
-done
-
-singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --vcf callsfilt.vcf --genome --allow-extra-chr --double-id
-
-for f in plink.*;do
-mv -- "$f" "vcf_$f"
-done
-
-#for PCA
 
 singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --vcf callsfilt.vcf --allow-extra-chr --double-id --pca

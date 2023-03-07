@@ -25,7 +25,3 @@ singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --vcf callsfilt.vcf 
 singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --vcf callsfilt.vcf --extract plink.prune.in --make-bed --out pruneddata --allow-extra-chr
 
 singularity run /sw/containers/plink-1.90b6.21.sif plink1.9 --bfile pruneddata --genome --allow-extra-chr --double-id
-
-for f in plink.*;do
-mv -- "$f" "ldfilt_$f"
-done
