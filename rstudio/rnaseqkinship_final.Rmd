@@ -1,0 +1,1544 @@
+---
+title: "rnaseqkinship_final"
+output:
+  html_document: default
+  pdf_document: default
+date: "2022-12-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readxl)
+library(tidyverse)
+library(ggVennDiagram)
+library(yardstick)
+library(viridis)
+library(ggforce)
+library(ggrepel)
+
+```
+
+##1) Quality Control
+
+FASTQC was run on each file individually, before and after trimming, with the script 01_fastqc.sh. Sample name, reads and sequence lengths were extracted using 01_fastqcstats.sh (run in both fastqc and fastqc/trimmed) and saved as .tsv files (fastqfiles.tsv, fastqfilestrimmed.tsv), which are analysed below. 
+
+```{r qc, echo = FALSE , warning = FALSE , message = FALSE}
+
+#Raw fastq files 
+
+fastq_raw <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/fastqfiles.tsv", quote = "\"", comment.char = "") %>%
+  separate (V1, c("Sample", "Number"), sep = "_") %>%
+  select (1:3) %>%
+  rename ("Reads" = V2) %>%
+  mutate ("Data" = "Raw")
+
+#Trimmed fastq files
+
+fastq_trim <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/fastqfilestrimmed.tsv", quote= "\"" , comment.char = "") %>%
+  separate (V1, c("Sample", "Number"), sep = "_") %>%
+  select (1:3) %>%
+  rename ("Reads" = V2) %>%
+  mutate ("Data" = "Trimmed")
+
+#Table summarising reads 
+
+fastqtable <- rbind(fastq_raw, fastq_trim) %>%
+  group_by(Data) %>%
+  summarise(
+    Total = sum(Reads),
+    Average = mean(Reads),
+    Maximum = max(Reads),
+    Minimum = min(Reads)
+    )
+
+```
+
+##2) Trimming
+
+Trimmomatic was run using 02_trimmomatic.sh with default settings, but only adapters were trimmed (ILLUMINACLIP:TruSeq3-SE.fa:2:30:10). File names, total reads, retained reads and discarded reads were extracted from the output file using a for loop in console, saved as trimstats.txt, which is analysed below.
+
+```{r trim, echo = FALSE , warning = FALSE , message = FALSE}
+
+#details of reads from trimmomatic output
+
+trimstats <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/trimstats.txt", header = FALSE) %>%
+  separate(V1, c("Sample", "Number"), sep = "_") %>%
+  separate(V2, c("Total", "Retained", "Discarded"), sep = " ")  %>% 
+  select(1:5) %>%
+  gather(Data, Reads, Total:Discarded) %>%
+  mutate_at('Reads', as.numeric)
+
+#summary table
+
+trimtable <- trimstats %>%
+  group_by(Data) %>%
+  summarise(
+    Total = sum(Reads),
+    Average = mean(Reads),
+    Maximum = max(Reads),
+    Minimum = min(Reads)
+    )
+  
+trimtable
+
+#how were reads trimmed across samples?
+
+totr <- ggplot(trimstats %>%
+                 filter(Data != "Total") %>%
+                 group_by(Sample, Data) %>%
+                 summarise(Reads = sum(Reads)), 
+               aes(x = Sample, y = Reads, fill = Data)) +
+  geom_col() +
+  scale_y_sqrt() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_fill_viridis(option="mako", discrete = TRUE, begin = 0.50, end = 1)
+
+plot(totr)
+
+```
+
+## 3) Mapping
+
+bowtie2 was run on all samples using 03_bowtie2.sh. The resulting .sam files were converted to .bam files with a mapping quality filter of 30; each set was merged and used to find alignment summaries, with 03_samtools.sh. These alignment summaries are saved as mapping_rates.tsv. 03_samtools.sh also included a for loop to extract total and primary aligned reads after filtering for MQ30, whch were saved as mq30_reads.txt.
+
+```{r map, echo = FALSE , warning = FALSE , message = FALSE}
+
+bowtie2_mq30 <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/mq30_mapping_rates.tsv", header = FALSE) %>%
+  rename (Sample = V1,
+          Filtered = V2) %>%
+  mutate_at('Sample' , as.character)
+
+mean(bowtie2_mq30$Filtered)
+#Mean mapping rates in pipeline
+
+#mapped files with no mapping quality filter; this is more to compare how other mapping methods work, since the filtration will lead to 100% mapping rate in most cases
+
+mean(bowtie2$MQ0)
+
+bowtie2 <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/mq30_mapping_rates_unfilt.tsv", header = FALSE) %>%
+  separate(V1, c("Sample"), sep = "_") %>%
+  rename(MQ0 = V2) %>%
+  mutate_at('Sample', as.character)
+
+#visual of how well each sample maps to genome before and after filtration
+
+maprates <- ggplot (bowtie2 %>% 
+                      inner_join(bowtie2_mq30, by = "Sample") %>%
+                      mutate(MQ30 = Filtered - MQ0) %>%
+                      gather(Parameter, Mapping, MQ0:MQ30, factor_key=TRUE) %>%
+                      filter(Parameter != 'Filtered') %>%
+                      mutate(Mapping_Quality = fct_rev(Parameter)), 
+                    aes(x = Sample, y = Mapping, fill = Mapping_Quality)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_fill_viridis(name ="Mapping Quality" , option="mako", discrete = TRUE, begin = 0.65, end = 1) +
+  labs(y = 'Mapping Rates')
+  
+plot(maprates)
+
+#file summarising how many reads were aligned successfully
+
+mq30_reads <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/mq30_reads.txt", quote="\"", comment.char="") %>%
+  separate (V1, "Sample", sep = "_") %>%
+  rename( Total = V2,
+          Primary = V6) %>%
+  select(Sample, Total, Primary) 
+
+#Table of aligned reads, total and primary  
+
+maptable <- mq30_reads %>%
+  gather(Reads, Count, Total:Primary) %>%
+  group_by(Reads) %>%
+  summarise(
+    Total = sum(Count),
+    Average = mean(Count),
+    Maximum = max(Count),
+    Minimum = min(Count)
+    )
+  
+maptable
+
+```
+
+## 4) Variant Calling
+
+Variant calling was done using two programs. The first, ANGSD, was run with 04_angsd_quick.sh, which used the samtools calculation method (GL 1), a minimum SNP quality of 20 and a minimum read depth of 10; the output files were saved as gl_sam, with various file types. The second, BCFtools, was run with 04_bcftools.sh, and the resulting SNPS (snpcallsfilt.bcf) were filtered for a minimum SNP quality of 20 and a minimum read depth of 10; these were saved as callsfilt.bcf. To compare, the number of SNPs called for each program, and how many were called by both, are visualised in the diagram below.
+
+```{r snps, echo = FALSE , warning = FALSE , message = FALSE}
+
+angsdsnps <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/angsdsnps.txt", quote = "\"", comment.char = "") %>%
+  unite (a, V1:V2 , sep="0" ) %>%
+  separate (a, c("Sample", "Number"), sep="_")
+
+bcfsnps<- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/bcfsnps.txt", quote = "\"", comment.char = "") %>%
+  unite ( b, V1:V2 , remove=TRUE, sep="0" ) %>%
+  separate (b, c("Sample", "Number"), sep="_")
+
+#Venn diagram similar to Fig. 4 in Kornelliusen, Albrechtsun & Nielsen 2014
+
+snps <- list (bcfsnps$Number, angsdsnps$Number)
+
+s2 <- ggVennDiagram(snps,
+                    category.names = c('BCFtools' , 'ANGSD'),
+                    label_alpha = 0 , 
+                    label = "count",
+                    edge_size = 2) +
+  scale_fill_viridis(option="mako", begin = 0.65, end = 1) +
+  scale_color_brewer(palette = "Greys") +
+  #scale_color_viridis(option = "mako", begin = 0.65, end = 1, discrete = TRUE, direction = -1) +
+  theme(legend.position = "none")
+  
+
+plot(s2)
+
+
+```
+
+## 5) Kinship Analysis
+
+IBD values were calculated differently for each variant calling method. NGSrelate was run on the ANGSD output with 05_ngsrelate_q.sh, with values recorded in newressam. Plink was run on the BCFtools output with 05_plink.sh and 05_plinkld.sh, with the latter trimming SNPs for linkage disequilibrium with settings recommended by Plink; the IBD values were recorded in filt_plink.genome and ldfilt_plink.genome, respectively. k0/k1 and k1/k2 graphs show the results for each method's IBD approximations.
+
+1. IBD graphs
+
+```{r IBD, echo = FALSE , warning = FALSE , message = FALSE}
+
+#ANGSD/NGSrelate IBD values
+
+ngsrelate <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/newressam") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "ANGSD/NGS") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+#BCFtools/PLINK IBD values
+
+plink <- read.csv("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/ldfilt_plink.genome", sep="") %>%
+  select (FID1, FID2, Z0, Z1, Z2) %>%
+  rename (k0 = Z0,
+          k1 = Z1,
+          k2 = Z2) %>%
+  mutate (Pipeline = "BCF/PLINK")
+
+#BCFtools/NGSrelate IBD values
+
+bcfngs <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/vcf.res") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "BCF/NGS") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+#Expected values 
+
+expected <- read_excel("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/expected.xlsx") %>%
+  separate (FID1, "a", sep = "_") %>%
+  separate (FID2, "b", sep = "_") %>%
+  rename(FID1 = a,
+         FID2 = b) %>%
+  mutate_at(c("FID1", "FID2", "k0", "k1", "k2"), as.numeric) %>%
+  mutate (Pipeline = "Expected")
+
+
+#graphs
+
+kvalues <- full_join (ngsrelate, expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2")) %>%
+  bind_rows(full_join(bcfngs,
+                      expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(full_join(plink, expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(expected %>%
+              select(1:6, 9)) 
+
+kvalues$exp_relationship <- factor(kvalues$exp_relationship , levels = c("Full Siblings" , "Half-siblings" , "First Cousins", "Unrelated"))
+
+ibd_k0k1 <- ggplot(kvalues) +
+  geom_point(data = kvalues %>%
+               filter(Pipeline != "Expected"),
+             size = 2.5,
+             aes(x = k0 , y = k1 , color = exp_relationship )) +
+  geom_jitter(data = kvalues %>%
+                filter(Pipeline == "Expected"),
+              size = 2.5,
+              aes(x = k0 , y = k1 , color = exp_relationship ) , width = 0.02, height = 0.02) +
+  facet_grid(rows = vars(Pipeline)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.5, end = 0.95) +
+  labs(x = "k0" , y = "k1" , color = "Relationship") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 17) , text = element_text(size = 17))
+
+ibd_k1k2 <- ggplot(kvalues) +
+  geom_point(data = kvalues %>%
+               filter(Pipeline != "Expected"),
+             size = 2.5,
+             aes(x = k1 , y = k2 , color = exp_relationship )) +
+  geom_jitter(data = kvalues %>%
+               filter(Pipeline == "Expected"),
+              size = 2.5,
+              aes(x = k1 , y = k2 , color = exp_relationship ) , width = 0.02, height = 0.02) +
+  facet_grid(rows = vars(Pipeline)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.5, end = 0.95) +
+  labs(x = "k1" , y = "k2" , color = "Relationship") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 17) , text = element_text(size = 17))
+
+plot(ibd_k0k1)
+
+plot(ibd_k1k2)
+
+```
+
+NGSrelate seems to have more accurate values than PLINK; PLINK has underestimated the k0 values overall and there is no pattern in how the various categories are distributed; there is some structure in NGSrelate but still a lot of overlap. PLINK seems to have a corresponding inflation in k2 values.
+
+
+2. Range of k values
+
+```{r k values, echo = FALSE , warning = FALSE , message = FALSE}
+
+krange <- kvalues %>%
+  filter(Pipeline != "Expected") %>%
+  mutate(Prediction = Pipeline) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "ANGSD/NGS",
+                     Prediction = "Expected")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "BCF/PLINK",
+                     Prediction = "Expected")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "BCF/NGS",
+                     Prediction = "Expected")) %>%
+  unite(rel, FID1:FID2, sep = "/") %>%
+  gather(coeff, val, 2:4)
+
+
+krange$exp_relationship <- factor(krange$exp_relationship , levels = c("Full Siblings" , "Half-siblings" , "First Cousins", "Unrelated"))
+
+k_ranges <- ggplot(krange) +
+  geom_point(data = krange %>%
+               filter(Prediction != "Expected"),
+             size = 3,
+             aes(x = val , y = Pipeline, color = Prediction)) +
+  geom_point(data = krange %>%
+               filter(Prediction == "Expected"),
+             size = 3,
+             color = "grey32",
+             aes(x = val , y = Pipeline)) +
+  geom_point(data = krange %>%
+               filter(Prediction == "Expected"),
+             size = 1.5,
+             color = "white",
+             aes(x = val , y = Pipeline)) +
+  facet_grid(cols = vars(coeff) , rows = vars(exp_relationship) , scales = "free") +
+  #scale_shape_manual(values = c(16, 20)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.65, end = 0.95, direction = -1) +
+  labs(x = "" , y = "" , color = "Pipeline") +
+  theme_bw() +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        strip.text = element_text(size = 17) , 
+        text = element_text(size = 17)) +
+  guides(shape = FALSE)
+  
+  
+plot(k_ranges)
+
+```
+
+Values are expected to be lower than the gold standard. NGS overestimates k0 for siblings and half-siblings, and overestimates k2 values for unrelated and all half-siblings. Biological reasons for this? Plink overestimates k2 overall, and has a similar pattern for k0 underestimation in unrelated samples, although siblings are overestimated. Combo of biological and pipeline issues?
+
+3. Two-Class ROC
+
+Both predicted IBD estimates and actual relationships were used to classify each pair as related or unrelated. The predicted vs actual relationships were then compared to analyse performance.
+
+```{r two-class ROC, echo = FALSE , warning = FALSE , message = FALSE}
+
+#Two-class test
+
+#converting actual relationships into either related or unrelated, considering only 2nd degree relationships as related ie. full siblings and half-siblings
+
+expected_roc <- expected %>%
+  select(!(k0:k2)) %>%
+  select(!Pipeline) %>%
+  mutate (Expected = ifelse(exp_relationship == "Unrelated", "Unrelated",
+          ifelse(exp_relationship == "Cousin", "Unrelated", "Related"))) %>%
+  mutate_at("Expected", as.factor) %>%
+  mutate_at(c("FID1","FID2"), as.integer)
+
+
+#function to convert predicted IBD values into related or unrelated categories using k cut-offs from k0/k1 graph
+
+obs_bin <- function(data){
+  data %>%
+  mutate (Conservative = ifelse((k0 <= 0.75) & (k1 >= 0.15) , "Related" , "Unrelated")) %>%
+  mutate (Moderate = ifelse((k0 <= 0.85) & (k1 >= 0.05) , "Related", "Unrelated")) %>%
+  gather(Level, Observed, Conservative:Moderate) %>%
+  mutate_at("Observed", as.factor) %>%
+  left_join(expected_roc, by = c("FID1", "FID2")) %>%
+  mutate(Related = ifelse (Observed == "Related", 1, 0))
+}
+
+#function to compare expected vs observed using yardstick functions; initial performance analysis
+
+bm1 <- function(data, var){
+  data %>%
+    filter(Level == var) %>%
+    conf_mat(Expected, Observed) %>%
+    summary() %>%
+    select(!(2)) %>%
+    spread('.metric','.estimate') %>%
+    mutate(Level = var) 
+} 
+
+#function to bind data together for moderate and conservative cut-offs for each pipeline
+
+bm2 <- function(data, pg){
+  bm1(data, "Conservative") %>%
+  bind_rows(bm1(data, "Moderate")) %>%
+    mutate(Program = pg)
+}
+
+#the binary relationships for each of the pipelines
+
+ngs_roc <- obs_bin(ngsrelate)
+bcfngs_roc <- obs_bin(bcfngs)
+plink_roc <- obs_bin(plink %>%
+                       select(!Pipeline))
+
+#the summary of performance for each of the pipelines
+
+binary_summary <- rbind(bm2(ngs_roc, "ANGSD/NGS"),bm2(plink_roc, "BCF/PLINK"),bm2(bcfngs_roc, "BCF/NGS")) %>%
+  mutate(Accuracy = accuracy*100,
+         Bal_Accuracy = bal_accuracy*100,
+         Sensitivity = sens*100,
+         Specificity = spec*100) %>%
+  select(14:19)
+
+binary_summary
+
+```
+
+Again, NGSrelate performs better than Plink. For NGS and Plink, it is easiest to distinguish between samples that share parents vs unrelated samples (siblings and half-siblings), with full siblings the second easiest for NGS and same family the second best for Plink (ie. all samples from the same region). 
+
+```{r two-class ROC 3rd deg, echo = FALSE , warning = FALSE , message = FALSE}
+
+#Two-class classifier summary stats: for 3rd degree relationships
+
+expected_roc_3 <- expected %>%
+  select(!(k0:k2)) %>%
+  select(!Pipeline) %>%
+  mutate (Expected = ifelse(exp_relationship == "Unrelated", "Unrelated","Related")) %>%
+  mutate_at("Expected", as.factor) %>%
+  mutate_at(c("FID1","FID2"), as.integer)
+
+obs_bin_3 <- function(data){
+  data %>%
+  mutate (Conservative = ifelse((k0 <= 0.75) & (k1 >= 0.15) , "Related" , "Unrelated")) %>%
+  mutate (Moderate = ifelse((k0 <= 0.85) & (k1 >= 0.05) , "Related", "Unrelated")) %>%
+  gather(Level, Observed, Conservative:Moderate) %>%
+  mutate_at("Observed", as.factor) %>%
+  left_join(expected_roc_3, by = c("FID1", "FID2")) %>%
+  mutate(Related = ifelse (Observed == "Related", 1, 0))
+}
+
+ngs_roc_3 <- obs_bin_3(ngsrelate)
+bcfngs_roc_3 <- obs_bin_3(bcfngs)
+plink_roc_3 <- obs_bin_3(plink %>%
+                       select(!Pipeline))
+
+#the summary of performance for each of the pipelines
+
+binary_summary_3 <- rbind(bm2(ngs_roc_3, "ANGSD/NGS"),bm2(plink_roc_3, "BCF/PLINK"),bm2(bcfngs_roc_3, "BCF/NGS")) %>%
+  mutate(Accuracy = accuracy*100,
+         Bal_Accuracy = bal_accuracy*100,
+         Sensitivity = sens*100,
+         Specificity = spec*100) %>%
+  select(14:19)
+
+binary_summary_3
+
+```
+
+##6) Data Optimisation
+
+#a) Trimmed vs Untrimmed Data
+
+i) Mapping Rates
+
+```{r}
+bowtie2_utr <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/trimtests/utr_mapping_rates_unfilt.tsv", header = FALSE) %>%
+  separate(V1, c("Sample"), sep = "_") %>%
+  rename(MQ0 = V2) %>%
+  mutate_at('Sample', as.character) %>%
+  mutate(Reads = "Untrimmed")
+
+#mapping rates of the bam files used for further analysis
+
+bowtie2_mq30_utr <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/trimtests/utr_mapping_rates.tsv", header = FALSE) %>%
+  rename (Sample = V1,
+          Filtered = V2) %>%
+  mutate_at('Sample' , as.character) %>%
+  mutate(Reads = "Untrimmed")
+
+mean(bowtie2_utr$MQ0)
+
+utr_comp <- bowtie2 %>%
+  full_join(bowtie2_mq30, by = "Sample") %>%
+  mutate(Reads = "Trimmed") %>%
+  rbind(
+    full_join(bowtie2_utr, bowtie2_mq30_utr, by = c("Sample" , "Reads"))) %>%
+  rename( MQ30 = Filtered ) %>%
+  gather(MQ, Map_rates, 2:3)
+
+comp_utr <- ggplot(utr_comp, aes(x = Reads, y = Map_rates, fill = MQ)) +
+  geom_boxplot() +
+  #facet_grid(cols = vars(Reads)) +
+  scale_fill_viridis(name ="Mapping Settings" , option="mako", discrete = TRUE, begin = 0.65, end = 1)
+  
+
+plot(comp_utr)
+
+utr_reads <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/trimtests/utr_reads.txt", quote="\"", comment.char="") %>%
+  separate (V1, "Sample", sep = "_") %>%
+  rename( Total = V2,
+          Primary = V6) %>%
+  select(Sample, Total, Primary) 
+  
+
+maptable_utr <- utr_reads %>%
+  gather(Reads, Count, Total:Primary) %>%
+  group_by(Reads) %>%
+  summarise(
+    Total = sum(Count),
+    Average = mean(Count),
+    Maximum = max(Count),
+    Minimum = min(Count)
+    )
+  
+maptable_utr
+
+utr_reads %>%
+  gather(Reads, Count, Total:Primary) %>%
+  group_by(Reads) %>%
+  summarise(
+    samples=n(),
+    Mean = mean(Count),
+    Average = sum(Count)/n())
+
+```
+
+ii) SNPs
+
+```{r}
+
+#Venn Diagram of SNPs across the Map Filters; all with Samtools so far
+
+angsd_utr <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/trimtests/angsd_utr.txt", quote = "\"", comment.char = "") %>%
+  unite (a, V1:V2 , sep="0") %>%
+  separate (a, c("Sample", "Number"), sep="_")
+
+bcftools_utr <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/trimtests/bcf_utr.txt", quote = "\"", comment.char = "") %>%
+  unite ( b, V1:V2 , remove=TRUE, sep="0" ) %>%
+  separate (b, c("Sample", "Number"), sep="_")
+
+snps_utr <- list (angsdsnps$Number , angsd_utr$Number , bcfsnps$Number , bcftools_utr$Number )
+
+utr_snps <- ggVennDiagram(snps_utr,
+                    category.names = c('ANGSD Trimmed' , 'ANGSD Untrimmed' , 'BCFtools Trimmed' , 'BCFtools Untrimmed' ),
+                    label = "count",
+                    label_alpha = 0) +
+  scale_fill_viridis(option="mako", begin = 0.65, end = 1) +
+  scale_color_brewer(palette = "Greys") +
+  theme(legend.position = "none") +
+  scale_x_continuous(expand = expansion(mult = .2))
+  
+plot(utr_snps)
+```
+
+iii) IBD graphs
+
+```{r}
+
+ngsrelate_utr <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/trimtests/newressamutr") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "ANGSD/NGS") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+bcfngs_utr <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/trimtests/vcf_utr.res") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "BCF/NGS") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+plink_utr <- read.csv("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/trimtests/ldutr_plink.genome", sep="") %>%
+  select (FID1, FID2, Z0, Z1, Z2) %>%
+  rename (k0 = Z0,
+          k1 = Z1,
+          k2 = Z2) %>%
+  mutate (Pipeline = "BCF/PLINK" )
+
+kvalues_utr <- full_join (ngsrelate_utr,
+                      expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2")) %>%
+  bind_rows(full_join(bcfngs_utr, expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(full_join(plink_utr, expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(expected %>%
+              select(1:6, 9)) %>%
+  mutate(Reads = "Untrimmed") %>%
+  rbind(kvalues %>% 
+          mutate(Reads = "Trimmed"))
+
+kvalues_utr$exp_relationship <- factor(kvalues_utr$exp_relationship , levels = c("Full Siblings" , "Half-siblings" , "First Cousins", "Unrelated"))
+
+kvalues_utr$Reads <- factor(kvalues_utr$Reads , levels = c("Untrimmed", "Trimmed"))
+
+utr_k0k1 <- ggplot(kvalues_utr) +
+  geom_point(data = kvalues_utr %>%
+               filter(Pipeline != "Expected"),
+             aes(x = k0 , y = k1 , color = exp_relationship )) +
+  geom_jitter(data = kvalues_utr %>%
+                filter(Pipeline == "Expected"),
+              aes(x = k0 , y = k1 , color = exp_relationship ) , width = 0.02, height = 0.02) +
+  facet_grid(rows = vars(Pipeline) , cols = vars(Reads)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.5, end = 0.95) +
+  labs(x = "k0" , y = "k1" , color = "Relationship") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 17) , text = element_text(size = 17))
+
+utr_k1k2 <- ggplot(kvalues_utr) +
+  geom_point(aes(x = k1 , y = k2 , color = exp_relationship )) +
+  geom_jitter(aes(x = k1 , y = k2 , color = exp_relationship ) , width = 0.02, height = 0.02) +
+  facet_grid(rows = vars(Pipeline), cols = vars(Reads)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.5, end = 0.95) +
+  labs(x = "k1" , y = "k2" , color = "Relationship") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 17) , text = element_text(size = 17))
+
+plot(utr_k0k1)
+
+plot(utr_k1k2)
+
+```
+
+iv) k-ranges
+
+```{r}
+krange_utr <- kvalues_utr %>%
+  filter(Pipeline != "Expected") %>%
+  mutate(Program = Pipeline) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "BCF/NGS",
+                     Reads = "Trimmed")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "BCF/NGS",
+                     Reads = "Untrimmed")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "ANGSD/NGS",
+                     Reads = "Trimmed")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "ANGSD/NGS",
+                     Reads = "Untrimmed")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "BCF/PLINK",
+                     Reads = "Trimmed")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "BCF/PLINK",
+                     Reads = "Untrimmed")) %>%
+  mutate(Input = Reads) %>%
+  unite(Prediction, Pipeline, Reads, sep = ":") %>%
+  unite(rel, FID1:FID2, sep = "/") %>%
+  gather(coeff, val, 2:4)
+
+krange_utr$exp_relationship <- factor(krange_utr$exp_relationship , levels = c("Full Siblings" , "Half-siblings" , "First Cousins", "Unrelated"))
+
+krange_utr$Prediction <- factor(krange_utr$Prediction , levels = c("BCF/PLINK:Untrimmed" , "BCF/NGS:Untrimmed" , "ANGSD/NGS:Untrimmed", "BCF/PLINK:Trimmed" , "BCF/NGS:Trimmed" , "ANGSD/NGS:Trimmed"))
+
+k_ranges_utr <- ggplot(krange_utr) +
+  geom_point(data = krange_utr %>%
+               filter(Program != "Expected"),
+             size = 3,
+             aes(x = val , y = Prediction, color = Program, shape = Input)) +
+  geom_point(data = krange_utr %>%
+               filter(Program == "Expected"),
+             size = 3,
+             color = "grey32",
+             aes(x = val , y = Prediction, shape = Input)) +
+  geom_point(data = krange_utr %>%
+               filter(Program == "Expected"),
+             size = 1.5,
+             color = "white",
+             aes(x = val , y = Prediction, shape = Input)) +
+  facet_grid(cols = vars(coeff) , rows = vars(exp_relationship) , scales = "free") +
+  #scale_shape_manual(values = c(16, 20)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.65, end = 0.95, direction = -1) +
+  labs(x = "" , y = "" , color = "Pipeline") +
+  theme_bw() +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        strip.text = element_text(size = 17) , 
+        text = element_text(size = 17)) 
+
+  
+plot(k_ranges_utr)
+
+```
+
+v) Binary classifier
+
+```{r}
+
+#new function to compare types of data 
+
+bm_opt <- function(data, pg, opt){
+  bm1(data, "Conservative") %>%
+  bind_rows(bm1(data, "Moderate")) %>%
+    mutate(Program = pg,
+           Data = opt) 
+}
+
+#second degree 
+
+ngs_roc_utr <- obs_bin(ngsrelate_utr %>%
+                     select(!Pipeline))
+
+bcfngs_roc_utr <- obs_bin(ngsrelate_utr %>%
+                     select(!Pipeline))
+
+plink_roc_utr <- obs_bin(plink_utr %>%
+                       select(!Pipeline))
+
+binary_summary_utr <- rbind(bm_opt(ngs_roc_utr, "ANGSD/NGS", "Untrimmed"), bm_opt(plink_roc_utr, "BCF/PLINK", "Untrimmed"), bm_opt(bcfngs_roc_utr, "BCF/NGS", "Untrimmed"), bm_opt(ngs_roc, "ANGSD/NGS", "Trimmed"), bm_opt(plink_roc, "BCF/PLINK", "Trimmed"), bm_opt(bcfngs_roc, "BCF/NGS", "Trimmed")) %>%
+  mutate(Accuracy = accuracy*100,
+         Bal_Accuracy = bal_accuracy*100,
+         Sensitivity = sens*100,
+         Specificity = spec*100) %>%
+  select(14:19)
+
+binary_summary_utr
+
+#third degree
+
+ngs_roc_utr_3 <- obs_bin_3(ngsrelate_utr %>%
+                     select(!Pipeline))
+
+bcfngs_roc_utr_3 <- obs_bin_3(ngsrelate_utr %>%
+                     select(!Pipeline))
+
+plink_roc_utr_3 <- obs_bin_3(plink_utr %>%
+                       select(!Pipeline))
+
+binary_summary_utr_3 <- rbind(bm_opt(ngs_roc_utr_3, "ANGSD/NGS", "Untrimmed"), bm_opt(plink_roc_utr_3, "BCF/PLINK", "Untrimmed"), bm_opt(bcfngs_roc_utr_3, "BCF/NGS", "Untrimmed"), bm_opt(ngs_roc_3, "ANGSD/NGS", "Trimmed"), bm_opt(plink_roc_3, "BCF/PLINK", "Trimmed"), bm_opt(bcfngs_roc_3, "BCF/NGS", "Trimmed")) %>%
+  mutate(Accuracy = accuracy*100,
+         Bal_Accuracy = bal_accuracy*100,
+         Sensitivity = sens*100,
+         Specificity = spec*100) %>%
+  select(14:19)
+
+binary_summary_utr_3
+
+
+```
+
+#b) Unstressed Abalone
+
+i) Total reads for raw sequences, trimmed sequences and aligned sequences
+
+```{r}
+
+#reads for first two replicates, raw, trimmed, aligned
+
+us_reads <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/inputtests/reads_us.txt", quote="\"", comment.char="") %>%
+  separate (V1, "Sample", sep = "_") %>%
+  rename( Total = V2,
+          Primary = V6) %>%
+  select(Sample, Total, Primary) 
+
+US_reads <- fastq_trim %>%
+          filter(Number == c(1,2)) %>%
+          summarise(
+            Total = sum(Reads),
+            Average = mean(Reads),
+            Maximum = max(Reads),
+            Minimum = min(Reads)
+            ) %>%
+          mutate(new = "Sequenced") %>%
+          mutate(Sample = "Unstressed") %>%
+  rbind(us_reads %>%
+          gather(Reads, Count, Total:Primary) %>%
+          group_by(Reads) %>%
+          summarise(
+            Total = sum(Count),
+            Average = mean(Count),
+            Maximum = max(Count),
+            Minimum = min(Count)
+            ) %>%
+          filter(Reads == "Primary") %>%
+          select(!Reads) %>%
+          mutate(new = "Mapped") %>%
+          mutate(Sample = "Unstressed")) %>%
+  rename(Reads = new)
+
+```
+
+ii) SNPs found vs previous SNPs
+
+```{r}
+
+angsdsnps_us <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/inputtests/us/angsdsnps_us.txt", quote = "\"", comment.char = "") %>%
+  unite (a, V1:V2 , sep="0" ) %>%
+  separate (a, c("Sample", "Number"), sep="_")
+
+bcf_us<- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/inputtests/us/bcfsnps_us.txt", quote = "\"", comment.char = "") %>%
+  unite ( b, V1:V2 , remove=TRUE, sep="0" ) %>%
+  separate (b, c("Sample", "Number"), sep="_")
+
+snps_us<- list (bcf_us$Number, bcfsnps$Number, angsdsnps$Number,  angsdsnps_us$Number)
+
+input_us <- ggVennDiagram(snps_us,
+                    category.names = c('BCF(US)' , 'BCFtools' , 'ANGSD' , 'ANGSD(US)'),
+                    label_alpha = 0 , 
+                    label = "count") +
+  scale_fill_viridis(option="mako", begin = 0.65, end = 1) +
+  scale_color_brewer(palette = "Greys") +
+  theme(legend.position = "none") +
+  scale_x_continuous(expand = expansion(mult = .2))
+
+plot(input_us)
+
+```
+
+iii) IBD graphs
+
+```{r}
+
+ngsrelate_us <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/inputtests/us/newressamus") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "ANGSD/NGS") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+bcfngs_us <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/inputtests/us/vcfus.res") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "BCF/NGS") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+kvalues_us <- left_join (ngsrelate,
+                      expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2")) %>%
+  mutate(Input = "All") %>%
+  bind_rows(left_join(bcfngs, expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2")) %>%
+              mutate(Input = "All")
+            ) %>%
+  bind_rows(left_join (ngsrelate_us,
+                      expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2")) %>%
+              mutate(Input = "Unstressed")
+            ) %>%
+  bind_rows(left_join(bcfngs_us, expected %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2")) %>% 
+              mutate(Input = "Unstressed")
+            ) %>%
+  bind_rows(expected %>%
+              select(1:6, 9) %>%
+              mutate(Input = "All")) %>%
+  bind_rows(expected %>%
+              select(1:6, 9) %>%
+              mutate(Input = "Unstressed"))
+            
+kvalues_us$exp_relationship <- factor(kvalues_us$exp_relationship , levels = c("Full Siblings" , "Half-siblings" ,"First Cousins", "Unrelated"))
+
+kvalues_us$Input <- factor(kvalues_us$Input , levels = c("Unstressed", "All"))
+
+us_k0k1 <- ggplot(kvalues_us) +
+  geom_point(data = kvalues_us %>%
+               filter(Pipeline != "Expected"),
+             size = 2.5,
+             aes(x = k0 , y = k1 , color = exp_relationship )) +
+  geom_jitter(data = kvalues_us %>%
+                filter(Pipeline == "Expected"),
+              size = 2.5,
+              aes(x = k0 , y = k1 , color = exp_relationship ) , width = 0.02, height = 0.02) +
+  facet_grid(cols = vars(Input) , rows = vars(Pipeline)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.5, end = 0.95) +
+  labs(x = "k0" , y = "k1" , color = "Relationship") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 17) , text = element_text(size = 17))
+
+us_k1k2 <- ggplot(kvalues_us) +
+  geom_point(data = kvalues_us %>%
+               filter(Pipeline != "Expected"),
+             size = 2.5,
+             aes(x = k1 , y = k2 , color = exp_relationship )) +
+  geom_jitter(data = kvalues_us %>%
+                filter(Pipeline == "Expected"),
+              size = 2.5,
+              aes(x = k1 , y = k2 , color = exp_relationship ) , width = 0.02, height = 0.02) +
+  facet_grid(cols = vars(Input) , rows = vars(Pipeline)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.5, end = 0.95) +
+  labs(x = "k1" , y = "k2" , color = "Relationship") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 17) , text = element_text(size = 17))
+
+plot(us_k0k1)
+
+plot(us_k1k2)
+
+```
+
+iv) k values range
+
+```{r}
+
+krange_us <- kvalues_us %>%
+  filter(Input != "Expected") %>%
+  mutate(Program = Pipeline) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "BCF/NGS",
+                     Input = "All")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "BCF/NGS",
+                     Input = "Unstressed")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "ANGSD/NGS",
+                     Input = "All")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Program = "Expected",
+                     Pipeline = "ANGSD/NGS",
+                     Input = "Unstressed")) %>%
+  mutate(Inputs = Input) %>%
+  unite(Prediction, Pipeline, Input, sep = ":") %>%
+  unite(rel, FID1:FID2, sep = "/") %>%
+  gather(coeff, val, 2:4) 
+
+krange_us$exp_relationship <- factor(krange_us$exp_relationship , levels = c("Full Siblings" , "Half-siblings" , "First Cousins", "Unrelated"))
+
+krange_us$Prediction <- factor(krange_us$Prediction , levels = c("BCF/NGS:Unstressed" , "BCF/NGS:All" , "ANGSD/NGS:All" , "ANGSD/NGS:Unstressed"))
+
+k_ranges_us <- ggplot(krange_us) +
+  geom_point(data = krange_us %>%
+               filter(Program != "Expected"),
+             size = 3,
+             aes(x = val , y = Prediction, color = Program, shape = Inputs)) +
+  geom_point(data = krange_us %>%
+               filter(Program == "Expected"),
+             size = 3,
+             color = "grey32",
+             aes(x = val , y = Prediction, shape = Inputs)) +
+  geom_point(data = krange_us %>%
+               filter(Program == "Expected"),
+             size = 1.5,
+             color = "white",
+             aes(x = val , y = Prediction, shape = Inputs)) +
+  facet_grid(cols = vars(coeff) , rows = vars(exp_relationship) , scales = "free") +
+  #scale_shape_manual(values = c(16, 20)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.65, end = 0.95, direction = -1) +
+  labs(x = "" , y = "" , color = "Pipeline", shape = "Replicates") +
+  theme_bw() +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        strip.text = element_text(size = 17) , 
+        text = element_text(size = 17)) 
+
+plot(k_ranges_us)
+
+```
+
+v) Binary classifier
+
+```{r}
+
+ngs_roc_us <- obs_bin(ngsrelate_us)
+
+bcfngs_roc_us <- obs_bin(bcfngs_us)
+
+binary_summary_us <- rbind(bm_opt(ngs_roc_us, "ANGSD/NGS", "Unstressed"), bm_opt(bcfngs_roc_us, "BCF/NGS" , "Unstressed"), bm_opt(ngs_roc, "ANGSD/NGS", "All"), bm_opt(bcfngs_roc, "BCF/NGS" , "All")  ) %>%
+  mutate(Accuracy = accuracy*100,
+         Bal_Accuracy = bal_accuracy*100,
+         Sensitivity = sens*100,
+         Specificity = spec*100) %>%
+  select(14:19)
+
+binary_summary_us
+
+```
+
+#c) Population Splits
+
+i) PCA for population groups
+
+```{r}
+
+regions <- read_excel("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/regions.xlsx")
+
+pca_plink <- read_table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/vcf_plink.eigenvec", col_names = FALSE) %>%
+  select(!1) %>%
+  separate (X2, "Sample", sep = "_") %>%
+  rename("PC1" = X3,
+         "PC2" = X4,
+         "PC3" = X5,
+         "PC4" = X6,
+         "PC5" = X7,
+         "PC6" = X8,
+         "PC7" = X9,
+         "PC8" = X10,
+         "PC9" = X11,
+         "PC10" = X12,
+         "PC11" = X13,
+         "PC12" = X14,
+         "PC13" = X15,
+         "PC14" = X16,
+         "PC15" = X17,
+         "PC16" = X18,
+         "PC17" = X19,
+         "PC18" = X20,
+         "PC19" = X21,
+         "PC20" = X22
+         ) %>%
+  mutate_at("Sample" , as.numeric) %>%
+  full_join(regions, by = "Sample") 
+
+eigenval_plink <- read_table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/vcf_plink.eigenval" , col_names = FALSE) %>%
+  mutate(pve = X1/sum(X1)*100 , 
+         PC = seq(1 , 20))
+
+pca_pc <- ggplot(eigenval_plink, aes(PC, pve, fill = pve)) + geom_bar(stat = "identity") +
+  ylab("Percentage variance explained") +
+  scale_fill_viridis(option="mako", begin = 0.5, end = 0.95) +
+  theme_bw() +
+  theme(strip.text = element_text(size = 17) , text = element_text(size = 17))
+
+plot(pca_pc)
+
+pca <- ggplot(pca_plink, aes(PC1, PC2)) + 
+  geom_mark_circle(aes(fill = Population)) +
+  geom_point(size = 3, aes(color = Region)) +
+  geom_point(size = 1.5, color = "white", aes(shape = as.factor(Family), alpha = Family)) + 
+  geom_label_repel(aes(label = paste(Sample, "^", Survival, "", sep = ""), col = Region), fill = "white", parse = TRUE, max.overlaps = Inf, size = 3, min.segment.length = 0) +
+  xlab(paste0("PC1 (", signif(eigenval_plink$pve[1], 3), "%)")) +
+  ylab(paste0("PC2 (", signif(eigenval_plink$pve[2], 3), "%)")) +
+  scale_shape_manual(values=c(1, 16)) +
+  scale_fill_viridis(option="mako", discrete = TRUE, begin = 0.5, end = 0.90) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.2, end = 0.45) +
+  theme_bw() +
+  labs(fill = "Subpopulation")
+
+plot(pca)
+
+```
+
+ii) Reads for each population, sequenced and mapped
+
+```{r}
+#Reads
+
+pops_reads <- fastq_trim %>%
+  mutate_at(c("Sample" , "Number"), as.numeric) %>%
+  left_join(regions, by = "Sample") %>%
+  group_by(Population) %>%
+  summarise(
+    Total = sum(Reads),
+    Average = mean(Reads),
+    Maximum = max(Reads),
+    Minimum = min(Reads)
+    ) %>%
+  mutate(new = "Sequenced")
+
+pops_mapped <- mq30_reads %>%
+  mutate_at("Sample" , as.numeric) %>%
+  left_join(regions, by = "Sample") %>%
+  gather(Reads, Count, Total:Primary) %>%
+  group_by(Population , Reads) %>%
+  summarise(
+    Total = sum(Count),
+    Average = mean(Count),
+    Maximum = max(Count),
+    Minimum = min(Count)
+    ) %>%
+  filter(Reads == "Primary") %>%
+  select(!Reads) %>%
+  mutate(new = "Mapped")
+  
+PCA_pops <- rbind(pops_reads, pops_mapped) %>%
+  rename( Reads = new)
+
+```
+
+iii) SNPS for each population vs previous SNPs
+
+```{r}
+
+#Population A
+
+angsd_p1 <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/angsd_p1.txt", quote = "\"", comment.char = "") %>%
+  unite (a, V1:V2 , sep="0" ) %>%
+  separate (a, c("Sample", "Number"), sep="_")
+
+bcf_p1<- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/bcf_p1.txt", quote = "\"", comment.char = "") %>%
+  unite ( b, V1:V2 , remove=TRUE, sep="0" ) %>%
+  separate (b, c("Sample", "Number"), sep="_")
+
+snps_input_p1 <- list (bcf_p1$Number, bcfsnps$Number, angsdsnps$Number,  angsd_p1$Number)
+
+input_snps_p1 <- ggVennDiagram(snps_input_p1,
+                    category.names = c('BCFtools(A)' , 'BCFtools' , 'ANGSD' , 'ANGSD(A)' ),
+                    label_alpha = 0 , 
+                    label = "count") +
+  scale_fill_viridis(option="mako", begin = 0.65, end = 1) +
+  scale_color_brewer(palette = "Greys") +
+  theme(legend.position = "none") +
+  scale_x_continuous(expand = expansion(mult = .2))
+
+plot(input_snps_p1)
+
+#Population B
+
+angsd_p2 <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/angsd_p2.txt", quote = "\"", comment.char = "") %>%
+  unite (a, V1:V2 , sep="0" ) %>%
+  separate (a, c("Sample", "Number"), sep="_")
+
+bcf_p2<- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/bcf_p2.txt", quote = "\"", comment.char = "") %>%
+  unite ( b, V1:V2 , remove=TRUE, sep="0" ) %>%
+  separate (b, c("Sample", "Number"), sep="_")
+
+snps_input_p2 <- list (bcf_p2$Number, bcfsnps$Number, angsdsnps$Number,  angsd_p2$Number)
+
+input_snps_p2 <- ggVennDiagram(snps_input_p2,
+                    category.names = c('BCFtools(B)' , 'BCFtools' , 'ANGSD' , 'ANGSD(B)' ),
+                    label_alpha = 0 , 
+                    label = "count") +
+  scale_fill_viridis(option="mako", begin = 0.65, end = 1) +
+  scale_color_brewer(palette = "Greys") +
+  theme(legend.position = "none") +
+  scale_x_continuous(expand = expansion(mult = .2))
+
+plot(input_snps_p2)
+
+#Population C
+
+angsd_p3 <- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/angsd_p3.txt", quote = "\"", comment.char = "") %>%
+  unite (a, V1:V2 , sep="0" ) %>%
+  separate (a, c("Sample", "Number"), sep="_")
+
+bcf_p3<- read.table("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/bcf_p3.txt", quote = "\"", comment.char = "") %>%
+  unite ( b, V1:V2 , remove=TRUE, sep="0" ) %>%
+  separate (b, c("Sample", "Number"), sep="_")
+
+snps_input_p3 <- list (bcf_p3$Number, bcfsnps$Number, angsdsnps$Number,  angsd_p3$Number)
+
+input_snps_p3 <- ggVennDiagram(snps_input_p3,
+                    category.names = c('BCFtools(C)' , 'BCFtools' , 'ANGSD' , 'ANGSD(C)' ),
+                    label_alpha = 0 , 
+                    label = "count") +
+  scale_fill_viridis(option="mako", begin = 0.65, end = 1) +
+  scale_color_brewer(palette = "Greys") +
+  theme(legend.position = "none") +
+  scale_x_continuous(expand = expansion(mult = .2))
+
+plot(input_snps_p3)
+
+```
+
+iv) IBD graphs for all populations
+
+```{r}
+#all input files
+
+#new expected file with population splits added in
+
+expected_pops <- read_excel("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/expected_pops.xlsx") %>%
+  separate (FID1, "a", sep = "_") %>%
+  separate (FID2, "b", sep = "_") %>%
+  rename(FID1 = a,
+         FID2 = b) %>%
+  mutate_at(c("FID1", "FID2", "k0", "k1", "k2"), as.numeric) %>%
+  mutate (Pipeline = "Expected")
+
+#population A
+
+ngsrelate_p1 <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/newresp1") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "ANGSD/NGS" , 
+          Pop = "A") %>%
+  mutate_at(c("FID1","FID2"), as.numeric) 
+
+bcfngs_p1 <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/vcfp1.res") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "BCF/NGS" , 
+          Pop = "A") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+#population B
+
+ngsrelate_p2 <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/newresp2") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "ANGSD/NGS" , 
+          Pop = "B") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+bcfngs_p2 <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/vcfp2.res") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "BCF/NGS" , 
+          Pop = "B") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+#Population C
+
+ngsrelate_p3 <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/newresp3") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "ANGSD/NGS" , 
+          Pop = "C") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+bcfngs_p3 <- read.delim("C:/Users/User/Desktop/Minor Project/Report/rnaseqpipeline/pops/vcfp3.res") %>%
+  separate (ida, "FID1", sep = "_") %>%
+  separate (idb, "FID2", sep = "_") %>%
+  select (FID1, FID2, J9, J8, J7) %>%
+  rename (k0 = J9,
+          k1 = J8,
+          k2 = J7 ) %>%
+  mutate (Pipeline = "BCF/NGS" , 
+          Pop = "C") %>%
+  mutate_at(c("FID1","FID2"), as.numeric)
+
+```
+
+```{r}
+#IBD graphs
+
+kvalues_pops <- right_join (ngsrelate %>%
+                            mutate(Pop = "All"),
+                      expected_pops %>%
+                        filter(Population != "Unrelated") %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2")) %>%
+  bind_rows(right_join(bcfngs %>%
+                         mutate(Pop = "All"), expected_pops %>%
+                        filter(Population != "Unrelated") %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+   bind_rows(left_join(ngsrelate_p1,
+                      expected_pops %>%
+                        filter(Population == "A") %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(left_join(bcfngs_p1, expected_pops %>%
+                        filter(Population == "A") %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(left_join(ngsrelate_p2,
+                      expected_pops %>%
+                        filter(Population == "B") %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(left_join(bcfngs_p2, expected_pops %>%
+                        filter(Population == "B") %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(left_join(ngsrelate_p3,
+                      expected_pops %>%
+                        filter(Population == "C") %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(left_join(bcfngs_p3, expected_pops %>%
+                        filter(Population == "C") %>%
+                        select(1, 2, 6), 
+                      by = c("FID1" , "FID2"))) %>%
+  bind_rows(expected_pops %>%
+              filter(Population != "Unrelated") %>%
+              select(1:6, 9) %>%
+              mutate(Pop = "All")) %>%
+  bind_rows(expected_pops %>%
+              filter(Population == "A") %>%
+              select(1:6, 9) %>%
+              mutate(Pop = "A")) %>%
+  bind_rows(expected_pops %>%
+              filter(Population == "B") %>%
+              select(1:6, 9) %>%
+              mutate(Pop = "B")) %>%
+  bind_rows(expected_pops %>%
+              filter(Population == "C") %>%
+              select(1:6, 9) %>%
+              mutate(Pop = "C")) 
+  
+kvalues_pops$exp_relationship <- factor(kvalues_pops$exp_relationship , levels = c("Full Siblings" , "Half-siblings" ,"First Cousins", "Unrelated"))
+
+kvalues_pops$Pop <- factor(kvalues_pops$Pop , levels = c("A" , "B" , "C" , "All"))
+
+pops_k0k1 <- ggplot(kvalues_pops) +
+  geom_point(data = kvalues_pops %>%
+               filter(Pipeline != "Expected"),
+             size = 2.5,
+             aes(x = k0 , y = k1 , color = exp_relationship )) +
+  geom_jitter(data = kvalues_pops %>%
+                filter(Pipeline == "Expected"),
+              size = 2.5,
+              aes(x = k0 , y = k1 , color = exp_relationship ) , width = 0.02, height = 0.02) +
+  facet_grid(cols = vars(Pop) , rows = vars(Pipeline)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.5, end = 0.95) +
+  labs(x = "k0" , y = "k1" , color = "Relationship") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 17) , text = element_text(size = 17))
+
+pops_k1k2 <- ggplot(kvalues_pops) +
+  geom_point(data = kvalues_pops %>%
+               filter(Pipeline != "Expected"),
+             size = 2.5,
+             aes(x = k1 , y = k2 , color = exp_relationship )) +
+  geom_jitter(data = kvalues_pops %>%
+                filter(Pipeline == "Expected"),
+              size = 2.5,
+              aes(x = k1 , y = k2 , color = exp_relationship ) , width = 0.02, height = 0.02) +
+  facet_grid(cols = vars(Pop) , rows = vars(Pipeline)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.5, end = 0.95) +
+  labs(x = "k1" , y = "k2" , color = "Relationship") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 17) , text = element_text(size = 17))
+
+plot(pops_k0k1)
+
+plot(pops_k1k2)
+
+```
+
+v) k ranges for all populations
+
+```{r}
+
+krange_pops <- kvalues_pops %>%
+  filter(Pipeline != "Expected") %>%
+  mutate(Program = Pipeline) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "ANGSD/NGS",
+                     Program = "Expected",
+                     Pop = "All")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "BCF/NGS",
+                     Program = "Expected",
+                     Pop = "All")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "ANGSD/NGS",
+                     Program = "Expected",
+                     Pop = "A")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "BCF/NGS",
+                     Program = "Expected",
+                     Pop = "A")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "ANGSD/NGS",
+                     Program = "Expected",
+                     Pop = "B")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "BCF/NGS",
+                     Program = "Expected",
+                     Pop = "B")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "ANGSD/NGS",
+                     Program = "Expected",
+                     Pop = "C")) %>%
+  bind_rows(expected %>%
+              select(1:6) %>%
+              mutate(Pipeline = "BCF/NGS",
+                     Prediction = "Expected",
+                     Pop = "C")) %>%
+  mutate(Input = Pop) %>%
+  unite(Prediction, Pipeline, Pop, sep = ":") %>%
+  unite(rel, FID1:FID2, sep = "/") %>%
+  gather(coeff, val, 2:4)
+  
+  
+krange_pops$exp_relationship <- factor(krange_pops$exp_relationship , levels = c("Full Siblings" , "Half-siblings" , "First Cousins", "Unrelated"))
+
+krange_pops$Prediction <- factor(krange_pops$Prediction , levels = c("BCF/NGS:C" , "BCF/NGS:B", "BCF/NGS:A", "BCF/NGS:All" , "ANGSD/NGS:All" , "ANGSD/NGS:C" , "ANGSD/NGS:B" , "ANGSD/NGS:A"))
+
+krange_pops$Input <- factor(krange_pops$Input, levels = c("A" , "B" , "C" , "All"))
+
+k_ranges_pops <- ggplot(krange_pops) +
+  geom_point(data = krange_pops %>%
+               filter(Program != "Expected"),
+             size = 3,
+             aes(x = val , y = Prediction, color = Program, shape = Input)) +
+  geom_point(data = krange_pops %>%
+               filter(Program == "Expected"),
+             size = 3,
+             color = "grey32",
+             aes(x = val , y = Prediction, shape = Input)) +
+  geom_point(data = krange_pops %>%
+               filter(Program == "Expected"),
+             size = 1.5,
+             color = "white",
+             aes(x = val , y = Prediction, shape = Input)) +
+  facet_grid(cols = vars(coeff) , rows = vars(exp_relationship) , scales = "free") +
+  scale_shape_manual(values = c(18, 15, 17, 16)) +
+  scale_color_viridis(option="mako", discrete = TRUE, begin = 0.65, end = 0.95, direction = -1) +
+  labs(x = "" , y = "" , color = "Pipeline", shape = "Population") +
+  theme_bw() +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        strip.text = element_text(size = 17) , 
+        text = element_text(size = 17))
+
+plot(k_ranges_pops)
+
+```
+
+vi) Binary classifier for all populations
+
+```{r}
+
+#new expected roc
+
+expectedpops_roc <- expected_pops %>%
+  select(!(k0:k2)) %>%
+  select(!Pipeline) %>%
+  mutate (Expected = ifelse(exp_relationship == "Unrelated", "Unrelated",
+          ifelse(exp_relationship == "First Cousins", "Unrelated", "Related"))) %>%
+  mutate_at("Expected", as.factor) %>%
+  mutate_at(c("FID1","FID2"), as.integer)
+
+#function with new cut-offs based on population IBD graphs
+
+obs_bin_pops <- function(data){
+  data %>%
+  mutate (Conservative = ifelse((k0 <= 0.85) & (k1 >= 0) , "Related" , "Unrelated")) %>%
+  mutate (Moderate = ifelse((k0 <= 0.95) & (k1 >= 0) , "Related", "Unrelated")) %>%
+  gather(Level, Observed, Conservative:Moderate) %>%
+  mutate_at("Observed", as.factor) %>%
+  inner_join(expectedpops_roc %>%
+              filter(Population != "Unrelated"), by = c("FID1", "FID2")) %>%
+  mutate(Related = ifelse (Observed == "Related", 1, 0))
+}
+
+ngs_pops_all <- obs_bin_pops(ngsrelate)
+
+bngs_pops_all <- obs_bin_pops(bcfngs)
+
+ngs_pops_a <- obs_bin_pops(ngsrelate_p1)
+
+bngs_pops_a <- obs_bin_pops(bcfngs_p1)
+
+ngs_pops_b <- obs_bin_pops(ngsrelate_p2)
+
+bngs_pops_b <- obs_bin_pops(bcfngs_p2)
+
+ngs_pops_c <- obs_bin_pops(ngsrelate_p3)
+
+bngs_pops_c <- obs_bin_pops(bcfngs_p3)
+
+binary_summary_pops <- rbind(bm_opt(ngs_pops_all, "ANGSD/NGS", "All"),
+                                 bm_opt(bngs_pops_all, "BCF/NGS", "All"),
+                                 bm_opt(ngs_pops_a, "ANGSD/NGS" , "A"),
+                                 bm_opt(bngs_pops_a, "BCF/NGS" , "A"),
+                                 bm_opt(ngs_pops_b, "ANGSD/NGS" , "B"),
+                                 bm_opt(bngs_pops_b, "BCF/NGS" , "B"),
+                                 bm_opt(ngs_pops_c, "ANGSD/NGS" , "C"),
+                                 bm_opt(bngs_pops_c, "BCF/NGS" , "C")) %>%
+  mutate(Accuracy = accuracy*100,
+         Bal_Accuracy = bal_accuracy*100,
+         Sensitivity = sens*100,
+         Specificity = spec*100) %>%
+  select(14:20)
+
+binary_summary_pops
+
+```
